@@ -15,9 +15,9 @@ const Card = ({ cardType }: { cardType: string }) => {
           sizes="(100vw, 100vh)"
         />
         <p
-          className={`backdrop-blur-[6px] bg-white/80 rounded px-2 py-1 absolute top-4 right-4  text-xs font-medium ${cardTypeColor}`}
+          className={`backdrop-blur-[6px] capitalize bg-white/80 rounded px-2 py-1 absolute top-4 right-4  text-xs font-medium ${cardTypeColor}`}
         >
-          Event
+          {cardType}
         </p>
       </div>
       <div className="pt-5">
@@ -26,7 +26,7 @@ const Card = ({ cardType }: { cardType: string }) => {
           iconSrc="/icons/location.svg"
           text="Conference Venue Melbourne"
         />
-        {cardType === "activity" && (
+        {cardType === "event" && (
           <div className="flex gap-8 items-center py-3">
             <IconWithText iconSrc="/icons/clock.svg" text="23th June 2024" />
             <IconWithText iconSrc="/icons/ticket.svg" text="Free" />

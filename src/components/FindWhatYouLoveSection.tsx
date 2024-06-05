@@ -6,7 +6,7 @@ import { tags } from "@/constants/data";
 
 const FindWhatYouLoveSection = () => {
   return (
-    <div className="bg-background-purple pt-[72px] mb-10">
+    <div className="bg-background-purple pt-[72px] mt-24 mb-10">
       <Wrapper>
         <div className="flex  justify-between">
           <div>
@@ -16,7 +16,7 @@ const FindWhatYouLoveSection = () => {
             <p className="font-normal text-lg text-subTitle ">
               Find event curate events specially for your intrest
             </p>
-            <div className="flex flex-wrap gap-4 my-10">
+            <div className="flex flex-wrap gap-4 my-10 w-full max-w-[80%]">
               {tags.map((tag) => (
                 <Tag text={tag.name} key={tag.id} />
               ))}
