@@ -1,6 +1,8 @@
 import ActivitiesSection from "@/components/ActivitiesSection";
+import BlogSection from "@/components/BlogSection";
 import Card from "@/components/Card";
 import DestinationSection from "@/components/DestinationSection";
+import DownloadSection from "@/components/DownloadSection";
 import EventSection from "@/components/EventSection";
 import FindWhatYouLoveSection from "@/components/FindWhatYouLoveSection";
 import Headers from "@/components/headers/Headers";
@@ -16,6 +18,8 @@ export default function Home() {
       <FindWhatYouLoveSection />
       <ActivitiesSection />
       <DestinationSection />
+      <DownloadSection />
+      <BlogSection />
     </main>
   );
 }

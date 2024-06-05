@@ -5,7 +5,7 @@ import IconWithText from "./IconWithText";
 const Card = ({ cardType }: { cardType: string }) => {
   const cardTypeColor = cardType === "event" ? "text-brand" : "text-blue";
   return (
-    <div className="">
+    <div className="min-w-[300px] w-full">
       <div className="relative w-full h-[380px] rounded-2xl overflow-hidden ">
         <Image
           src="/images/image_2.jpg"

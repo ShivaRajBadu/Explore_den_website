@@ -10,7 +10,7 @@ const PopularSection = () => {
       <Wrapper>
         <div className="flex justify-between items-center ">
           <h2 className="text-4xl font-semibold text-foreground py-10">
-            Popular in ExploreDen
+            Popular
           </h2>
           <Link className="text-brand text-sm font-medium" href="/events">
             View all

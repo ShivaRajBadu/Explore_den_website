@@ -4,7 +4,6 @@ import Link from "next/link";
 import Card from "./Card";
 
 const EventSection = () => {
-  const popularEvents: any = [1, 2, 3, 4];
   return (
     <div className="py-4 my-4">
       <Wrapper>
@@ -16,11 +15,8 @@ const EventSection = () => {
             View all
           </Link>
         </div>
-        <div
-          style={{ gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))" }}
-          className="grid gap-6 "
-        >
-          {popularEvents.map((event: any) => {
+        <div className="flex gap-10 flex-nowrap hide_scrollbar overflow-x-scroll ">
+          {[1, 2, 3, 4].map((event: any) => {
             return <Card cardType="event" key={event} />;
           })}
         </div>

@@ -45,3 +45,14 @@ body {
   background: #b23aeb;
   filter: blur(130.35000610351562px);
 }
+
+.hide_scrollbar {
+  /* Hide scrollbar in Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar in IE, Firefox and Edge */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
