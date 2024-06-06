@@ -19,7 +19,7 @@ const DownloadSection = () => {
             alt="curve"
             width={600}
             height={200}
-            className="object-cover absolute top-0 left-[20%]"
+            className="object-cover absolute top-0 left-[20%] w-auto"
           />
 
           <div className="w-[55%] h-full relative">
