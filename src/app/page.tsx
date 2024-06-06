@@ -14,7 +14,7 @@ import Wrapper from "@/components/Wrapper";
 export default function Home() {
   return (
     <main>
-      <Headers />
+      {/* <Headers /> */}
       <PopularSection />
       <EventSection />
       <FindWhatYouLoveSection />
@@ -24,7 +24,6 @@ export default function Home() {
       <BlogSection />
       <ContactUs />
       <Footer />
-      <div className="ht-24 h-[100px]"></div>
     </main>
   );
 }

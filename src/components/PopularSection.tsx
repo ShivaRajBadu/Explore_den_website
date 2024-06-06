@@ -9,7 +9,7 @@ const PopularSection = () => {
     <div className="py-4 my-4">
       <Wrapper>
         <div className="flex justify-between items-center ">
-          <h2 className="text-4xl font-semibold text-foreground py-10">
+          <h2 className="text-[22px] md:text-[32px] lg:text-4xl font-semibold text-foreground  py-4 md:py-10">
             Popular
           </h2>
           <Link className="text-brand text-sm font-medium" href="/events">
@@ -18,7 +18,7 @@ const PopularSection = () => {
         </div>
         <div
           style={{ gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))" }}
-          className="grid gap-6 "
+          className="flex lg:grid gap-x-6 px-1 py-2 gap-y-12 flex-nowrap hide_scrollbar overflow-x-scroll "
         >
           {popularEvents.map((event: any) => {
             return <Card cardType="activity" key={event} />;

@@ -17,7 +17,9 @@ const IconWithText = ({ iconSrc, text }: Props) => {
         sizes="(100vw, 100vh)"
         className="w-auto h-auto"
       />
-      <p className="font-medium text-sm text-textSecondary">{text}</p>
+      <p className="font-medium text-xs md:text-sm text-textSecondary">
+        {text}
+      </p>
     </div>
   );
 };

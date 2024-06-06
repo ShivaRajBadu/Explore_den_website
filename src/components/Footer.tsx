@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="bg-foreground pt-[80px] my-16 pb-6">
+    <div className="bg-foreground pt-[80px] mt-16 pb-6">
       <Wrapper>
         <div className="flex flex-col gap-20 lg:gap-0 lg:flex-row justify-between">
           <div>
@@ -177,6 +177,11 @@ const Footer = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="mt-20 mb-5 border border-textSecondary" />
+        <div className="flex justify-between text-background">
+          <p className="text-sm font-normal">Privacy Policy</p>
+          <p className="text-sm font-normal">Terms & Conditions</p>
         </div>
       </Wrapper>
     </div>

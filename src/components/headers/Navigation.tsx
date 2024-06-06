@@ -46,14 +46,9 @@ const Navigation = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex gap-6">
-          <button className="bg-brand text-background px-6 py-3 rounded font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 ">
-            Login
-          </button>
-          <button className="bg-transparent border border-brand text-brand px-6 py-3 rounded font-semibold text-sm font-poppins">
-            Sign Up
-          </button>
-        </div>
+        <button className="bg-brand text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 ">
+          Download App
+        </button>
       </div>
     </Wrapper>
   );

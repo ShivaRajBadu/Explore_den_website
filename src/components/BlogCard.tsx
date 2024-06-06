@@ -3,7 +3,7 @@ import React from "react";
 
 const BlogCard = () => {
   return (
-    <div className="min-w-[360px]">
+    <div className="min-w-[220px] md:min-w-[340px] lg:min-w-[360px]">
       <div>
         <Image
           src="/images/blog.jpg"
@@ -14,12 +14,12 @@ const BlogCard = () => {
           className="w-full object-cover h-[280px] rounded-2xl"
         />
       </div>
-      <h2 className="font-semibold text-[20px] text-textPrimary pt-6">
+      <h2 className="font-semibold text-base md:text-[20px] text-textPrimary pt-6">
         UX review presentations
       </h2>
-      <p className="font-normal text-base text-textSecondary py-3">
+      <p className="font-normal line-clamp-2 overflow-ellipsis text-sm md:text-base text-textSecondary my-3">
         How do you create compelling presentations that wow your colleagues and
-        impress your.....
+        impress your
       </p>
       <div className="flex gap-6 items-start pt-4">
         <Image

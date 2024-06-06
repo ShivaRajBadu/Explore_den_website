@@ -13,7 +13,7 @@ const BlogSection = () => {
             View all
           </Link>
         </div>
-        <div className="flex gap-10 flex-nowrap hide_scrollbar overflow-x-scroll ">
+        <div className="flex gap-5 flex-nowrap hide_scrollbar overflow-x-scroll ">
           {[1, 2, 3].map((event: any) => {
             return <BlogCard key={event} />;
           })}
