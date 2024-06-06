@@ -8,7 +8,7 @@ import YouMayLike from "./YouMayLike";
 const Details = () => {
   return (
     <div>
-      <h1 className="text-textPrimary text-4xl font-semibold pb-4">
+      <h1 className="text-textPrimary text-[24px] md:text-[32px] lg:text-4xl font-semibold pb-4">
         Painting Workshops near Morphett Vale,Australia
       </h1>
       <ProgramInfo />

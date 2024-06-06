@@ -32,7 +32,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
           src={images[currentIndex]}
           fill
           sizes="(100vw, 100vh)"
-          className="object-cover w-auto h-auto rounded-2xl"
+          className="object-cover w-auto h-auto md:rounded-2xl"
           alt="carousel image"
         />
       </div>

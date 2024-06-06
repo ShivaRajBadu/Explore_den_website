@@ -15,7 +15,7 @@ const ReviewCard = () => {
           />
         </div>
         <div>
-          <h3 className="text-textPrimary text-lg font-medium pb-[2px]">
+          <h3 className="text-textPrimary text-base md:text-lg font-medium pb-[2px]">
             Courtney Henry
           </h3>
           <div className="flex  gap-4 items-center">
@@ -24,7 +24,7 @@ const ReviewCard = () => {
           </div>
         </div>
       </div>
-      <p className="text-textSecondary text-lg font-normal py-4">
+      <p className="text-textSecondary text-base md:text-lg font-normal py-4">
         Consequat velit qui adipisicing sunt do rependerit ad laborum tempor
         ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit
         esse aliqua

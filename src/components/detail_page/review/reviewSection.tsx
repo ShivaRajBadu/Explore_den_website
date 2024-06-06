@@ -32,28 +32,33 @@ const reviewSection = () => {
   const sortedReviewsByRating = Object.keys(reviewsByRating).sort(
     (a, b) => parseInt(b) - parseInt(a)
   );
+
   return (
     <div className="my-20">
       <h1 className="text-3xl text-textPrimary font-semibold pb-4">Reviews</h1>
-      <div className="flex gap-4">
-        <div className="bg-[#F5F4F4] w-[40%] p-9 rounded-[19px]">
-          <h2 className="text-[56px] font-semibold text-textPrimary pb-2">
-            4.0
-          </h2>
-          <Stars rating={4} starSize="30" />
-          <h4 className="text-base font-medium text-textPrimary py-3">
-            {totalReviews} Reviews
-          </h4>
-          <div className="space-y-3 mt-8">
-            {sortedReviewsByRating.map((key) => {
-              return (
-                <ReviewSlide
-                  key={key}
-                  reviewNumber={parseInt(key)}
-                  slideWidth={slideWidth(parseInt(key))}
-                />
-              );
-            })}
+      <div className="flex flex-col lg:flex-row items-start gap-8 my-4">
+        <div className="bg-[#F5F4F4] w-full lg:w-[40%] p-4 md:p-9 rounded-[19px]">
+          <div className="flex flex-row lg:flex-col gap-6  ">
+            <div>
+              <h2 className="text-[40px] md:text-[56px] font-semibold text-textPrimary pb-2">
+                4.0
+              </h2>
+              <Stars rating={4} starSize="24" />
+              <h4 className="text-xs md:text-base font-medium text-textPrimary py-3">
+                {totalReviews} Reviews
+              </h4>
+            </div>
+            <div className="space-y-3 mt-8 w-full">
+              {sortedReviewsByRating.map((key) => {
+                return (
+                  <ReviewSlide
+                    key={key}
+                    reviewNumber={parseInt(key)}
+                    slideWidth={slideWidth(parseInt(key))}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
         <div className="w-full">

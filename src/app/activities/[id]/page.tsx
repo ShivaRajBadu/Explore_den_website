@@ -6,7 +6,7 @@ import ReviewSection from "@/components/detail_page/review/reviewSection";
 import YouMayLike from "@/components/detail_page/YouMayLike";
 
 import Wrapper from "@/components/Wrapper";
-import Image from "next/image";
+
 import React from "react";
 
 const page = ({ params }: { params: { id: string } }) => {
@@ -16,18 +16,20 @@ const page = ({ params }: { params: { id: string } }) => {
     "/images/image.png",
   ];
   return (
-    <Wrapper>
-      <div className="flex gap-12">
-        <div className="w-[40%]">
+    <div className="max-w-[1440px] mx-auto  w-full md:w-[90%]">
+      <div className="flex flex-col lg:flex-row gap-12">
+        <div className="w-full lg:w-[40%]">
           <ImageCarousel images={images} />
         </div>
-        <div className="w-[60%]">
+        <div className="w-full lg:w-[60%] px-4">
           <Details />
         </div>
       </div>
-      <YouMayLike />
-      <ReviewSection />
-    </Wrapper>
+      <div className="px-4">
+        <YouMayLike />
+        <ReviewSection />
+      </div>
+    </div>
   );
 };
 
