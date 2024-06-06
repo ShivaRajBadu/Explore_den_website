@@ -3,18 +3,18 @@ import Stars from "./Stars";
 import ReviewSlide from "./ReviewSlide";
 import VerifiedBadge from "./VerifiedBadge";
 
-import Filter from "./Filter";
 import ReviewCard from "./ReviewCard";
+import Filter from "@/components/Filter";
 
 const reviewSection = () => {
   const options = [
     {
-      value: 1,
-      label: "Leanne Graham",
+      value: "most-recent",
+      label: "Most Recent",
     },
     {
-      value: 2,
-      label: "Ervin Howell",
+      value: "highest-rating",
+      label: "Highest Rating",
     },
   ];
   const totalReviews = 52;
@@ -65,7 +65,7 @@ const reviewSection = () => {
           <VerifiedBadge />
           <div className="flex justify-between items-center  my-6">
             <p className="text-textPrimary text-[24px] font-medium">Sort By</p>
-            <Filter />
+            <Filter options={options} contentPadding="px-4 py-2" />
           </div>
           <hr />
           <ReviewCard />

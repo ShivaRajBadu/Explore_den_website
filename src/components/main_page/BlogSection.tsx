@@ -8,12 +8,12 @@ const BlogSection = () => {
     <div className="py-6 my-6">
       <Wrapper>
         <div className="flex justify-between items-center ">
-          <h2 className="text-4xl font-semibold text-foreground py-10">Blog</h2>
+          <h2 className="text-4xl font-semibold text-foreground py-4">Blog</h2>
           <Link className="text-brand text-sm font-medium" href="/events">
             View all
           </Link>
         </div>
-        <div className="flex gap-5 flex-nowrap hide_scrollbar overflow-x-scroll ">
+        <div className="flex gap-5 flex-nowrap hide_scrollbar overflow-x-scroll py-6 px-1 ">
           {[1, 2, 3].map((event: any) => {
             return <BlogCard key={event} />;
           })}

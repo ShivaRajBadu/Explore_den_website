@@ -13,6 +13,7 @@ const Card = ({ cardType }: { cardType: string }) => {
           fill
           alt="explore den logo"
           sizes="(100vw, 100vh)"
+          priority
         />
         <p
           className={`backdrop-blur-[6px] capitalize bg-white/80 rounded px-2 py-1 absolute top-4 right-4  text-[10px] font-medium ${cardTypeColor}`}

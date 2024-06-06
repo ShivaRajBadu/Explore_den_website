@@ -5,8 +5,6 @@ import ProgramInfo from "@/components/detail_page/ProgramInfo";
 import ReviewSection from "@/components/detail_page/review/reviewSection";
 import YouMayLike from "@/components/detail_page/YouMayLike";
 
-import Wrapper from "@/components/Wrapper";
-
 import React from "react";
 
 const page = ({ params }: { params: { id: string } }) => {

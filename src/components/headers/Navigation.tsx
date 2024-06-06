@@ -17,7 +17,7 @@ const Navigation = () => {
             className="w-auto h-auto"
           />
         </Link>
-        <nav className="text-foreground">
+        <nav className="text-foreground hidden lg:block">
           <ul className="flex gap-9 capitalize">
             <li>
               <Link className="nav-link" href="/">
@@ -46,9 +46,26 @@ const Navigation = () => {
             </li>
           </ul>
         </nav>
-        <button className="bg-brand text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 ">
+        <button className="hidden lg:block  bg-brand  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 ">
           Download App
         </button>
+        <div className="cursor-pointer block lg:hidden">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 9H27M5 16H27M5 23H27"
+              stroke="#242021"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
       </div>
     </Wrapper>
   );

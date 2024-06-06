@@ -1,17 +1,15 @@
 "use client";
 import React from "react";
 
-const Filter = () => {
-  const options = [
-    {
-      value: "most-recent",
-      label: "Most Recent",
-    },
-    {
-      value: "highest-rating",
-      label: "Highest Rating",
-    },
-  ];
+const Filter = ({
+  options,
+  contentWidth = "w-full",
+  contentPadding = "px-3 py-2",
+}: {
+  options: { value: string; label: string }[];
+  contentWidth?: string;
+  contentPadding?: string;
+}) => {
   const [show, setShow] = React.useState(false);
   const [selected, setSelected] = React.useState(options[0]);
 
@@ -41,7 +39,9 @@ const Filter = () => {
         </svg>
       </button>
       {show && (
-        <div className="border border-[#E4E4E7] shadow-md absolute top-[32px] w-full rounded-md py-2 ">
+        <div
+          className={`border border-[#E4E4E7] bg-background z-30 shadow-md absolute top-[32px] right-0  rounded-md py-2 ${contentWidth}`}
+        >
           <ul className="">
             {options.map((option) => {
               return (
@@ -50,7 +50,7 @@ const Filter = () => {
                     setSelected(option);
                     setShow(false);
                   }}
-                  className={`text-sm hover:bg-textSecondary/10 py-1 px-2 text-textSecondary cursor-pointer  font-normal ${
+                  className={`text-sm hover:bg-textSecondary/10 ${contentPadding} text-textSecondary cursor-pointer  font-normal ${
                     selected.value === option.value ? "bg-textSecondary/15" : ""
                   }`}
                   key={option.value}
