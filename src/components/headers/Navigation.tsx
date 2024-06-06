@@ -7,7 +7,7 @@ const Navigation = () => {
   return (
     <Wrapper>
       <div className="flex items-center justify-between py-8 ">
-        <div className="">
+        <Link href="/" className="">
           <Image
             src="/icons/logo.svg"
             alt="explore den logo"
@@ -16,7 +16,7 @@ const Navigation = () => {
             priority
             className="w-auto h-auto"
           />
-        </div>
+        </Link>
         <nav className="text-foreground">
           <ul className="flex gap-9 capitalize">
             <li>

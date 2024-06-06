@@ -1,15 +1,16 @@
 import React from "react";
-import Wrapper from "./Wrapper";
+
 import Link from "next/link";
 import Card from "./Card";
+import Wrapper from "../Wrapper";
 
-const EventSection = () => {
+const ActivitiesSection = () => {
   return (
-    <div className="py-4 my-4">
+    <div className="my-4 py-4">
       <Wrapper>
         <div className="flex justify-between items-center ">
           <h2 className="text-[22px] md:text-[32px] lg:text-4xl font-semibold text-foreground  py-4 md:py-10">
-            Discover Events
+            Explore Activities
           </h2>
           <Link className="text-brand text-sm font-medium" href="/events">
             View all
@@ -17,7 +18,7 @@ const EventSection = () => {
         </div>
         <div className="flex gap-5 flex-nowrap py-2 hide_scrollbar overflow-x-scroll px-1 ">
           {[1, 2, 3, 4].map((event: any) => {
-            return <Card cardType="event" key={event} />;
+            return <Card cardType="activity" key={event} />;
           })}
         </div>
       </Wrapper>
@@ -25,4 +26,4 @@ const EventSection = () => {
   );
 };
 
-export default EventSection;
+export default ActivitiesSection;

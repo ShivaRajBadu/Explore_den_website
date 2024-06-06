@@ -1,20 +1,17 @@
-import ActivitiesSection from "@/components/ActivitiesSection";
-import BlogSection from "@/components/BlogSection";
-import Card from "@/components/Card";
-import ContactUs from "@/components/ContactUs";
-import DestinationSection from "@/components/DestinationSection";
-import DownloadSection from "@/components/DownloadSection";
-import EventSection from "@/components/EventSection";
-import FindWhatYouLoveSection from "@/components/FindWhatYouLoveSection";
 import Footer from "@/components/Footer";
+import ActivitiesSection from "@/components/main_page/ActivitiesSection";
+import BlogSection from "@/components/main_page/BlogSection";
+import ContactUs from "@/components/main_page/ContactUs";
+import DestinationSection from "@/components/main_page/DestinationSection";
+import DownloadSection from "@/components/main_page/DownloadSection";
+import EventSection from "@/components/main_page/EventSection";
+import FindWhatYouLoveSection from "@/components/main_page/FindWhatYouLoveSection";
+import PopularSection from "@/components/main_page/PopularSection";
 import Headers from "@/components/headers/Headers";
-import PopularSection from "@/components/PopularSection";
-import Wrapper from "@/components/Wrapper";
 
 export default function Home() {
   return (
     <main>
-      {/* <Headers /> */}
       <PopularSection />
       <EventSection />
       <FindWhatYouLoveSection />
@@ -23,7 +20,6 @@ export default function Home() {
       <DownloadSection />
       <BlogSection />
       <ContactUs />
-      <Footer />
     </main>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Wrapper from "./Wrapper";
+import Wrapper from "../Wrapper";
 import Image from "next/image";
 import Tag from "./Tag";
 import { tags } from "@/constants/data";

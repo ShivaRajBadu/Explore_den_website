@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import Wrapper from "./Wrapper";
 
 const DownloadSection = () => {
   return (
