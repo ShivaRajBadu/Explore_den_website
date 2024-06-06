@@ -2,6 +2,8 @@ import AddressSection from "@/components/detail_page/AddressSection";
 import ImageCarousel from "@/components/detail_page/customCarousel/ImageCarousel";
 import Details from "@/components/detail_page/Details";
 import ProgramInfo from "@/components/detail_page/ProgramInfo";
+import ReviewSection from "@/components/detail_page/review/reviewSection";
+import YouMayLike from "@/components/detail_page/YouMayLike";
 
 import Wrapper from "@/components/Wrapper";
 import Image from "next/image";
@@ -23,6 +25,8 @@ const page = ({ params }: { params: { id: string } }) => {
           <Details />
         </div>
       </div>
+      <YouMayLike />
+      <ReviewSection />
     </Wrapper>
   );
 };

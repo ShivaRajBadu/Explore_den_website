@@ -5,7 +5,12 @@ const OrganizerSection = () => {
   return (
     <div className="bg-[#F2F2FF] rounded-[19px]  border border-[#F2F2FF]  py-8 text-center">
       <div className="relative w-[72px] h-[72px] rounded-full mx-auto">
-        <Image src="/images/author.png" alt="author" fill sizes="100vw" />
+        <Image
+          src="/images/author.png"
+          alt="author"
+          fill
+          sizes="(100vw, 100vh)"
+        />
       </div>
       <h5 className="text-xs font-normal text-textSecondary pt-4 pb-1">
         Organized By

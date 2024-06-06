@@ -3,6 +3,7 @@ import ProgramInfo from "./ProgramInfo";
 import AddressSection from "./AddressSection";
 import OrganizerSection from "./OrganizerSection";
 import SocialMedia from "./SocialMedia";
+import YouMayLike from "./YouMayLike";
 
 const Details = () => {
   return (
