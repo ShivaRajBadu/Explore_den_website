@@ -109,7 +109,7 @@ const MainCarousel = () => {
 
   return (
     <div
-      className="relative pt-36  pb-20 overflow-hidden"
+      className="relative pt-24 pb-14 lg:pt-36  lg:pb-20  overflow-hidden"
       onMouseMove={(e) => onDrag(e.clientX)}
       onTouchMove={(e) => onDrag(e.touches[0].clientX)}
       onMouseUp={endDrag}
@@ -128,7 +128,7 @@ const MainCarousel = () => {
       {/* mobile markup */}
       <div
         draggable="false"
-        className="relative w-[287px] mb-14 h-[555px] lg:h-[684px] lg:w-[335px] mx-auto z-0"
+        className="relative w-[287px] mb-8 lg:mb-12  h-[555px] lg:h-[684px] lg:w-[335px] mx-auto z-0"
       >
         <Image
           draggable="false"

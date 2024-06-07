@@ -3,7 +3,7 @@ import React from "react";
 
 const DownloadSection = () => {
   return (
-    <div className="bg-brand text-background relative mt-24 ">
+    <div className="bg-brand  z-[-1] text-background relative mt-24 ">
       <Image
         src="/icons/bottom_curve.svg"
         alt="curve"

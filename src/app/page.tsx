@@ -8,10 +8,16 @@ import EventSection from "@/components/main_page/EventSection";
 import FindWhatYouLoveSection from "@/components/main_page/FindWhatYouLoveSection";
 import PopularSection from "@/components/main_page/PopularSection";
 import Headers from "@/components/headers/Headers";
+import HeroSection from "@/components/headers/HeroSection";
+import Navigation from "@/components/headers/Navigation";
 
 export default function Home() {
   return (
     <main>
+      <Headers background="bg-[#F6F6F6]">
+        <Navigation />
+        <HeroSection />
+      </Headers>
       <PopularSection />
       <EventSection />
       <FindWhatYouLoveSection />

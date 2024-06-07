@@ -1,3 +1,31 @@
+export const NavLinks = [
+  {
+    id: 1,
+    name: "Home",
+    link: "/",
+  },
+  {
+    id: 2,
+    name: "Events",
+    link: "/event",
+  },
+  {
+    id: 3,
+    name: "Destination",
+    link: "/destination",
+  },
+  {
+    id: 4,
+    name: "Activities",
+    link: "/activity",
+  },
+  {
+    id: 5,
+    name: "Contact Us",
+    link: "/contact",
+  },
+];
+
 export const tags = [
   {
     id: 1,

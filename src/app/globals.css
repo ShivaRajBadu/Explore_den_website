@@ -72,6 +72,39 @@ body {
   position: relative;
   overflow: hidden;
 }
-.inner {
-  transition: transform 0.3s ease-out;
+.icon_animation {
+  animation: icon 2s infinite ease-in-out;
+}
+
+@keyframes icon {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* scroll bar  */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(var(--background)); /* Color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--brand)); /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Rounded corners of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(
+    var(--brand),
+    0.6
+  ); /* Color of the scrollbar thumb on hover */
 }
