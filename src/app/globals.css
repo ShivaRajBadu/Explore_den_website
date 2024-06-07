@@ -60,3 +60,18 @@ body {
 .card_shadow:hover {
   box-shadow: 0px 4px 10.4px 0px rgba(0, 0, 0, 0.1);
 }
+
+.explore_gradient::after {
+  background: linear-gradient(171deg, #fd6188 6.59%, #eb3a66 93.12%);
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.inner {
+  transition: transform 0.3s ease-out;
+}
