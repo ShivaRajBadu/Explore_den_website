@@ -4,6 +4,7 @@ import Details from "@/components/detail_page/Details";
 import ProgramInfo from "@/components/detail_page/ProgramInfo";
 import ReviewSection from "@/components/detail_page/review/reviewSection";
 import YouMayLike from "@/components/detail_page/YouMayLike";
+import Navigation from "@/components/headers/Navigation";
 
 import React from "react";
 

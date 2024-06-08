@@ -2,6 +2,7 @@ import React from "react";
 import Wrapper from "./Wrapper";
 import Image from "next/image";
 import Link from "next/link";
+import { NavLinks } from "@/constants/data";
 
 const Footer = () => {
   return (
@@ -42,106 +43,55 @@ const Footer = () => {
             <div className="w-full md:w-[25%]">
               <h2 className="font-bold text-[20px] text-background">Pages</h2>
               <ul className="py-4 space-y-4">
-                <li>
-                  <Link
-                    className="text-background font-normal text-base"
-                    href="/"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-background font-normal text-base"
-                    href="/activites"
-                  >
-                    Activities
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-background font-normal text-base"
-                    href="/destination"
-                  >
-                    Destination
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-background font-normal text-base"
-                    href="/event"
-                  >
-                    Events
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-background font-normal text-base"
-                    href="/blogs"
-                  >
-                    Blogs
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-background font-normal text-base"
-                    href="/contact-us"
-                  >
-                    Contact Us
-                  </Link>
-                </li>
+                {NavLinks.map((link, index) => {
+                  return (
+                    <li key={link.id}>
+                      <Link
+                        className="text-background hover:text-background/70 duration-300 font-normal text-base"
+                        href={link.link}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="">
               <h2 className="font-bold text-[20px] text-background">Contact</h2>
-              <ul className="py-4 space-y-4">
-                <li>
-                  <Link
-                    className="text-background flex items-center gap-4 font-normal text-base "
-                    href="/"
-                  >
-                    <Image
-                      src="/icons/call.svg"
-                      alt="call"
-                      width={20}
-                      height={20}
-                      sizes="(100vw, 100vh)"
-                      className="w-auto h-auto"
-                    />{" "}
-                    (406) 555-0120
-                  </Link>
+              <ul className="py-4 space-y-5">
+                <li className="text-background flex items-center gap-4 font-normal text-base ">
+                  <Image
+                    src="/icons/call.svg"
+                    alt="call"
+                    width={20}
+                    height={20}
+                    sizes="(100vw, 100vh)"
+                    className="w-auto h-auto"
+                  />{" "}
+                  (406) 555-0120
                 </li>
-                <li>
-                  <Link
-                    className="text-background flex items-center gap-4 font-normal text-base"
-                    href="/"
-                  >
-                    <Image
-                      src="/icons/gmail.svg"
-                      alt="email"
-                      width={20}
-                      height={20}
-                      sizes="(100vw, 100vh)"
-                      className="w-auto h-auto"
-                    />
-                    exloreden@gmail.com
-                  </Link>
+                <li className="text-background flex items-center gap-4 font-normal text-base">
+                  <Image
+                    src="/icons/gmail.svg"
+                    alt="email"
+                    width={20}
+                    height={20}
+                    sizes="(100vw, 100vh)"
+                    className="w-auto h-auto"
+                  />
+                  exloreden@gmail.com
                 </li>
-                <li>
-                  <Link
-                    className="text-background  flex items-center gap-4 font-normal text-base"
-                    href="/"
-                  >
-                    <Image
-                      src="/icons/location_white.svg"
-                      alt="location"
-                      width={20}
-                      height={20}
-                      sizes="(100vw, 100vh)"
-                      className="w-auto h-auto"
-                    />
-                    2972 Westheimer Rd. Santa Ana, Illinois 85486
-                  </Link>
+                <li className="text-background  flex items-center gap-4 font-normal text-base">
+                  <Image
+                    src="/icons/location_white.svg"
+                    alt="location"
+                    width={20}
+                    height={20}
+                    sizes="(100vw, 100vh)"
+                    className="w-auto h-auto"
+                  />
+                  2972 Westheimer Rd. Santa Ana, Illinois 85486
                 </li>
               </ul>
             </div>

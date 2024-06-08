@@ -40,7 +40,7 @@ const Navigation = () => {
         <Logo />
         {/* desktop */}
         <nav className="text-foreground hidden lg:block">
-          <ul className="flex gap-9 capitalize">
+          <ul className="flex gap-6 xl:gap-9 capitalize">
             {NavLinks.map((link, index) => {
               const isActive = pathName === link.link;
               return (

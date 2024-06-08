@@ -1,11 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import IconWithText from "./IconWithText";
+import Link from "next/link";
 
 const Card = ({ cardType }: { cardType: string }) => {
   const cardTypeColor = cardType === "event" ? "text-brand" : "text-blue";
   return (
-    <div className="min-w-[220px] relative z-0 md:min-w-[260px] lg:min-w-[290px] w-full cursor-pointer card_shadow  rounded-2xl  duration-300 ">
+    <Link
+      href="details/events/1"
+      className="min-w-[220px] relative z-0 md:min-w-[260px] lg:min-w-[290px] w-full cursor-pointer card_shadow  rounded-2xl  duration-300 "
+    >
       <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] xl:h-[380px] rounded-2xl overflow-hidden ">
         <Image
           src="/images/slider_image_4.jpg"
@@ -35,7 +39,7 @@ const Card = ({ cardType }: { cardType: string }) => {
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
 };
 

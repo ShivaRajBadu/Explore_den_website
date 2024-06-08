@@ -109,7 +109,7 @@ const MainCarousel = () => {
 
   return (
     <div
-      className="relative pt-24 pb-14 lg:pt-36  lg:pb-20  overflow-hidden"
+      className="relative pt-24 pb-14 lg:pt-36  lg:pb-20  overflow-hidden noselect"
       onMouseMove={(e) => onDrag(e.clientX)}
       onTouchMove={(e) => onDrag(e.touches[0].clientX)}
       onMouseUp={endDrag}

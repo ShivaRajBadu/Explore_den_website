@@ -1,9 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-const BlogCard = () => {
+const BlogCard = ({ isOverflowCard = true }: { isOverflowCard?: boolean }) => {
+  const overflowClasses = isOverflowCard
+    ? "min-w-[220px] md:min-w-[340px] lg:min-w-[360px]"
+    : "w-full min-w-[300px]";
   return (
-    <div className="min-w-[220px] md:min-w-[340px] lg:min-w-[360px] card_shadow pb-2 hover:rounded-[16px] cursor-pointer">
+    <Link
+      href="/blogs/1"
+      className={`${overflowClasses} card_shadow pb-2  hover:rounded-[16px] cursor-pointer`}
+    >
       <div>
         <Image
           src="/images/blog.jpg"
@@ -40,7 +47,7 @@ const BlogCard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
