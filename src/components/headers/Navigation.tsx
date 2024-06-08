@@ -46,7 +46,9 @@ const Navigation = () => {
               return (
                 <li key={link.id}>
                   <Link
-                    className={`nav-link ${isActive ? "text-brand" : ""}`}
+                    className={`nav-link hover:text-brand/90  duration-300  ${
+                      isActive ? "text-brand" : ""
+                    }`}
                     href={link.link}
                     scroll={false}
                   >
