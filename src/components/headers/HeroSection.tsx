@@ -21,39 +21,39 @@ const HeroSection = () => {
         sizes="(100vw, 100vh)"
       />
       <Wrapper>
-        <div className="text-center relative pt-12  md:pt-20 lg:pt-32">
-          <h1 className="text-center text-textPrimary text-[32px] md:text-[48px] lg:text-[64px] font-semibold capitalize leading-[125%]">
-            <span className=" z-10 relative after:absolute  after:z-[-1] after:rounded-[9px] text-background after:top-1 md:after:top-2 after:-left-2 md:after:-left-3 after:w-[110%] after:h-[40px] md:after:h-[52px] lg:after:h-[80px] explore_gradient">
+        <div className="text-center relative pt-10  md:pt-16 lg:pt-20">
+          <h1 className="text-center text-textPrimary text-[30px] md:text-[44px] lg:text-[56px] font-semibold capitalize leading-[125%]">
+            <span className=" z-10 relative after:absolute  after:z-[-1] after:rounded-[9px] text-background after:top-1 md:after:top-2 after:-left-2 md:after:-left-3 after:w-[110%] after:h-[35px] md:after:h-[48px] lg:after:h-[66px] explore_gradient">
               Explore
             </span>{" "}
             Events, Activity{" "}
             <span className="sm:block">Destination Near You</span>
           </h1>
-          <p className=" text-[16px] md:text-[18px] lg:text-[20px] text-textSecondary font-normal max-w-[567px] mx-auto capitalize py-4">
+          <p className=" text-[14px] md:text-[16px] lg:text-[18px] text-textSecondary font-normal max-w-[567px] mx-auto capitalize py-4">
             Swipe, Save, and Explore Exciting Events, Activities, and
             Destinations Near You Today
           </p>
-          <button className="bg-brand hover:bg-brand/80 duration-300 text-background cursor-pointer text-center mt-6 rounded-lg px-6 py-3 font-semibold text-base">
+          <button className="bg-brand hover:bg-brand/80 duration-300 text-background cursor-pointer text-center mt-3 rounded-lg px-6 py-3 font-semibold text-base">
             Download The App
           </button>
           {/* icons */}
           <div className="hidden xl:block">
-            <div className="absolute icon_animation top-[50px] left-[215px]">
+            <div className="absolute icon_animation top-[0px] left-[215px]">
               <CalendarIcon />
             </div>
-            <div className="absolute top-[215px] icon_animation left-[100px]">
+            <div className="absolute top-[153px] icon_animation left-[130px]">
               <BookmarkIcon />
             </div>
-            <div className="absolute icon_animation bottom-[20px] left-[215px]">
+            <div className="absolute icon_animation bottom-[30px] left-[215px]">
               <ActivityIcon />
             </div>
-            <div className="absolute icon_animation top-[50px] right-[215px]">
+            <div className="absolute icon_animation top-[0px] right-[215px]">
               <CompassIcon />
             </div>
-            <div className="absolute icon_animation top-[215px] right-[100px]">
+            <div className="absolute icon_animation top-[153px] right-[130px]">
               <GalleryIcon />
             </div>
-            <div className="absolute icon_animation bottom-[20px] right-[215px]">
+            <div className="absolute icon_animation bottom-[40px] right-[215px]">
               <UserIcon />
             </div>
           </div>

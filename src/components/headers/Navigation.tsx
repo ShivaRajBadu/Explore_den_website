@@ -36,7 +36,7 @@ const Navigation = () => {
   }, [isOpen]);
   return (
     <Wrapper>
-      <div className="flex items-center justify-between py-8 ">
+      <div className="flex items-center justify-between py-6 ">
         <Logo />
         {/* desktop */}
         <nav className="text-foreground hidden lg:block">

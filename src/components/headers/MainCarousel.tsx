@@ -5,16 +5,91 @@ import Image from "next/image";
 import ImageSlider from "./ImageSlider";
 
 const MainCarousel = () => {
+  // const initialImages = [
+  //   "/images/slider_image_1.png",
+  //   "/images/slider_image_2.png",
+  //   "/images/slider_image_3.png",
+  //   "/images/slider_image_4.jpg",
+  //   "/images/slider_image_5.jpg",
+  //   "/images/slider_image_6.jpg",
+  //   "/images/slider_image_7.jpg",
+  //   "/images/slider_image_8.jpg",
+  //   "/images/slider_image_9.jpg",
+  // ];
   const initialImages = [
-    "/images/slider_image_1.png",
-    "/images/slider_image_2.png",
-    "/images/slider_image_3.png",
-    "/images/slider_image_4.jpg",
-    "/images/slider_image_5.jpg",
-    "/images/slider_image_6.jpg",
-    "/images/slider_image_7.jpg",
-    "/images/slider_image_8.jpg",
-    "/images/slider_image_9.jpg",
+    {
+      id: 1,
+      title: "Lorem   porttitor enim. Nulla facilisi. Mauris atrices.",
+
+      image: "/images/slider_image_1.png",
+      type: "hiking",
+      distance: "3.89KM",
+      timeInDays: 3,
+    },
+    {
+      id: 2,
+      title: "dapibus purus sed, porttitor enim. Nulla facilisi.",
+      image: "/images/slider_image_2.png",
+      type: "hotel",
+      distance: "1.89KM",
+      timeInDays: 2,
+    },
+    {
+      id: 3,
+      title: "elit. Donec at purus aliquam, dapibus purus sed,",
+      image: "/images/slider_image_3.png",
+      type: "park",
+      distance: "7KM",
+      timeInDays: 5,
+    },
+    {
+      id: 4,
+      title: "ipsum dolor sit amet, consectetur adipiscing",
+      image: "/images/slider_image_4.jpg",
+      type: "beach",
+      distance: "2.4KM",
+      timeInDays: 8,
+    },
+    {
+      id: 5,
+      title: " nibh ut dolor tincidunt ul",
+      image: "/images/slider_image_5.jpg",
+      type: "Natural",
+      distance: "10.3KM",
+      timeInDays: 10,
+    },
+    {
+      id: 6,
+      title: "Lorem ipsum dolor sit amet consectetur",
+      image: "/images/slider_image_6.jpg",
+      type: "Concert",
+      distance: "18.8KM",
+      timeInDays: 3,
+    },
+    {
+      id: 7,
+      title: "adipisicing elit. Exercitationem, eaque?",
+      image: "/images/slider_image_7.jpg",
+      type: "hotel",
+      distance: "49KM",
+      timeInDays: 9,
+    },
+    {
+      id: 8,
+      title: " nibh ut dolor tincidunt ul",
+      image: "/images/slider_image_8.jpg",
+      type: "hotel",
+      distance: "3.4KM",
+      timeInDays: 2,
+    },
+    {
+      id: 9,
+      title: "ipsum dolor sit amet, consectetur adipiscing",
+      image: "/images/slider_image_9.jpg",
+      type: "hotel",
+      distance: "5KM",
+      timeInDays: 1,
+    },
   ];
 
   const [images, setImages] = useState(initialImages);
@@ -132,7 +207,7 @@ const MainCarousel = () => {
 
   return (
     <div
-      className="relative pt-24 pb-14 lg:pt-36  lg:pb-20  overflow-hidden noselect"
+      className="relative pt-20 pb-14 lg:pt-24  lg:pb-20  overflow-hidden noselect"
       onMouseMove={(e) => onDrag(e.clientX)}
       onMouseUp={endDrag}
       onTouchEnd={endDrag}
@@ -151,7 +226,7 @@ const MainCarousel = () => {
       {/* mobile markup */}
       <div
         draggable="false"
-        className="relative w-[287px] mb-8 lg:mb-12  h-[555px] lg:h-[684px] lg:w-[335px] mx-auto z-0"
+        className="relative w-[287px]  h-[555px] lg:h-[684px] lg:w-[335px] mx-auto z-0"
       >
         <Image
           draggable="false"
@@ -173,14 +248,14 @@ const MainCarousel = () => {
             : "w-[147px] lg:w-[196px]";
         return (
           <div
-            key={image}
+            key={`${image.image}`}
             style={translatePosition(index)}
             className="absolute z-10"
             onMouseDown={(e) => startDrag(e.clientX)}
             onTouchStart={(e) => startDrag(e.touches[0].clientX)}
           >
             <ImageSlider
-              imageSrc={image}
+              imageProp={image}
               height={imageHeight}
               width={imageWidth}
             />
