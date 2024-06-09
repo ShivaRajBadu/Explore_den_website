@@ -12,7 +12,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div>
+    <>
       <Image
         className="absolute z-[-1] inset-0 w-full h-full"
         src="/pattern.svg"
@@ -33,7 +33,7 @@ const HeroSection = () => {
             Swipe, Save, and Explore Exciting Events, Activities, and
             Destinations Near You Today
           </p>
-          <button className="bg-brand text-background cursor-pointer text-center mt-6 rounded-lg px-6 py-3 font-semibold text-base">
+          <button className="bg-brand hover:bg-brand/80 duration-300 text-background cursor-pointer text-center mt-6 rounded-lg px-6 py-3 font-semibold text-base">
             Download The App
           </button>
           {/* icons */}
@@ -60,7 +60,7 @@ const HeroSection = () => {
         </div>
       </Wrapper>
       <MainCarousel />
-    </div>
+    </>
   );
 };
 

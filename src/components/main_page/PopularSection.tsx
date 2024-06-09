@@ -15,7 +15,7 @@ const PopularSection = () => {
           className="flex lg:grid gap-x-6 px-1 py-2 gap-y-12 flex-nowrap hide_scrollbar overflow-x-scroll "
         >
           {popularEvents.map((event: any) => {
-            return <Card cardType="activity" key={event} />;
+            return <Card cardType="event" key={event} />;
           })}
         </div>
       </Wrapper>

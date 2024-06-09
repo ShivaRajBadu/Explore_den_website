@@ -23,6 +23,7 @@ export default function Home() {
       <FindWhatYouLoveSection />
       <ActivitiesSection />
       <DestinationSection />
+
       <DownloadSection />
       <BlogSection />
       <ContactUs />

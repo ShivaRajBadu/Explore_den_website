@@ -8,9 +8,9 @@ const Card = ({ cardType }: { cardType: string }) => {
   return (
     <Link
       href="details/events/1"
-      className="min-w-[220px] relative z-0 md:min-w-[260px] lg:min-w-[290px] w-full cursor-pointer card_shadow  rounded-2xl  duration-300 "
+      className="min-w-[220px] relative  md:min-w-[260px] lg:min-w-[290px] w-full cursor-pointer card_shadow  rounded-2xl  duration-300 "
     >
-      <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] xl:h-[380px] rounded-2xl overflow-hidden ">
+      <div className="relative  w-full h-[250px] md:h-[300px] lg:h-[350px] xl:h-[380px] rounded-2xl overflow-hidden ">
         <Image
           src="/images/slider_image_4.jpg"
           className="object-cover"

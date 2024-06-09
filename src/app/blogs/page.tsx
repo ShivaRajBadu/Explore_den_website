@@ -19,7 +19,7 @@ const page = () => {
         <h2 className="text-textPrimary text-4xl font-semibold">All Blogs</h2>
         <div
           style={{ gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))" }}
-          className="grid gap-8      my-6 py-6"
+          className="grid gap-8  my-6 py-6"
         >
           {Array.from({ length: 16 }).map((_, index) => {
             return <BlogCard key={index} isOverflowCard={false} />;

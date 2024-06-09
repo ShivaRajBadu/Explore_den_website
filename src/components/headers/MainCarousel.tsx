@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ImageSlider from "./ImageSlider";
 
 const MainCarousel = () => {
-  const images = [
+  const initialImages = [
     "/images/slider_image_1.png",
     "/images/slider_image_2.png",
     "/images/slider_image_3.png",
@@ -14,27 +14,31 @@ const MainCarousel = () => {
     "/images/slider_image_6.jpg",
     "/images/slider_image_7.jpg",
     "/images/slider_image_8.jpg",
+    "/images/slider_image_9.jpg",
   ];
 
+  const [images, setImages] = useState(initialImages);
   const [currentIndex, setCurrentIndex] = useState(
-    Math.floor(images.length / 2)
+    Math.floor(initialImages.length / 2)
   );
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
 
+  const [rotation, setRotation] = useState(0);
+
   useEffect(() => {
-    const mql = window.matchMedia("(max-width: 1024px)");
+    const screenWatch = window.matchMedia("(max-width: 1024px)");
     const handleChange = (e: any) => {
       setIsTabletOrMobile(e.matches);
     };
 
-    handleChange(mql); // Initial check
-    mql.addEventListener("change", handleChange);
+    handleChange(screenWatch); // Initial check
+    screenWatch.addEventListener("change", handleChange);
 
     return () => {
-      mql.removeEventListener("change", handleChange);
+      screenWatch.removeEventListener("change", handleChange);
     };
   }, []);
 
@@ -45,75 +49,94 @@ const MainCarousel = () => {
 
   const onDrag = (clientX: number) => {
     if (isDragging) {
-      setTranslateX(clientX - startX);
+      const newTranslateX = clientX - startX;
+      setTranslateX(newTranslateX);
+
+      const newRotation = newTranslateX > 0 ? 15 : -15;
+
+      setRotation(newRotation);
     }
   };
 
   const endDrag = () => {
     if (isDragging) {
-      if (translateX > 50) {
+      if (translateX > 100 && rotation === 15) {
         prevImage();
-      } else if (translateX < -50) {
+      } else if (translateX < -100) {
         nextImage();
       }
       setTranslateX(0);
       setIsDragging(false);
+
+      setRotation(0);
     }
   };
 
   const nextImage = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+    setImages((prevImage) => {
+      const newImages = [...prevImage];
+      const firstImage = newImages.shift();
+
+      newImages.push(firstImage!);
+      return newImages;
+    });
   };
 
   const prevImage = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+    setImages((prevImages) => {
+      const newImages = [...prevImages];
+      const lastImage = newImages.pop();
+
+      newImages.unshift(lastImage!);
+      return newImages;
+    });
   };
 
-  const translatePosition = (index: number) => {
-    const baseOffset = isTabletOrMobile ? 170 : 220; // Base offset in px
-    const extraOffset = 70; // Extra space for the first left and right images in px
+  const translatePosition = useCallback(
+    (index: number) => {
+      const baseOffset = isTabletOrMobile ? 170 : 220; // base offset
+      const extraOffset = 70; // Extra space
 
-    if (index === currentIndex) {
-      return {
-        left: "50%",
+      const commonStyles = {
         top: "50%",
         transform: "translateX(-50%) translateY(-50%)",
-        zIndex: 1,
+        transition: "transform 0.5s ease-in-out",
       };
-    } else if (index === currentIndex - 1 || index === currentIndex + 1) {
-      const offset = baseOffset + extraOffset;
-      return {
-        left: `calc(50% ${
-          index < currentIndex ? `- ${offset}px` : `+ ${offset}px`
-        })`,
-        top: "50%",
-        transform: "translateX(-50%) translateY(-50%)",
-        zIndex: 0,
-      };
-    } else {
-      const offset = baseOffset * Math.abs(currentIndex - index) + 70;
-      return {
-        left: `calc(50% ${
-          index < currentIndex ? `- ${offset}px` : `+ ${offset}px`
-        })`,
-        top: "50%",
-        transform: "translateX(-50%) translateY(-50%)",
-        zIndex: 0,
-      };
-    }
-  };
+
+      if (index === currentIndex) {
+        return {
+          ...commonStyles,
+          left: "50%",
+          transform: `translateX(-50%) translateY(-50%) rotate(${rotation}deg)`,
+        };
+      } else if (index === currentIndex - 1 || index === currentIndex + 1) {
+        const offset = baseOffset + extraOffset;
+        return {
+          ...commonStyles,
+          left: `calc(50% ${
+            index < currentIndex ? `- ${offset}px` : `+ ${offset}px`
+          })`,
+        };
+      } else {
+        const offset = baseOffset * Math.abs(currentIndex - index) + 70;
+        return {
+          ...commonStyles,
+          left: `calc(50% ${
+            index < currentIndex ? `- ${offset}px` : `+ ${offset}px`
+          })`,
+        };
+      }
+    },
+    [isTabletOrMobile, rotation]
+  );
 
   return (
     <div
       className="relative pt-24 pb-14 lg:pt-36  lg:pb-20  overflow-hidden noselect"
       onMouseMove={(e) => onDrag(e.clientX)}
-      onTouchMove={(e) => onDrag(e.touches[0].clientX)}
       onMouseUp={endDrag}
       onTouchEnd={endDrag}
+      onTouchMove={(e) => onDrag(e.touches[0].clientX)}
     >
       {/* background wave */}
       <Image
@@ -150,7 +173,7 @@ const MainCarousel = () => {
             : "w-[147px] lg:w-[196px]";
         return (
           <div
-            key={index}
+            key={image}
             style={translatePosition(index)}
             className="absolute z-10"
             onMouseDown={(e) => startDrag(e.clientX)}

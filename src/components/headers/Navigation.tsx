@@ -46,7 +46,7 @@ const Navigation = () => {
               return (
                 <li key={link.id}>
                   <Link
-                    className={`nav-link hover:text-brand/90  duration-300  ${
+                    className={`nav-link hover:text-brand/80  duration-300  ${
                       isActive ? "text-brand" : ""
                     }`}
                     href={link.link}
@@ -60,20 +60,23 @@ const Navigation = () => {
           </ul>
         </nav>
         {/* mobile and tablet */}
-
+        {/* background overlay */}
+        {isOpen && (
+          <div className=" fixed inset-0 bg-black/50 pointer-events-none z-20 h-screen w-screen"></div>
+        )}
         <nav
-          className={`lg:hidden text-background   p-4  bg-textPrimary  duration-300 h-full top-0 z-50 w-[80%] sm:w-[60%] right-0 fixed   ${
+          className={`lg:hidden bg-background   pl-[20px] pr-[25px] pt-[20px]   text-textPrimary  duration-300 h-[643px] w-[326px] top-0 z-50  sm:w-[60%] right-0 fixed   ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="justify-end flex border-b pb-4 border-textSecondary">
+          <div className="justify-end flex  pb-4 ">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className=" w-min ml-auto mr-0"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-10"
+                className="h-8 w-8"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -87,7 +90,7 @@ const Navigation = () => {
               </svg>
             </button>
           </div>
-          <ul className="flex flex-col  text-center  capitalize">
+          <ul className="flex flex-col h-[80%]   capitalize">
             {NavLinks.map((link, index) => {
               const isActive = pathName === link.link;
               return (
@@ -95,7 +98,7 @@ const Navigation = () => {
                   <Link
                     className={`nav-link ${
                       isActive ? "text-brand" : ""
-                    }  py-6 block hover:text-brand/90 duration-300 border-b border-textSecondary`}
+                    }   block hover:text-brand/80 duration-300 border-b border-[#1A1A1A1A] py-4`}
                     href={link.link}
                     scroll={false}
                   >
@@ -104,15 +107,13 @@ const Navigation = () => {
                 </li>
               );
             })}
-            <li>
-              <button className="block mx-auto mt-10 w-full   bg-brand  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 ">
-                Download App
-              </button>
-            </li>
           </ul>
+          <button className="block mx-auto  w-full mt-auto mb-0   bg-brand  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 ">
+            Download App
+          </button>
         </nav>
 
-        <button className="hidden lg:block  bg-brand  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 ">
+        <button className="hidden lg:block  bg-brand  hover:bg-brand/80 duration-300  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins   ">
           Download App
         </button>
         <button

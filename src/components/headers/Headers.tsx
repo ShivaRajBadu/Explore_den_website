@@ -6,7 +6,7 @@ const Headers = ({
   background: string;
 }) => {
   return (
-    <header className={`bg-${background} mx-auto w-full relative z-0  `}>
+    <header className={`${background} mx-auto w-full relative z-50  `}>
       {children}
     </header>
   );
