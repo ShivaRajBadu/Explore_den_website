@@ -3,95 +3,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ImageSlider from "./ImageSlider";
+import { initialImages } from "@/constants/data";
 
 const MainCarousel = () => {
-  // const initialImages = [
-  //   "/images/slider_image_1.png",
-  //   "/images/slider_image_2.png",
-  //   "/images/slider_image_3.png",
-  //   "/images/slider_image_4.jpg",
-  //   "/images/slider_image_5.jpg",
-  //   "/images/slider_image_6.jpg",
-  //   "/images/slider_image_7.jpg",
-  //   "/images/slider_image_8.jpg",
-  //   "/images/slider_image_9.jpg",
-  // ];
-  const initialImages = [
-    {
-      id: 1,
-      title: "Lorem   porttitor enim. Nulla facilisi. Mauris atrices.",
-
-      image: "https://picsum.photos/200/300?random=1",
-      type: "hiking",
-      distance: "3.89KM",
-      timeInDays: 3,
-    },
-    {
-      id: 2,
-      title: "dapibus purus sed, porttitor enim. Nulla facilisi.",
-      image: "https://picsum.photos/200/300?random=2",
-      type: "hotel",
-      distance: "1.89KM",
-      timeInDays: 2,
-    },
-    {
-      id: 3,
-      title: "elit. Donec at purus aliquam, dapibus purus sed,",
-      image: "https://picsum.photos/200/300?random=3",
-      type: "park",
-      distance: "7KM",
-      timeInDays: 5,
-    },
-    {
-      id: 4,
-      title: "ipsum dolor sit amet, consectetur adipiscing",
-      image: "https://picsum.photos/200/300?random=4",
-      type: "beach",
-      distance: "2.4KM",
-      timeInDays: 8,
-    },
-    {
-      id: 5,
-      title: " nibh ut dolor tincidunt ul",
-      image: "https://picsum.photos/200/300?random=5",
-      type: "Natural",
-      distance: "10.3KM",
-      timeInDays: 10,
-    },
-    {
-      id: 6,
-      title: "Lorem ipsum dolor sit amet consectetur",
-      image: "https://picsum.photos/200/300?random=6",
-      type: "Concert",
-      distance: "18.8KM",
-      timeInDays: 3,
-    },
-    {
-      id: 7,
-      title: "adipisicing elit. Exercitationem, eaque?",
-      image: "https://picsum.photos/200/300?random=7",
-      type: "hotel",
-      distance: "49KM",
-      timeInDays: 9,
-    },
-    {
-      id: 8,
-      title: " nibh ut dolor tincidunt ul",
-      image: "https://picsum.photos/200/300?random=8",
-      type: "hotel",
-      distance: "3.4KM",
-      timeInDays: 2,
-    },
-    {
-      id: 9,
-      title: "ipsum dolor sit amet, consectetur adipiscing",
-      image: "https://picsum.photos/200/300?random=9",
-      type: "hotel",
-      distance: "5KM",
-      timeInDays: 1,
-    },
-  ];
-
   const [images, setImages] = useState(initialImages);
   const [currentIndex, setCurrentIndex] = useState(
     Math.floor(initialImages.length / 2)
@@ -100,8 +14,8 @@ const MainCarousel = () => {
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const [isTabletOrMobile, setIsTabletOrMobile] = useState(false);
-
   const [rotation, setRotation] = useState(0);
+  const autoplayRef = useRef<any>(null);
 
   useEffect(() => {
     const screenWatch = window.matchMedia("(max-width: 1024px)");
@@ -120,15 +34,15 @@ const MainCarousel = () => {
   const startDrag = (clientX: React.SetStateAction<number>) => {
     setIsDragging(true);
     setStartX(clientX);
+    // stop auto play when dragging
+    stopAutoplay();
   };
 
   const onDrag = (clientX: number) => {
     if (isDragging) {
       const newTranslateX = clientX - startX;
       setTranslateX(newTranslateX);
-
       const newRotation = newTranslateX > 0 ? 15 : -15;
-
       setRotation(newRotation);
     }
   };
@@ -142,16 +56,16 @@ const MainCarousel = () => {
       }
       setTranslateX(0);
       setIsDragging(false);
-
       setRotation(0);
+      // reset auto play after end dragging
+      startAutoplay();
     }
   };
 
   const nextImage = () => {
-    setImages((prevImage) => {
-      const newImages = [...prevImage];
+    setImages((prevImages) => {
+      const newImages = [...prevImages];
       const firstImage = newImages.shift();
-
       newImages.push(firstImage!);
       return newImages;
     });
@@ -161,11 +75,29 @@ const MainCarousel = () => {
     setImages((prevImages) => {
       const newImages = [...prevImages];
       const lastImage = newImages.pop();
-
       newImages.unshift(lastImage!);
       return newImages;
     });
   };
+  // for auto play
+  const startAutoplay = () => {
+    autoplayRef.current = setInterval(() => {
+      nextImage();
+    }, 3000);
+  };
+
+  const stopAutoplay = () => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    startAutoplay();
+    // clean up function
+    return () => stopAutoplay();
+  }, []);
 
   const translatePosition = useCallback(
     (index: number) => {
@@ -207,7 +139,7 @@ const MainCarousel = () => {
 
   return (
     <div
-      className="relative pt-20 pb-14 lg:pt-24  lg:pb-20  overflow-hidden noselect"
+      className="relative pt-20 pb-14 lg:pt-24 lg:pb-20 overflow-hidden noselect"
       onMouseMove={(e) => onDrag(e.clientX)}
       onMouseUp={endDrag}
       onTouchEnd={endDrag}
@@ -226,7 +158,7 @@ const MainCarousel = () => {
       {/* mobile markup */}
       <div
         draggable="false"
-        className="relative w-[287px]  h-[555px] lg:h-[684px] lg:w-[335px] mx-auto z-0"
+        className="relative w-[287px] h-[555px] lg:h-[684px] lg:w-[335px] mx-auto z-0"
       >
         <Image
           draggable="false"
@@ -248,9 +180,9 @@ const MainCarousel = () => {
             : "w-[147px] lg:w-[196px]";
         return (
           <div
-            key={`${image.image}`}
+            key={`${image.id}`}
             style={translatePosition(index)}
-            className="absolute z-10"
+            className="absolute z-10 duration-1000"
             onMouseDown={(e) => startDrag(e.clientX)}
             onTouchStart={(e) => startDrag(e.touches[0].clientX)}
           >

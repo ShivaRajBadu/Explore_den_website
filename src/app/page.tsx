@@ -10,6 +10,10 @@ import PopularSection from "@/components/main_page/PopularSection";
 import Headers from "@/components/headers/Headers";
 import HeroSection from "@/components/headers/HeroSection";
 import Navigation from "@/components/headers/Navigation";
+import { Suspense } from "react";
+import GridShimmer from "@/components/skeletons/GridShimmer";
+import PopularSectionSkeleton from "@/components/skeletons/PopularSectionSkeleton";
+
 export default function Home() {
   return (
     <main>
@@ -17,13 +21,22 @@ export default function Home() {
         <Navigation />
         <HeroSection />
       </Headers>
-      <PopularSection />
-      <EventSection />
+      <Suspense fallback={<PopularSectionSkeleton />}>
+        <PopularSection />
+      </Suspense>
+      <Suspense fallback={<GridShimmer />}>
+        <EventSection />
+      </Suspense>
       <FindWhatYouLoveSection />
-      <ActivitiesSection />
-      <DestinationSection />
+      <Suspense>
+        <ActivitiesSection />
+      </Suspense>
+      <Suspense>
+        <DestinationSection />
+      </Suspense>
       <DownloadSection />
       <BlogSection />
+
       <ContactUs />
     </main>
   );
