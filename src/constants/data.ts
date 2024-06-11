@@ -1,3 +1,5 @@
+export const baseUrl = "http://api.exploreden.com";
+
 export const NavLinks = [
   {
     id: 1,

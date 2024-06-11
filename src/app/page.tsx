@@ -10,7 +10,6 @@ import PopularSection from "@/components/main_page/PopularSection";
 import Headers from "@/components/headers/Headers";
 import HeroSection from "@/components/headers/HeroSection";
 import Navigation from "@/components/headers/Navigation";
-
 export default function Home() {
   return (
     <main>
@@ -23,7 +22,6 @@ export default function Home() {
       <FindWhatYouLoveSection />
       <ActivitiesSection />
       <DestinationSection />
-
       <DownloadSection />
       <BlogSection />
       <ContactUs />

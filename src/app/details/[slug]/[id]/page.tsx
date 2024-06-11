@@ -1,14 +1,21 @@
-import AddressSection from "@/components/detail_page/AddressSection";
+import { getPlace, getPlaces } from "@/actions/getPlaces";
 import ImageCarousel from "@/components/detail_page/customCarousel/ImageCarousel";
 import Details from "@/components/detail_page/Details";
-import ProgramInfo from "@/components/detail_page/ProgramInfo";
+
 import ReviewSection from "@/components/detail_page/review/reviewSection";
 import YouMayLike from "@/components/detail_page/YouMayLike";
-import Navigation from "@/components/headers/Navigation";
+import { placeType } from "@/types";
 
 import React from "react";
 
-const page = ({ params }: { params: { id: string } }) => {
+const page = async ({ params }: { params: { id: string } }) => {
+  const place = await getPlace(parseInt(params.id));
+  const suggestion = await getPlaces({
+    placeType: place.placeType as placeType,
+    limit: 9,
+    pageNumber: 1,
+  });
+
   const images = [
     "/images/blog.jpg",
     "/images/image_2.jpg",
@@ -21,11 +28,11 @@ const page = ({ params }: { params: { id: string } }) => {
           <ImageCarousel images={images} />
         </div>
         <div className="w-full lg:w-[60%] px-4">
-          <Details />
+          <Details {...place} />
         </div>
       </div>
       <div className="px-4">
-        <YouMayLike />
+        <YouMayLike places={suggestion} />
         <ReviewSection />
       </div>
     </div>

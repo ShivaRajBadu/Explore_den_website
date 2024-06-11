@@ -14,6 +14,7 @@ const SectionHeaderWithViewAll = ({
         {sectionTitle}
       </h2>
       <Link
+        prefetch={false}
         className="text-brand hover:text-brand/70 duration-300 text-sm font-medium"
         href={link}
       >

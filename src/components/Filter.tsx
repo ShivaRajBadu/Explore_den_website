@@ -5,13 +5,19 @@ const Filter = ({
   options,
   contentWidth = "w-full",
   contentPadding = "px-3 py-2",
+  selectedFilter,
+  setSelectedFilter,
 }: {
   options: { value: string; label: string }[];
   contentWidth?: string;
   contentPadding?: string;
+  selectedFilter: {
+    value: string;
+    label: string;
+  };
+  setSelectedFilter?: (value: { value: string; label: string }) => void;
 }) => {
   const [show, setShow] = React.useState(false);
-  const [selected, setSelected] = React.useState(options[0]);
 
   return (
     <div className="relative ">
@@ -20,7 +26,7 @@ const Filter = ({
         className="flex justify-between items-center gap-4 rounded-md cursor-pointer border border-[#A1A1AA] px-2 py-1"
       >
         <p className="text-sm text-textSecondary font-normal">
-          {selected.label}
+          {selectedFilter.label}
         </p>
         <svg
           width="16"
@@ -47,11 +53,13 @@ const Filter = ({
               return (
                 <li
                   onClick={() => {
-                    setSelected(option);
+                    setSelectedFilter!(option);
                     setShow(false);
                   }}
                   className={`text-sm hover:bg-textSecondary/10 ${contentPadding} text-textSecondary cursor-pointer  font-normal ${
-                    selected.value === option.value ? "bg-textSecondary/15" : ""
+                    selectedFilter.value === option.value
+                      ? "bg-textSecondary/15"
+                      : ""
                   }`}
                   key={option.value}
                 >

@@ -21,7 +21,7 @@ const MainCarousel = () => {
       id: 1,
       title: "Lorem   porttitor enim. Nulla facilisi. Mauris atrices.",
 
-      image: "/images/slider_image_1.png",
+      image: "https://picsum.photos/200/300?random=1",
       type: "hiking",
       distance: "3.89KM",
       timeInDays: 3,
@@ -29,7 +29,7 @@ const MainCarousel = () => {
     {
       id: 2,
       title: "dapibus purus sed, porttitor enim. Nulla facilisi.",
-      image: "/images/slider_image_2.png",
+      image: "https://picsum.photos/200/300?random=2",
       type: "hotel",
       distance: "1.89KM",
       timeInDays: 2,
@@ -37,7 +37,7 @@ const MainCarousel = () => {
     {
       id: 3,
       title: "elit. Donec at purus aliquam, dapibus purus sed,",
-      image: "/images/slider_image_3.png",
+      image: "https://picsum.photos/200/300?random=3",
       type: "park",
       distance: "7KM",
       timeInDays: 5,
@@ -45,7 +45,7 @@ const MainCarousel = () => {
     {
       id: 4,
       title: "ipsum dolor sit amet, consectetur adipiscing",
-      image: "/images/slider_image_4.jpg",
+      image: "https://picsum.photos/200/300?random=4",
       type: "beach",
       distance: "2.4KM",
       timeInDays: 8,
@@ -53,7 +53,7 @@ const MainCarousel = () => {
     {
       id: 5,
       title: " nibh ut dolor tincidunt ul",
-      image: "/images/slider_image_5.jpg",
+      image: "https://picsum.photos/200/300?random=5",
       type: "Natural",
       distance: "10.3KM",
       timeInDays: 10,
@@ -61,7 +61,7 @@ const MainCarousel = () => {
     {
       id: 6,
       title: "Lorem ipsum dolor sit amet consectetur",
-      image: "/images/slider_image_6.jpg",
+      image: "https://picsum.photos/200/300?random=6",
       type: "Concert",
       distance: "18.8KM",
       timeInDays: 3,
@@ -69,7 +69,7 @@ const MainCarousel = () => {
     {
       id: 7,
       title: "adipisicing elit. Exercitationem, eaque?",
-      image: "/images/slider_image_7.jpg",
+      image: "https://picsum.photos/200/300?random=7",
       type: "hotel",
       distance: "49KM",
       timeInDays: 9,
@@ -77,7 +77,7 @@ const MainCarousel = () => {
     {
       id: 8,
       title: " nibh ut dolor tincidunt ul",
-      image: "/images/slider_image_8.jpg",
+      image: "https://picsum.photos/200/300?random=8",
       type: "hotel",
       distance: "3.4KM",
       timeInDays: 2,
@@ -85,7 +85,7 @@ const MainCarousel = () => {
     {
       id: 9,
       title: "ipsum dolor sit amet, consectetur adipiscing",
-      image: "/images/slider_image_9.jpg",
+      image: "https://picsum.photos/200/300?random=9",
       type: "hotel",
       distance: "5KM",
       timeInDays: 1,

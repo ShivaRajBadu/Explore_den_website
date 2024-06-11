@@ -4,7 +4,16 @@ import Link from "next/link";
 import Card from "./Card";
 import SectionHeaderWithViewAll from "./SectionHeaderWithViewAll";
 
-const EventSection = () => {
+import { placeType } from "@/types";
+import { getPlaces } from "@/actions/getPlaces";
+
+const EventSection = async () => {
+  const events = await getPlaces({
+    limit: 4,
+    placeType: placeType.EVENT,
+    pageNumber: 1,
+  });
+
   return (
     <div className="py-4 my-4">
       <Wrapper>
@@ -13,8 +22,8 @@ const EventSection = () => {
           link="/event"
         />
         <div className="flex gap-5 flex-nowrap py-2 hide_scrollbar overflow-x-scroll px-1 ">
-          {[1, 2, 3, 4].map((event: any) => {
-            return <Card cardType="event" key={event} />;
+          {events!.map((event, index) => {
+            return <Card {...event} key={index} />;
           })}
         </div>
       </Wrapper>

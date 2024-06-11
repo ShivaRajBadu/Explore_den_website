@@ -1,10 +1,11 @@
+import Wrapper from "@/components/Wrapper";
 import React from "react";
 
 const loading = () => {
   return (
-    <div>
+    <Wrapper>
       <h1>loading</h1>
-    </div>
+    </Wrapper>
   );
 };
 

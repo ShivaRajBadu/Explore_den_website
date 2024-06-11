@@ -65,7 +65,11 @@ const reviewSection = () => {
           <VerifiedBadge />
           <div className="flex justify-between items-center  my-6">
             <p className="text-textPrimary text-[24px] font-medium">Sort By</p>
-            <Filter options={options} contentPadding="px-4 py-2" />
+            <Filter
+              selectedFilter={options[0]}
+              options={options}
+              contentPadding="px-4 py-2"
+            />
           </div>
           <hr />
           <ReviewCard />

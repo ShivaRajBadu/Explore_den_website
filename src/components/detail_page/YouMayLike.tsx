@@ -2,11 +2,14 @@
 
 import React, { useRef, useMemo, useCallback } from "react";
 import dynamic from "next/dynamic";
+import { getPlaces } from "@/utils/api/api";
+import { placeDataType, placeType } from "@/types";
+import { getMorePlaces } from "@/actions/getMorePlaces";
 
 // Dynamically import the Card component
 const Card = dynamic(() => import("../main_page/Card"), { ssr: false });
 
-const YouMayLike = () => {
+const YouMayLike = async ({ places }: { places: placeDataType[] }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = useCallback(() => {
@@ -27,12 +30,7 @@ const YouMayLike = () => {
     }
   }, []);
 
-  // Memoize the cards list to avoid re-rendering
-  const cards = useMemo(() => {
-    return [1, 2, 3, 4, 5, 6, 7, 8, 9].map((event) => (
-      <Card cardType="activity" key={event} />
-    ));
-  }, []);
+  // const places = await getMorePlaces({ limit: 9, pageNumber: 1, placeType });
 
   return (
     <div className="my-20">
@@ -90,7 +88,9 @@ const YouMayLike = () => {
         ref={scrollContainerRef}
         className="flex gap-5 flex-nowrap py-2 hide_scrollbar overflow-x-scroll px-1"
       >
-        {cards}
+        {places.map((place) => {
+          return <Card key={place.id} {...place} />;
+        })}
       </div>
     </div>
   );

@@ -4,7 +4,15 @@ import Link from "next/link";
 import Card from "./Card";
 import SectionHeaderWithViewAll from "./SectionHeaderWithViewAll";
 
-const DestinationSection = () => {
+import { placeType } from "@/types";
+import { getPlaces } from "@/actions/getPlaces";
+
+const DestinationSection = async () => {
+  const Destinations = await getPlaces({
+    limit: 4,
+    placeType: placeType.DESTINATION,
+    pageNumber: 1,
+  });
   return (
     <div className="my-4 py-4">
       <Wrapper>
@@ -13,8 +21,8 @@ const DestinationSection = () => {
           link="/destination"
         />
         <div className="flex gap-5 flex-nowrap hide_scrollbar overflow-x-scroll  py-2 px-1">
-          {[1, 2, 3, 4].map((event: any) => {
-            return <Card cardType="destination " key={event} />;
+          {Destinations.map((destination) => {
+            return <Card {...destination} key={destination.id} />;
           })}
         </div>
       </Wrapper>

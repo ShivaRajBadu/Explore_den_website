@@ -23,7 +23,7 @@ const HeroSection = () => {
       <Wrapper>
         <div className="text-center relative pt-10  md:pt-16 lg:pt-20">
           <h1 className="text-center text-textPrimary text-[30px] md:text-[44px] lg:text-[56px] font-semibold capitalize leading-[125%]">
-            <span className=" z-10 relative after:absolute  after:z-[-1] after:rounded-[9px] text-background after:top-1 md:after:top-2 after:-left-2 md:after:-left-3 after:w-[110%] after:h-[35px] md:after:h-[48px] lg:after:h-[66px] explore_gradient">
+            <span className=" z-10 relative after:absolute  after:z-[-1] after:rounded-[9px] text-background after:top-1 md:after:top-2 after:-left-2 md:after:-left-3 after:w-[110%] after:h-[35px] md:after:h-[48px] lg:after:h-[70px] explore_gradient">
               Explore
             </span>{" "}
             Events, Activity{" "}
@@ -38,22 +38,22 @@ const HeroSection = () => {
           </button>
           {/* icons */}
           <div className="hidden xl:block">
-            <div className="absolute icon_animation top-[0px] left-[215px]">
+            <div className="absolute icon_animation top-[0px] left-[235px]">
               <CalendarIcon />
             </div>
-            <div className="absolute top-[153px] icon_animation left-[130px]">
+            <div className="absolute top-[153px] icon_animation left-[160px]">
               <BookmarkIcon />
             </div>
-            <div className="absolute icon_animation bottom-[30px] left-[215px]">
+            <div className="absolute icon_animation bottom-[30px] left-[235px]">
               <ActivityIcon />
             </div>
-            <div className="absolute icon_animation top-[0px] right-[215px]">
+            <div className="absolute icon_animation top-[0px] right-[235px]">
               <CompassIcon />
             </div>
-            <div className="absolute icon_animation top-[153px] right-[130px]">
+            <div className="absolute icon_animation top-[153px] right-[160px]">
               <GalleryIcon />
             </div>
-            <div className="absolute icon_animation bottom-[40px] right-[215px]">
+            <div className="absolute icon_animation bottom-[40px] right-[235px]">
               <UserIcon />
             </div>
           </div>
