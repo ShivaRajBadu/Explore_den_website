@@ -46,6 +46,7 @@ const Navigation = () => {
               return (
                 <li key={link.id}>
                   <Link
+                    prefetch={false}
                     className={`nav-link hover:text-brand/80  duration-300  ${
                       isActive ? "text-brand" : ""
                     }`}
@@ -96,6 +97,7 @@ const Navigation = () => {
               return (
                 <li key={link.id}>
                   <Link
+                    prefetch={false}
                     className={`nav-link ${
                       isActive ? "text-brand" : ""
                     }   block hover:text-brand/80 duration-300 border-b border-[#1A1A1A1A] py-4`}

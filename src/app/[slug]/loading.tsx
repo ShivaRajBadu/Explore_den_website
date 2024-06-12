@@ -6,7 +6,7 @@ import React from "react";
 const loading = () => {
   return (
     <Wrapper>
-      <div className=" my-4">
+      <div className=" my-4 min-h-screen">
         <div className="flex justify-between items-center">
           <TextSkeleton width="w-16" borderRadius="rounded-xl" />
           <TextSkeleton width="w-32" borderRadius="rounded-xl" />

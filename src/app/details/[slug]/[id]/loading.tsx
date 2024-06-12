@@ -6,7 +6,7 @@ import React from "react";
 const loading = () => {
   return (
     <Wrapper>
-      <div className="max-w-[1440px] mx-auto  w-full  pt-10 pb-32">
+      <div className="max-w-[1440px] min-h-screen mx-auto  w-full  pt-10 pb-32">
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="w-full lg:w-[40%] max-h-96">
             <ImageCarouselSkeleton />

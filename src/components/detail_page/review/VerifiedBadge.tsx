@@ -2,7 +2,7 @@ import React from "react";
 
 const VerifiedBadge = () => {
   return (
-    <div className="flex gap-4 items-center bg-icongreen/15 rounded-lg w-full p-5">
+    <div className="flex gap-4 items-center bg-icongreen/15 rounded-lg w-full p-5 mb-8">
       <svg
         width="40"
         height="40"

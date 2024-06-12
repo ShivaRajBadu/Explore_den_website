@@ -59,4 +59,6 @@ const ImageSlider = memo(
   }
 );
 
+ImageSlider.displayName = "ImageSlider";
+
 export default ImageSlider;

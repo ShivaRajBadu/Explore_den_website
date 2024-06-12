@@ -14,6 +14,7 @@ export type getDataParams = {
   limit: number;
   pageNumber?: number;
   placeType: placeType;
+  filter?: string | null;
 };
 
 export type Event = {
@@ -23,6 +24,24 @@ export type Event = {
   currency: string;
   entryFee: number;
   eventType: string;
+};
+export type ReviewedBy = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  username: string;
+  profilePic: string;
+  email: string;
+  loginType: string;
+  emailVerified: boolean;
+};
+export type Review = {
+  id: number;
+  text: string;
+  stars: number;
+  images: [];
+  reviewedBy: ReviewedBy;
+  datetimeAdded: string;
 };
 
 type Destination = {
@@ -75,6 +94,7 @@ export type placeDataType = {
   location: string;
   phone_number: string;
   email: string;
+  images: [];
   facebookPage: string;
   instagramPage: string;
   twitterPage: string;
@@ -84,4 +104,5 @@ export type placeDataType = {
   event?: Event;
   destination?: Destination;
   activity?: Activity;
+  reviews: Review[];
 };

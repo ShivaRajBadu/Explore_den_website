@@ -1,14 +1,18 @@
 import Image from "next/image";
 import React from "react";
 import Stars from "./Stars";
+import { Review, ReviewedBy } from "@/types";
+import { timeAgo } from "@/utils";
 
-const ReviewCard = () => {
+const ReviewCard = ({ review }: { review: Review }) => {
+  const time = timeAgo(review.datetimeAdded);
+
   return (
     <div className="py-8 border-b">
       <div className="flex  gap-4">
         <div className="relative w-[48px] h-[48px] rounded-full">
           <Image
-            src="/images/author.png"
+            src={review.reviewedBy.profilePic || "/images/author.png"}
             alt="image"
             fill
             sizes="(100vw, 100vh)"
@@ -16,20 +20,18 @@ const ReviewCard = () => {
         </div>
         <div>
           <h3 className="text-textPrimary text-base md:text-lg font-medium pb-[2px]">
-            Courtney Henry
+            {review.reviewedBy.firstName} {review.reviewedBy.lastName}
           </h3>
           <div className="flex  gap-4 items-center">
-            <Stars rating={4} starSize="16" />
-            <p className="font-normal text-xs text-textSecondary">2 mins ago</p>
+            <Stars rating={review.stars} starSize="16" />
+            <p className="font-normal text-xs text-textSecondary">{time}</p>
           </div>
         </div>
       </div>
       <p className="text-textSecondary text-base md:text-lg font-normal py-4">
-        Consequat velit qui adipisicing sunt do rependerit ad laborum tempor
-        ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit
-        esse aliqua
+        {review.text}
       </p>
-      <div className="flex  gap-4">
+      {/* <div className="flex  gap-4">
         <div className="relative rounded-full w-[63px] h-[73px]">
           <Image
             src="/images/image_3.png"
@@ -73,7 +75,7 @@ const ReviewCard = () => {
             </svg>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

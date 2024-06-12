@@ -5,8 +5,10 @@ import VerifiedBadge from "./VerifiedBadge";
 
 import ReviewCard from "./ReviewCard";
 import Filter from "@/components/Filter";
+import { Review, ReviewedBy } from "@/types";
+import { calculateAverageRating } from "@/utils";
 
-const reviewSection = () => {
+const reviewSection = ({ reviews }: { reviews: Review[] }) => {
   const options = [
     {
       value: "most-recent",
@@ -17,14 +19,15 @@ const reviewSection = () => {
       label: "Highest Rating",
     },
   ];
-  const totalReviews = 52;
-  const reviewsByRating: any = {
-    5: 24,
-    4: 16,
-    3: 5,
-    2: 6,
-    1: 1,
-  };
+  const averageRating = calculateAverageRating(
+    reviews.map((review) => review.stars)
+  );
+
+  const totalReviews = reviews.length;
+  const reviewsByRating = reviews.reduce((acc: any, review: Review) => {
+    acc[review.stars] = (acc[review.stars] || 0) + 1;
+    return acc;
+  }, {});
 
   const slideWidth: any = (key: number) => {
     return Math.round((reviewsByRating[key] / totalReviews) * 100);
@@ -41,9 +44,9 @@ const reviewSection = () => {
           <div className="flex flex-row lg:flex-col gap-6  ">
             <div>
               <h2 className="text-[40px] md:text-[56px] font-semibold text-textPrimary pb-2">
-                4.0
+                {averageRating}
               </h2>
-              <Stars rating={4} starSize="24" />
+              <Stars rating={Math.floor(averageRating)} starSize="24" />
               <h4 className="text-xs md:text-base font-medium text-textPrimary py-3">
                 {totalReviews} Reviews
               </h4>
@@ -63,17 +66,15 @@ const reviewSection = () => {
         </div>
         <div className="w-full">
           <VerifiedBadge />
-          <div className="flex justify-between items-center  my-6">
+          {/* <div className="flex justify-between items-center  my-6">
             <p className="text-textPrimary text-[24px] font-medium">Sort By</p>
-            <Filter
-              selectedFilter={options[0]}
-              options={options}
-              contentPadding="px-4 py-2"
-            />
-          </div>
+            <Filter options={options} contentPadding="px-4 py-2" />
+          </div> */}
           <hr />
-          <ReviewCard />
-          <ReviewCard />
+          {reviews &&
+            reviews.map((review) => {
+              return <ReviewCard key={review.id} review={review} />;
+            })}
         </div>
       </div>
     </div>

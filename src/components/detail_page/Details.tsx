@@ -26,7 +26,7 @@ const Details = (place: placeDataType) => {
         <p>{place.description}</p>
       </div>
       <AddressSection />
-      <OrganizerSection />
+      {/* <OrganizerSection /> */}
       <SocialMedia />
     </div>
   );

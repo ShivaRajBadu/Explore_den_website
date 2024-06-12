@@ -33,7 +33,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       </div>
       <div className="px-4">
         <YouMayLike places={suggestion} />
-        <ReviewSection />
+        <ReviewSection reviews={place.reviews} />
       </div>
     </div>
   );

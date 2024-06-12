@@ -1,15 +1,13 @@
 "use client";
 
-import React, { useRef, useMemo, useCallback } from "react";
+import React, { useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { getPlaces } from "@/utils/api/api";
-import { placeDataType, placeType } from "@/types";
-import { getMorePlaces } from "@/actions/getMorePlaces";
+import { placeDataType } from "@/types";
 
 // Dynamically import the Card component
 const Card = dynamic(() => import("../main_page/Card"), { ssr: false });
 
-const YouMayLike = async ({ places }: { places: placeDataType[] }) => {
+const YouMayLike = ({ places }: { places: placeDataType[] }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = useCallback(() => {
