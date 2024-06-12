@@ -3,22 +3,22 @@ import { getDateTimeString } from "@/utils";
 
 const filterOptionsMapping: Record<Slug, { value: string; label: string }[]> = {
   [Slug.POPULAR]: [
-    {
-      value: "all",
-      label: "All",
-    },
-    {
-      value: "event",
-      label: "Event",
-    },
-    {
-      value: "activity",
-      label: "Activity",
-    },
-    {
-      value: "destination",
-      label: "Destination",
-    },
+    // {
+    //   value: "all",
+    //   label: "All",
+    // },
+    // {
+    //   value: "event",
+    //   label: "Event",
+    // },
+    // {
+    //   value: "activity",
+    //   label: "Activity",
+    // },
+    // {
+    //   value: "destination",
+    //   label: "Destination",
+    // },
   ],
   [Slug.EVENT]: [
     {
@@ -48,21 +48,37 @@ const filterOptionsMapping: Record<Slug, { value: string; label: string }[]> = {
       label: "All",
     },
     {
-      value: "ongoing",
-      label: "Ongoing",
+      value: "24Hours",
+      label: "Last 24 hours",
     },
     {
-      value: "cancelled",
-      label: "Cancelled",
+      value: "7Days",
+      label: "Last 7 days",
     },
     {
-      value: "upcoming",
-      label: "Upcoming",
+      value: "30Days",
+      label: "Last 30 days",
     },
-    {
-      value: "past",
-      label: "Past",
-    },
+    // {
+    //   value: "all",
+    //   label: "All",
+    // },
+    // {
+    //   value: "ongoing",
+    //   label: "Ongoing",
+    // },
+    // {
+    //   value: "cancelled",
+    //   label: "Cancelled",
+    // },
+    // {
+    //   value: "upcoming",
+    //   label: "Upcoming",
+    // },
+    // {
+    //   value: "past",
+    //   label: "Past",
+    // },
   ],
   [Slug.DESTINATION]: [
     {
@@ -70,25 +86,41 @@ const filterOptionsMapping: Record<Slug, { value: string; label: string }[]> = {
       label: "All",
     },
     {
-      value: "popular",
-      label: "Popular",
+      value: "24Hours",
+      label: "Last 24 hours",
     },
     {
-      value: "top-rated",
-      label: "Top Rated",
+      value: "7Days",
+      label: "Last 7 days",
     },
     {
-      value: "new",
-      label: "New",
+      value: "30Days",
+      label: "Last 30 days",
     },
-    {
-      value: "trending",
-      label: "Trending",
-    },
-    {
-      value: "recommended",
-      label: "Recommended",
-    },
+    // {
+    //   value: "all",
+    //   label: "All",
+    // },
+    // {
+    //   value: "popular",
+    //   label: "Popular",
+    // },
+    // {
+    //   value: "top-rated",
+    //   label: "Top Rated",
+    // },
+    // {
+    //   value: "new",
+    //   label: "New",
+    // },
+    // {
+    //   value: "trending",
+    //   label: "Trending",
+    // },
+    // {
+    //   value: "recommended",
+    //   label: "Recommended",
+    // },
   ],
 };
 

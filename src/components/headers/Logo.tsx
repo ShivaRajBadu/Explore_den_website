@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Logo = () => {
   return (
-    <Link href="/" className="">
+    <Link href="/" className="" prefetch={false}>
       <Image
         src="/icons/logo.svg"
         alt="explore den logo"

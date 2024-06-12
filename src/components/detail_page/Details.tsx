@@ -25,9 +25,20 @@ const Details = (place: placeDataType) => {
         </h2>
         <p>{place.description}</p>
       </div>
-      <AddressSection />
+      <AddressSection
+        address={place.address}
+        location={place.location}
+        website={place.website}
+      />
       {/* <OrganizerSection /> */}
-      <SocialMedia />
+      <SocialMedia
+        facebookPage={place.facebookPage}
+        twitterPage={place.twitterPage}
+        instagramPage={place.instagramPage}
+        youtubePage={place.youtubePage}
+        linkedinPage={place.linkedinPage}
+        tiktokPage={place.tiktokPage}
+      />
     </div>
   );
 };

@@ -95,6 +95,7 @@ export type placeDataType = {
   phone_number: string;
   email: string;
   images: [];
+  website: string;
   facebookPage: string;
   instagramPage: string;
   twitterPage: string;

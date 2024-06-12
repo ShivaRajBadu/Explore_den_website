@@ -9,6 +9,7 @@ const BlogCard = ({ isOverflowCard = true }: { isOverflowCard?: boolean }) => {
   return (
     <Link
       href="/blogs/1"
+      prefetch={false}
       className={`${overflowClasses} card_shadow pb-2  hover:rounded-[16px] cursor-pointer`}
     >
       <div>

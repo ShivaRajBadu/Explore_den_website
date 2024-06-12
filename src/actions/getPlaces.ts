@@ -24,7 +24,7 @@ export async function getPlaces(
   const response = await fetch(url.toString(), { cache: "no-cache" });
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch places: ${response.statusText}`);
+    console.log(`Failed to fetch places: ${response.statusText}`);
   }
 
   const data = await response.json();

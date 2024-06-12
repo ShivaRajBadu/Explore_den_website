@@ -1,6 +1,15 @@
 import React from "react";
 import Image from "next/image";
-const AddressSection = () => {
+import Link from "next/link";
+const AddressSection = ({
+  address,
+  location,
+  website,
+}: {
+  address: string;
+  location: string;
+  website: string;
+}) => {
   return (
     <div className="py-6">
       <h2 className="text-[24px] font-semibold text-textPrimary pb-3 ">
@@ -33,7 +42,12 @@ const AddressSection = () => {
             />
           </svg>
         </button>
-        <button className="flex items-center justify-center p-3 rounded-lg gap-2 border border-brand w-full font-semibold text-sm text-brand">
+        <Link
+          href={website ? website : "#"}
+          prefetch={false}
+          target="_blank"
+          className="flex items-center justify-center p-3 rounded-lg gap-2 border border-brand w-full font-semibold text-sm text-brand"
+        >
           Visit Website{" "}
           <svg
             width="21"
@@ -50,7 +64,7 @@ const AddressSection = () => {
               strokeLinejoin="round"
             />
           </svg>
-        </button>
+        </Link>
       </div>
     </div>
   );

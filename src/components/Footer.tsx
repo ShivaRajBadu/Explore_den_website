@@ -47,6 +47,7 @@ const Footer = () => {
                   return (
                     <li key={link.id}>
                       <Link
+                        prefetch={false}
                         className="text-background hover:text-background/70 duration-300 font-normal text-base"
                         href={link.link}
                       >
