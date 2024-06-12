@@ -48,11 +48,14 @@ const page = async ({
           contentPadding="px-4 py-3"
         />
       </div>
-      {datas ? (
-        <PlaceList initialData={datas!} query={query} />
+      {datas.length > 0 ? (
+        <PlaceList key={query} initialData={datas!} query={query} />
       ) : (
-        <div className="flex justify-center items-center h-screen">
-          <h1>No Data Found Please change filter</h1>
+        <div className="flex justify-center text-center flex-col items-center h-screen">
+          <p className="text-brand text-4xl font-bold pb-8">Oops !</p>
+          <p className="text-textSecondary text-xl">
+            No Data Found, Please change filter
+          </p>
         </div>
       )}
     </Wrapper>

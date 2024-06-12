@@ -29,3 +29,35 @@ export function calculateAverageRating(ratings: number[]): number {
   const count = ratings.length;
   return count === 0 ? 0 : total / count;
 }
+
+export const getDateTimeString = (
+  interval: "24Hours" | "7Days" | "30Days" | "6Months" | "1Year" | "all"
+): string => {
+  const endDate = new Date();
+  let startDate = new Date();
+
+  switch (interval) {
+    case "24Hours":
+      startDate.setDate(endDate.getDate() - 1);
+      break;
+    case "7Days":
+      startDate.setDate(endDate.getDate() - 7);
+      break;
+    case "30Days":
+      startDate.setMonth(endDate.getMonth() - 1);
+      break;
+    case "6Months":
+      startDate.setMonth(endDate.getMonth() - 6);
+      break;
+    case "1Year":
+      startDate.setFullYear(endDate.getFullYear() - 1);
+      break;
+    case "all":
+      startDate = new Date(0);
+      break;
+    default:
+      throw new Error("Invalid interval");
+  }
+
+  return startDate.toISOString();
+};

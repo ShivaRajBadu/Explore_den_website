@@ -1,4 +1,5 @@
 import { Slug } from "@/types/index";
+import { getDateTimeString } from "@/utils";
 
 const filterOptionsMapping: Record<Slug, { value: string; label: string }[]> = {
   [Slug.POPULAR]: [
@@ -25,21 +26,21 @@ const filterOptionsMapping: Record<Slug, { value: string; label: string }[]> = {
       label: "All",
     },
     {
-      value: "upcoming",
-      label: "Upcoming",
+      value: "24Hours",
+      label: "Last 24 hours",
     },
     {
-      value: "past",
-      label: "Past",
+      value: "7Days",
+      label: "Last 7 days",
     },
     {
-      value: "ongoing",
-      label: "Ongoing",
+      value: "30Days",
+      label: "Last 30 days",
     },
-    {
-      value: "cancelled",
-      label: "Cancelled",
-    },
+    // {
+    //   value: "cancelled",
+    //   label: "Cancelled",
+    // },
   ],
   [Slug.ACTIVITY]: [
     {
