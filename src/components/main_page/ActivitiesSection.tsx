@@ -6,12 +6,13 @@ import SectionHeaderWithViewAll from "./SectionHeaderWithViewAll";
 
 import { placeType } from "@/types";
 import { getPlaces } from "@/actions/getPlaces";
+import { getRandomNumber } from "@/lib/getRandom";
 
 const ActivitiesSection = async () => {
   const Activities = await getPlaces({
     limit: 4,
     placeType: placeType.ACTIVITY,
-    pageNumber: 1,
+    pageNumber: getRandomNumber(50),
   });
   return (
     <div className="my-4 py-4">

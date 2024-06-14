@@ -6,12 +6,13 @@ import SectionHeaderWithViewAll from "./SectionHeaderWithViewAll";
 
 import { placeType } from "@/types";
 import { getPlaces } from "@/actions/getPlaces";
+import { getRandomNumber } from "@/lib/getRandom";
 
 const EventSection = async () => {
   const events = await getPlaces({
     limit: 4,
     placeType: placeType.EVENT,
-    pageNumber: 1,
+    pageNumber: getRandomNumber(40),
   });
 
   return (

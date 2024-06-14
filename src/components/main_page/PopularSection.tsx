@@ -6,12 +6,13 @@ import SectionHeaderWithViewAll from "./SectionHeaderWithViewAll";
 
 import { placeType } from "@/types";
 import { getPlaces } from "@/actions/getPlaces";
+import { getRandomNumber } from "@/lib/getRandom";
 
 const PopularSection = async () => {
   const populars = await getPlaces({
     limit: 8,
     placeType: placeType.DESTINATION,
-    pageNumber: 1,
+    pageNumber: getRandomNumber(20),
   });
 
   return (
