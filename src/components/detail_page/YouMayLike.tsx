@@ -2,12 +2,29 @@
 
 import React, { useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { placeDataType } from "@/types";
+import { placeDataType, placeType } from "@/types";
+import { getPlaces } from "@/actions/getPlaces";
+import { usePathname } from "next/navigation";
+import CardSkeleton from "../skeletons/CardSkeleton";
+import { useQuery } from "@tanstack/react-query";
 
 // Dynamically import the Card component
 const Card = dynamic(() => import("../main_page/Card"), { ssr: false });
 
-const YouMayLike = ({ places }: { places: placeDataType[] }) => {
+const YouMayLike = () => {
+  const pathName = usePathname();
+  const slug = pathName.split("/")[2];
+
+  const {
+    data: suggestion,
+    isLoading,
+    isError,
+    isFetching,
+  } = useQuery({
+    queryKey: ["YouMayLike", slug],
+    queryFn: () => getPlaces({ limit: 9, placeType: slug as placeType }),
+  });
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = useCallback(() => {
@@ -27,8 +44,6 @@ const YouMayLike = ({ places }: { places: placeDataType[] }) => {
       });
     }
   }, []);
-
-  // const places = await getMorePlaces({ limit: 9, pageNumber: 1, placeType });
 
   return (
     <div className="my-20">
@@ -82,13 +97,30 @@ const YouMayLike = ({ places }: { places: placeDataType[] }) => {
           </button>
         </div>
       </div>
-      <div
-        ref={scrollContainerRef}
-        className="flex gap-5 flex-nowrap py-2 hide_scrollbar overflow-x-scroll px-1"
-      >
-        {places.map((place) => {
-          return <Card key={place.id} {...place} />;
-        })}
+      <div className="relative overflow-hidden">
+        <div
+          style={{ overflow: "hidden" }}
+          className="flex gap-5   py-2  min-h-[400px]"
+        >
+          {isLoading || isFetching ? (
+            Array.from({ length: 8 }).map((_, index) => (
+              <CardSkeleton key={index} />
+            ))
+          ) : isError ? (
+            <div className="text-center text-textPrimary text-lg">
+              Error loading data.
+            </div>
+          ) : (
+            <div
+              ref={scrollContainerRef}
+              className="flex gap-5  py-2 hide_scrollbar overflow-x-scroll px-1 min-h-[400px]"
+            >
+              {suggestion?.map((place) => (
+                <Card key={place.id} {...place} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

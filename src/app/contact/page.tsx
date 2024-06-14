@@ -1,4 +1,4 @@
-import Navigation from "@/components/headers/Navigation";
+"use client";
 import InterNationalPhone from "@/components/InterNationalPhone";
 import Wrapper from "@/components/Wrapper";
 import Image from "next/image";
@@ -9,21 +9,31 @@ import Turnstile from "./Turnstile";
 import { postContactInfo } from "@/actions/postContactInfo";
 
 import SendButton from "./SendButton";
+import { useFormState } from "react-dom";
+import toast from "react-simple-toasts";
 
-export const metadata: Metadata = {
-  title: "Contact Us",
+const initialState = {
+  message: null,
+  success: null,
 };
-const sendData = async (formData: FormData) => {
-  "use server";
-  const token = formData.get("cf-turnstile-response");
-  if (!token) {
-    return;
-  }
-  const message = await postContactInfo(formData);
-  console.log(message);
-};
-
 const page = () => {
+  const [state, formAction] = useFormState(postContactInfo, initialState);
+  if (state.error) {
+    toast(state.error, {
+      className: "bg-red-500 text-white px-4 py-6 font-semibold rounded-md",
+      position: "center",
+      clickClosable: true,
+    });
+  }
+
+  if (state.success) {
+    toast(state.success, {
+      className: "bg-green-500 text-white px-4 py-6 font-semibold rounded-md",
+      position: "center",
+      clickClosable: true,
+    });
+  }
+
   return (
     <div>
       <Wrapper>
@@ -32,7 +42,7 @@ const page = () => {
             <h1 className="text-textPrimary text-4xl font-semibold">
               Get In Touch
             </h1>
-            <form className="w-full py-10" action={sendData}>
+            <form className="w-full py-10" action={formAction}>
               <div className="w-full pb-10">
                 <label
                   className="text-textPrimary text-sm font-medium block pb-2"

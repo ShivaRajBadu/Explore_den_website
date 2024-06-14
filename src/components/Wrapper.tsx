@@ -4,7 +4,9 @@ const Wrapper = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className="max-w-[1440px] w-[95%] md:w-[90%] mx-auto">{children}</div>
+    <div className="max-w-[1440px] w-[95%] md:w-[90%] mx-auto overflow-x-hidden">
+      {children}
+    </div>
   );
 };
 

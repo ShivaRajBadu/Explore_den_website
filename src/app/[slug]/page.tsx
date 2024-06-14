@@ -28,7 +28,6 @@ const page = async ({
   }
 
   const filterOption = filterOptions[slug as Slug];
-  console.log("called main page ");
 
   const datas = await getPlaces({
     limit: 16,

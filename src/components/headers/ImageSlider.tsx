@@ -21,7 +21,8 @@ const ImageSlider = memo(
     width = "w-[280px]",
     imageProp: { id, title, image, type, distance, timeInDays },
   }: Props) => {
-    const applyAnimation = height === "h-[341px] lg:h-[440px]" ? "fade-in" : "";
+    const isCenterImage = height === "h-[341px] lg:h-[440px]";
+    const applyAnimation = isCenterImage ? "fade-in" : "";
 
     return (
       <div
@@ -40,10 +41,11 @@ const ImageSlider = memo(
             sizes="(100vw, 100vh)"
           />
         </div>
-        {applyAnimation && (
+
+        {isCenterImage && (
           <div className="absolute bottom-1 rounded-b-[19px] left-1/2 -translate-x-1/2 w-[95%] h-[30%] bg-gradient-to-t from-black/90 to-transparent"></div>
         )}
-        {applyAnimation && (
+        {isCenterImage && (
           <div className="absolute w-full bottom-3 left-0 px-4 text-background">
             <p className="text-[8px] bg-brand px-2 py-[2px] font-bold mb-2 rounded-full w-min">
               {type}

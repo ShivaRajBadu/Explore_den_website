@@ -5,6 +5,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 
 import Script from "next/script";
+import Provider from "@/components/Provider";
 
 const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700"],
@@ -34,8 +35,10 @@ export default function RootLayout({
       />
 
       <body>
-        {children}
-        <Footer />
+        <Provider>
+          {children}
+          <Footer />
+        </Provider>
       </body>
     </html>
   );

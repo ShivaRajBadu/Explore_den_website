@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import CustomMap from "../Map";
 const AddressSection = ({
   address,
   location,
@@ -15,7 +16,10 @@ const AddressSection = ({
       <h2 className="text-[24px] font-semibold text-textPrimary pb-3 ">
         Address
       </h2>
-      <Image src="/images/google_map.png" alt="map" width={776} height={365} />
+      <div className="w-full h-[365px]">
+        <CustomMap location={location} />
+      </div>
+      {/* <Image src="/images/google_map.png" alt="map" width={776} height={365} /> */}
       <div className="flex gap-4 w-full my-6">
         <button className="flex items-center justify-center p-3 rounded-lg gap-2 border border-brand w-full font-semibold text-sm text-brand">
           Get Direction

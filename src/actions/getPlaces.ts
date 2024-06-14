@@ -19,7 +19,7 @@ export async function getPlaces(
     url.searchParams.append("filter.datetimeAdded", `$gte:${filterDateTime}`);
   }
 
-  console.log(url.toString());
+  // console.log(url.toString());
 
   const response = await fetch(url.toString(), { cache: "no-cache" });
 

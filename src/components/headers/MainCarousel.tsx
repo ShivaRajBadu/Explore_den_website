@@ -34,7 +34,6 @@ const MainCarousel = () => {
   const startDrag = (clientX: React.SetStateAction<number>) => {
     setIsDragging(true);
     setStartX(clientX);
-    // stop auto play when dragging
     stopAutoplay();
   };
 
@@ -57,33 +56,24 @@ const MainCarousel = () => {
       setTranslateX(0);
       setIsDragging(false);
       setRotation(0);
-      // reset auto play after end dragging
       startAutoplay();
     }
   };
 
-  const nextImage = () => {
-    setImages((prevImages) => {
-      const newImages = [...prevImages];
-      const firstImage = newImages.shift();
-      newImages.push(firstImage!);
-      return newImages;
-    });
-  };
+  const nextImage = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  }, [images.length]);
 
-  const prevImage = () => {
-    setImages((prevImages) => {
-      const newImages = [...prevImages];
-      const lastImage = newImages.pop();
-      newImages.unshift(lastImage!);
-      return newImages;
-    });
-  };
-  // for auto play
+  const prevImage = useCallback(() => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  }, [images.length]);
+
   const startAutoplay = () => {
     autoplayRef.current = setInterval(() => {
-      nextImage();
-    }, 3000);
+      rotateCenterImage();
+    }, 2000);
   };
 
   const stopAutoplay = () => {
@@ -93,9 +83,16 @@ const MainCarousel = () => {
     }
   };
 
+  const rotateCenterImage = () => {
+    setRotation(6);
+    setTimeout(() => {
+      setRotation(0);
+      prevImage();
+    }, 700);
+  };
+
   useEffect(() => {
     startAutoplay();
-    // clean up function
     return () => stopAutoplay();
   }, []);
 
@@ -104,37 +101,38 @@ const MainCarousel = () => {
       const baseOffset = isTabletOrMobile ? 170 : 220; // base offset
       const extraOffset = 70; // Extra space
 
+      const positionIndex =
+        (index - currentIndex + images.length) % images.length;
+
+      const centerIndex = Math.floor(images.length / 2);
+
       const commonStyles = {
         top: "50%",
         transform: "translateX(-50%) translateY(-50%)",
         transition: "transform 0.5s ease-in-out",
       };
 
-      if (index === currentIndex) {
+      if (positionIndex === centerIndex) {
         return {
           ...commonStyles,
           left: "50%",
           transform: `translateX(-50%) translateY(-50%) rotate(${rotation}deg)`,
         };
-      } else if (index === currentIndex - 1 || index === currentIndex + 1) {
-        const offset = baseOffset + extraOffset;
-        return {
-          ...commonStyles,
-          left: `calc(50% ${
-            index < currentIndex ? `- ${offset}px` : `+ ${offset}px`
-          })`,
-        };
       } else {
-        const offset = baseOffset * Math.abs(currentIndex - index) + 70;
+        const offset =
+          baseOffset * (positionIndex - centerIndex) +
+          extraOffset * Math.sign(positionIndex - centerIndex);
         return {
           ...commonStyles,
-          left: `calc(50% ${
-            index < currentIndex ? `- ${offset}px` : `+ ${offset}px`
-          })`,
+          left: `calc(50% + ${offset}px)`,
+          transition:
+            positionIndex === 0 || positionIndex === images.length - 1
+              ? "none"
+              : "left 0.8s ease-in-out, transform 1s ease-in-out",
         };
       }
     },
-    [isTabletOrMobile, rotation]
+    [isTabletOrMobile, rotation, currentIndex, images.length]
   );
 
   return (
@@ -158,7 +156,7 @@ const MainCarousel = () => {
       {/* mobile markup */}
       <div
         draggable="false"
-        className="relative w-[287px] h-[555px] lg:h-[684px] lg:w-[335px] mx-auto z-0"
+        className="relative w-[287px] h-[555px] lg:h-[684px] lg:w-[335px] mx-auto z-10"
       >
         <Image
           draggable="false"
@@ -170,19 +168,26 @@ const MainCarousel = () => {
         />
       </div>
       {images.map((image, index) => {
+        const positionIndex =
+          (index - currentIndex + images.length) % images.length;
+        const centerIndex = Math.floor(images.length / 2);
         const imageHeight =
-          index === currentIndex
+          positionIndex === centerIndex
             ? "h-[341px] lg:h-[440px]"
             : "h-[216px] lg:h-[315px]";
         const imageWidth =
-          index === currentIndex
+          positionIndex === centerIndex
             ? "w-[232px] lg:w-[280px]"
             : "w-[147px] lg:w-[196px]";
         return (
           <div
             key={`${image.id}`}
             style={translatePosition(index)}
-            className="absolute z-10 duration-1000"
+            className={`absolute z-10 ${
+              positionIndex === 0 || positionIndex === images.length - 1
+                ? ""
+                : "transition-all duration-1000"
+            }`}
             onMouseDown={(e) => startDrag(e.clientX)}
             onTouchStart={(e) => startDrag(e.touches[0].clientX)}
           >

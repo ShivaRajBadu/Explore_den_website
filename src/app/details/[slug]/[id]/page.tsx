@@ -4,17 +4,11 @@ import Details from "@/components/detail_page/Details";
 
 import ReviewSection from "@/components/detail_page/review/reviewSection";
 import YouMayLike from "@/components/detail_page/YouMayLike";
-import { placeType } from "@/types";
 
 import React from "react";
 
 const page = async ({ params }: { params: { id: string } }) => {
   const place = await getPlace(parseInt(params.id));
-  const suggestion = await getPlaces({
-    placeType: place.placeType as placeType,
-    limit: 9,
-    pageNumber: 1,
-  });
 
   const images = [
     "/images/blog.jpg",
@@ -32,7 +26,7 @@ const page = async ({ params }: { params: { id: string } }) => {
         </div>
       </div>
       <div className="px-4">
-        <YouMayLike places={suggestion} />
+        <YouMayLike />
         <ReviewSection reviews={place.reviews} />
       </div>
     </div>
