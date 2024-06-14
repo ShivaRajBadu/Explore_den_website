@@ -35,7 +35,7 @@ export default function Home() {
         <DestinationSection />
       </Suspense>
       <DownloadSection />
-      <BlogSection />
+      {/* <BlogSection /> */}
 
       <ContactUs />
     </main>
