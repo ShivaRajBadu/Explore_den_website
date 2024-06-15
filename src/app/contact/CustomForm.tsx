@@ -26,6 +26,9 @@ const CustomForm = () => {
       position: "center",
       clickClosable: true,
     });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500);
   }
   return (
     <form className="w-full py-10" action={formAction}>

@@ -6,10 +6,25 @@ import ImageSlider from "./ImageSlider";
 import { initialImages } from "@/constants/data";
 import { useQuery } from "@tanstack/react-query";
 import { getPlaces } from "@/actions/getPlaces";
-import { placeType } from "@/types";
+import { placeDataType, placeType } from "@/types";
 
 const MainCarousel = () => {
-  const [images, setImages] = useState(initialImages);
+  useEffect(() => {
+    async function getPlacesData() {
+      const respnse = await getPlaces({
+        limit: 9,
+        placeType: placeType.DESTINATION,
+      });
+
+      if (respnse) {
+        setImages(respnse);
+      }
+    }
+
+    getPlacesData();
+  }, []);
+
+  const [images, setImages] = useState<placeDataType[]>([]);
   const [currentIndex, setCurrentIndex] = useState(
     Math.floor(initialImages.length / 2)
   );
@@ -64,14 +79,14 @@ const MainCarousel = () => {
   };
 
   const nextImage = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  }, [images.length]);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images!.length);
+  }, [images!.length]);
 
   const prevImage = useCallback(() => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images!.length - 1 : prevIndex - 1
     );
-  }, [images.length]);
+  }, [images!.length]);
 
   const startAutoplay = () => {
     autoplayRef.current = setInterval(() => {
