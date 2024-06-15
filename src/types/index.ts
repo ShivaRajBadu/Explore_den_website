@@ -84,6 +84,13 @@ type Activity = {
   };
 };
 
+export type Imagetype = {
+  id: number;
+  imageUrl: string;
+  imageKey: string;
+  datetimeAdded: string;
+};
+
 export type placeDataType = {
   id: number;
   name: string;
@@ -94,7 +101,7 @@ export type placeDataType = {
   location: string;
   phone_number: string;
   email: string;
-  images: [];
+  images: Imagetype[];
   website: string;
   facebookPage: string;
   instagramPage: string;

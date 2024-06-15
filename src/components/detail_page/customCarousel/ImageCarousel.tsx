@@ -1,9 +1,12 @@
 "use client";
 
+import MainImageComponent from "@/components/main_page/MainImageComponent";
+import { randomNumber } from "@/lib/randomNumber";
+import { Imagetype } from "@/types";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const ImageCarousel = ({ images }: { images: string[] }) => {
+const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const thumbnailsRef = useRef<(HTMLDivElement | null)[]>([]);
   useEffect(() => {
@@ -24,16 +27,21 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
       setCurrentIndex((prev) => prev - 1);
     }
   };
+  const randomIndex = randomNumber();
   return (
     <div>
       {/* main image */}
       <div className="relative w-full h-[500px]">
-        <Image
-          src={images[currentIndex]}
+        {/* <Image
+          src={images[currentIndex].imageUrl}
           fill
           sizes="(100vw, 100vh)"
           className="object-cover w-auto h-auto md:rounded-2xl"
           alt="carousel image"
+        /> */}
+        <MainImageComponent
+          imageUrl={images[currentIndex].imageUrl}
+          defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
         />
       </div>
       <div className="flex items-center gap-6 mt-10 justify-center">
@@ -74,12 +82,16 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
                   : "border-2 border-transparent"
               }`}
             >
-              <Image
-                src={image}
+              {/* <Image
+                src={image.imageUrl}
                 fill
                 sizes="(100vw, 100vh)"
                 className="object-cover w-auto h-auto"
                 alt="carousel image"
+              /> */}
+              <MainImageComponent
+                imageUrl={image.imageUrl}
+                defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
               />
             </div>
           ))}

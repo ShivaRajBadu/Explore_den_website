@@ -28,6 +28,7 @@ export async function getPlaces(
   }
 
   const data = await response.json();
+
   return data.data;
 }
 

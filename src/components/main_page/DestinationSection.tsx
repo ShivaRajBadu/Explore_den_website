@@ -12,8 +12,9 @@ const DestinationSection = async () => {
   const Destinations = await getPlaces({
     limit: 4,
     placeType: placeType.DESTINATION,
-    pageNumber: getRandomNumber(50),
+    pageNumber: 1,
   });
+
   return (
     <div className="my-4 py-4">
       <Wrapper>

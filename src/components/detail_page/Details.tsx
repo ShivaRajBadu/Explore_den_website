@@ -13,12 +13,12 @@ const Details = (place: placeDataType) => {
         {place.name}
       </h1>
       <ProgramInfo event={place.event} address={place.address} />
-      <div className="py-6">
+      {/* <div className="py-6">
         <h2 className="text-[24px] font-semibold text-textPrimary pb-3">
           General Info
         </h2>
         <p>ALL general info</p>
-      </div>
+      </div> */}
       <div className="py-6">
         <h2 className="text-[24px] font-semibold text-textPrimary pb-3">
           Description

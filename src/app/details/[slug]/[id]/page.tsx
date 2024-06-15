@@ -19,7 +19,7 @@ const page = async ({ params }: { params: { id: string } }) => {
     <div className="max-w-[1440px] mx-auto  w-full md:w-[90%]">
       <div className="flex flex-col lg:flex-row gap-12">
         <div className="w-full lg:w-[40%]">
-          <ImageCarousel images={images} />
+          <ImageCarousel images={place.images} />
         </div>
         <div className="w-full lg:w-[60%] px-4">
           <Details {...place} />

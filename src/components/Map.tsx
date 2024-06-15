@@ -4,13 +4,14 @@ import Map, { Marker } from "react-map-gl";
 import React from "react";
 import "mapbox-gl/src/css/mapbox-gl.css";
 const CustomMap = ({ location }: { location: any }) => {
+  console.log(location);
   return (
     <Map
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}
       initialViewState={{
-        longitude: 85.324,
-        latitude: 27.7172,
-        zoom: 6,
+        longitude: location.x,
+        latitude: location.y,
+        zoom: 10,
       }}
       style={{
         width: "100%",
@@ -18,7 +19,7 @@ const CustomMap = ({ location }: { location: any }) => {
       }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
-      <Marker longitude={85.324} latitude={27.7172} anchor="bottom">
+      <Marker longitude={location.x} latitude={location.y} anchor="bottom">
         <img src="/icons/pin.svg" />
       </Marker>
     </Map>

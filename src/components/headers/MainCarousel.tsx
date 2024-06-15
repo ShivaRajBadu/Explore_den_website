@@ -4,6 +4,9 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ImageSlider from "./ImageSlider";
 import { initialImages } from "@/constants/data";
+import { useQuery } from "@tanstack/react-query";
+import { getPlaces } from "@/actions/getPlaces";
+import { placeType } from "@/types";
 
 const MainCarousel = () => {
   const [images, setImages] = useState(initialImages);

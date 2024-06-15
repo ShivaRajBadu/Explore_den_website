@@ -11,8 +11,8 @@ import { getRandomNumber } from "@/lib/getRandom";
 const ActivitiesSection = async () => {
   const Activities = await getPlaces({
     limit: 4,
-    placeType: placeType.ACTIVITY,
-    pageNumber: getRandomNumber(50),
+    placeType: placeType.DESTINATION,
+    pageNumber: 1,
   });
   return (
     <div className="my-4 py-4">

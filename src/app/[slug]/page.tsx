@@ -31,7 +31,7 @@ const page = async ({
 
   const datas = await getPlaces({
     limit: 16,
-    placeType: slug as placeType,
+    placeType: placeType.DESTINATION,
     pageNumber: 1,
     filter: query,
   });
