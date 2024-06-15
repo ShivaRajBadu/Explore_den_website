@@ -87,16 +87,16 @@ export const tags = [
 export const initialImages = [
   {
     id: 1,
-    title: "Lorem   porttitor enim. Nulla facilisi. Mauris atrices.",
-    image: "/images/slider_image_1.png",
-    // image: "https://picsum.photos/200/300?random=1",
+    title: "First Peoples' Health and Wellbeing",
+    // image: "/images/slider_image_1.png",
+    image: "https://picsum.photos/200/300?random=1",
     type: "hiking",
     distance: "3.89KM",
     timeInDays: 3,
   },
   {
     id: 2,
-    title: "dapibus purus sed, porttitor enim. Nulla facilisi.",
+    title: "Healthy Lifestyle Centre",
     // image: "https://picsum.photos/200/300?random=2",
     image: "/images/slider_image_2.png",
     type: "hotel",
@@ -105,7 +105,7 @@ export const initialImages = [
   },
   {
     id: 3,
-    title: "elit. Donec at purus aliquam, dapibus purus sed,",
+    title: "Darwin Aboriginal Art Fair Foundation",
     // image: "https://picsum.photos/200/300?random=3",
     image: "/images/slider_image_3.png",
     type: "park",
@@ -123,7 +123,7 @@ export const initialImages = [
   },
   {
     id: 5,
-    title: " nibh ut dolor tincidunt ul",
+    title: " Marra Dreaming",
     // image: "https://picsum.photos/200/300?random=5",
     image: "/images/slider_image_5.jpg",
     type: "Natural",
@@ -132,7 +132,7 @@ export const initialImages = [
   },
   {
     id: 6,
-    title: "Lorem ipsum dolor sit amet consectetur",
+    title: "Japingka Aboriginal Art",
     // image: "https://picsum.photos/200/300?random=6",
     image: "/images/slider_image_6.jpg",
     type: "Concert",
@@ -141,7 +141,7 @@ export const initialImages = [
   },
   {
     id: 7,
-    title: "adipisicing elit. Exercitationem, eaque?",
+    title: "Birrunga Gallery",
     // image: "https://picsum.photos/200/300?random=7",
     image: "/images/slider_image_7.jpg",
     type: "hotel",
@@ -150,7 +150,7 @@ export const initialImages = [
   },
   {
     id: 8,
-    title: " nibh ut dolor tincidunt ul",
+    title: "Dreamtime Kullilla-Art",
     // image: "https://picsum.photos/200/300?random=8",
     image: "/images/slider_image_8.jpg",
     type: "hotel",
@@ -159,7 +159,7 @@ export const initialImages = [
   },
   {
     id: 9,
-    title: "ipsum dolor sit amet, consectetur adipiscing",
+    title: "Bush Blossom Gallery",
     // image: "https://picsum.photos/200/300?random=9",
     image: "/images/slider_image_9.jpg",
     type: "hotel",

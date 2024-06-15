@@ -9,8 +9,15 @@ import UserIcon from "../icons/User";
 import MainCarousel from "./MainCarousel";
 
 import Image from "next/image";
+import { getPlaces } from "@/actions/getPlaces";
+import { placeType } from "@/types";
 
-const HeroSection = () => {
+const HeroSection = async () => {
+  // const data = await getPlaces({
+  //   pageNumber: 1,
+  //   limit: 10,
+  //   placeType: placeType.DESTINATION,
+  // });
   return (
     <>
       <Image

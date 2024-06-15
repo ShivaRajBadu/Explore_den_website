@@ -1,17 +1,26 @@
-import { placeDataType, placeType } from "@/types";
 import Image from "next/image";
 import React, { memo } from "react";
-import MainImageComponent from "../main_page/MainImageComponent";
-import { randomNumber } from "@/lib/randomNumber";
+type ImageProp = {
+  id: number;
+  title: string;
 
+  image: string;
+  type: string;
+  distance: string;
+  timeInDays: number;
+};
 type Props = {
-  imageProp: placeDataType;
+  imageProp: ImageProp;
   height?: string;
   width?: string;
 };
 
 const ImageSlider = memo(
-  ({ height = "h-[440px]", width = "w-[280px]", imageProp }: Props) => {
+  ({
+    height = "h-[440px]",
+    width = "w-[280px]",
+    imageProp: { id, title, image, type, distance, timeInDays },
+  }: Props) => {
     const isCenterImage = height === "h-[341px] lg:h-[440px]";
     const applyAnimation = isCenterImage ? "fade-in" : "";
 
@@ -24,16 +33,12 @@ const ImageSlider = memo(
           draggable="false"
           className={`relative ${height} ${width} rounded-[19px] overflow-hidden`}
         >
-          {/* <Image
+          <Image
             draggable="false"
-            src={imageProp.images[0].imageUrl}
+            src={image}
             alt="image"
             fill
             sizes="(100vw, 100vh)"
-          /> */}
-          <MainImageComponent
-            imageUrl={imageProp.images[0].imageUrl}
-            defaultImageUrl={`https://picsum.photos/200/300?random=${randomNumber()}`}
           />
         </div>
 
@@ -42,14 +47,12 @@ const ImageSlider = memo(
         )}
         {isCenterImage && (
           <div className="absolute w-full bottom-3 left-0 px-4 text-background">
-            <p className="text-[8px] bg-brand px-2 py-[2px] font-bold mb-2 rounded-full w-min">
-              {imageProp.category ?? "Hotel"}
-            </p>
-            <h3 className="text-base font-medium leading-5 pb-2">
-              {imageProp.name}
-            </h3>
+            {/* <p className="text-[8px] bg-brand px-2 py-[2px] font-bold mb-2 rounded-full w-min">
+              {type}
+            </p> */}
+            <h3 className="text-base font-medium leading-5 pb-2">{title}</h3>
             {/* <p className="text-[10px] font-normal">
-              Distance: {imageProp.}, Time: After {timeInDays} days
+              Distance: {distance}, Time: After {timeInDays} days
             </p> */}
           </div>
         )}
