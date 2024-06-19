@@ -27,9 +27,6 @@ const Card = (params: placeDataType) => {
             fill
             alt="explore den logo"
             sizes="(100vw, 100vh)"
-            onError={(e) =>
-              (e.currentTarget.src = `https://picsum.photos/200/300?random=${randomNumber()}`)
-            }
           /> */}
           <MainImageComponent
             imageUrl={params.images[0].imageUrl}

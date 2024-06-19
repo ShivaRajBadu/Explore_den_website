@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { getPlaceHolderImageUrl } from "@/lib/getPlaceHolderUrl";
 
 const MainImageComponent = ({
   imageUrl,
@@ -21,6 +22,8 @@ const MainImageComponent = ({
         alt="explore den logo"
         sizes="(100vw, 100vh)"
         onError={() => setSrc(defaultImageUrl)}
+        placeholder="blur"
+        blurDataURL={getPlaceHolderImageUrl(src)}
       />
     </div>
   );

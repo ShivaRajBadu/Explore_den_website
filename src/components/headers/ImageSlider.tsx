@@ -1,26 +1,24 @@
+import { getPlaceHolderImageUrl } from "@/lib/getPlaceHolderUrl";
+import { placeDataType } from "@/types";
 import Image from "next/image";
 import React, { memo } from "react";
-type ImageProp = {
-  id: number;
-  title: string;
+// type ImageProp = {
+//   id: number;
+//   title: string;
 
-  image: string;
-  type: string;
-  distance: string;
-  timeInDays: number;
-};
+//   image: string;
+//   type: string;
+//   distance: string;
+//   timeInDays: number;
+// };
 type Props = {
-  imageProp: ImageProp;
+  imageProp: placeDataType;
   height?: string;
   width?: string;
 };
 
 const ImageSlider = memo(
-  ({
-    height = "h-[440px]",
-    width = "w-[280px]",
-    imageProp: { id, title, image, type, distance, timeInDays },
-  }: Props) => {
+  ({ height = "h-[440px]", width = "w-[280px]", imageProp }: Props) => {
     const isCenterImage = height === "h-[341px] lg:h-[440px]";
     const applyAnimation = isCenterImage ? "fade-in" : "";
 
@@ -35,10 +33,12 @@ const ImageSlider = memo(
         >
           <Image
             draggable="false"
-            src={image}
+            src={imageProp.images[0].imageUrl}
             alt="image"
             fill
             sizes="(100vw, 100vh)"
+            placeholder="blur"
+            blurDataURL={getPlaceHolderImageUrl(imageProp.images[0].imageUrl)}
           />
         </div>
 
@@ -50,7 +50,9 @@ const ImageSlider = memo(
             {/* <p className="text-[8px] bg-brand px-2 py-[2px] font-bold mb-2 rounded-full w-min">
               {type}
             </p> */}
-            <h3 className="text-base font-medium leading-5 pb-2">{title}</h3>
+            <h3 className="text-base font-medium leading-5 pb-2">
+              {imageProp.name}
+            </h3>
             {/* <p className="text-[10px] font-normal">
               Distance: {distance}, Time: After {timeInDays} days
             </p> */}

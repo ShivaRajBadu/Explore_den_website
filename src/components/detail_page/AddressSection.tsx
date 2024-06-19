@@ -16,7 +16,7 @@ const AddressSection = ({
       <h2 className="text-[24px] font-semibold text-textPrimary pb-3 ">
         Address
       </h2>
-      <div className="w-full h-[365px] border border-textSecondary">
+      <div className="w-full h-[365px] border border-textSecondary shadow-md">
         <CustomMap location={location} />
       </div>
       {/* <Image src="/images/google_map.png" alt="map" width={776} height={365} /> */}

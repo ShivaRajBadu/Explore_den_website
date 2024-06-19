@@ -4,7 +4,6 @@ import Map, { Marker } from "react-map-gl";
 import React from "react";
 import "mapbox-gl/src/css/mapbox-gl.css";
 const CustomMap = ({ location }: { location: any }) => {
-  console.log(location);
   return (
     <Map
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}

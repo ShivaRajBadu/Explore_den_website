@@ -13,11 +13,12 @@ import { getPlaces } from "@/actions/getPlaces";
 import { placeType } from "@/types";
 
 const HeroSection = async () => {
-  // const data = await getPlaces({
-  //   pageNumber: 1,
-  //   limit: 10,
-  //   placeType: placeType.DESTINATION,
-  // });
+  const data = await getPlaces({
+    pageNumber: 1,
+    limit: 10,
+    placeType: placeType.DESTINATION,
+  });
+
   return (
     <>
       <Image
@@ -66,7 +67,7 @@ const HeroSection = async () => {
           </div>
         </div>
       </Wrapper>
-      <MainCarousel />
+      <MainCarousel data={data} />
     </>
   );
 };

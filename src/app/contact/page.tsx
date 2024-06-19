@@ -2,6 +2,7 @@ import Wrapper from "@/components/Wrapper";
 import Image from "next/image";
 import React from "react";
 import CustomForm from "./CustomForm";
+import ContactImage from "../../../public/images/contact_image.png";
 
 const page = () => {
   return (
@@ -16,10 +17,11 @@ const page = () => {
           </div>
           <div className="hidden lg:block w-1/2 relative h-[677px]">
             <Image
-              src="/images/contact_image.png"
+              src={ContactImage}
               alt="contact PNG"
               fill
               sizes="(100vw, 100vh)"
+              placeholder="blur"
             />
           </div>
         </div>

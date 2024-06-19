@@ -23,7 +23,7 @@ const PopularSection = async () => {
           style={{ gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))" }}
           className="flex lg:grid gap-x-6 px-1 py-2 gap-y-12 flex-nowrap hide_scrollbar overflow-x-scroll "
         >
-          {populars!.map((popular) => {
+          {populars!.map((popular, index) => {
             return <Card {...popular} key={popular.id} />;
           })}
         </div>

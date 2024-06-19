@@ -5,9 +5,10 @@ import Image from "next/image";
 import ImageSlider from "./ImageSlider";
 import { initialImages } from "@/constants/data";
 import { useQuery } from "@tanstack/react-query";
+import { placeDataType } from "@/types";
 
-const MainCarousel = () => {
-  const [images, setImages] = useState(initialImages);
+const MainCarousel = ({ data }: { data: placeDataType[] }) => {
+  const [images, setImages] = useState(data);
   const [currentIndex, setCurrentIndex] = useState(
     Math.floor(initialImages.length / 2)
   );
