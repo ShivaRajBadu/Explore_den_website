@@ -27,8 +27,7 @@ export type Event = {
 };
 export type ReviewedBy = {
   id: number;
-  firstName: string;
-  lastName: string;
+  name: string;
   username: string;
   profilePic: string;
   email: string;
@@ -39,7 +38,7 @@ export type Review = {
   id: number;
   text: string;
   stars: number;
-  images: [];
+  images: Imagetype[];
   reviewedBy: ReviewedBy;
   datetimeAdded: string;
 };

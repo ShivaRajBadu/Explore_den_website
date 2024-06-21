@@ -15,6 +15,7 @@ const Footer = () => {
               alt="den"
               width={0}
               height={0}
+              priority
               className="w-auto h-auto"
             />
             <p className="font-semibold pb-2 pt-8 text-base md:text-lg text-background">

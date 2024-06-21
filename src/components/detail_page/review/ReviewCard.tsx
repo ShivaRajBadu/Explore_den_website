@@ -3,14 +3,15 @@ import React from "react";
 import Stars from "./Stars";
 import { Review, ReviewedBy } from "@/types";
 import { timeAgo } from "@/utils";
+import ModalOpen from "./ModalOpen";
 
 const ReviewCard = ({ review }: { review: Review }) => {
   const time = timeAgo(review.datetimeAdded);
 
   return (
     <div className="py-8 border-b">
-      <div className="flex  gap-4">
-        <div className="relative w-[48px] h-[48px] rounded-full">
+      <div className="flex   gap-4">
+        <div className="relative w-[48px] h-[48px] overflow-hidden rounded-full">
           <Image
             src={review.reviewedBy.profilePic || "/images/author.png"}
             alt="image"
@@ -20,7 +21,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
         </div>
         <div>
           <h3 className="text-textPrimary text-base md:text-lg font-medium pb-[2px]">
-            {review.reviewedBy.firstName} {review.reviewedBy.lastName}
+            {review.reviewedBy.name}
           </h3>
           <div className="flex  gap-4 items-center">
             <Stars rating={review.stars} starSize="16" />
@@ -31,6 +32,21 @@ const ReviewCard = ({ review }: { review: Review }) => {
       <p className="text-textSecondary text-base md:text-lg font-normal py-4">
         {review.text}
       </p>
+      <div className="flex flex-wrap gap-4 ">
+        {review.images.map((image, index) => (
+          <ModalOpen key={image.id} images={review.images} currentIndex={index}>
+            <div className="relative rounded-[4px] overflow-hidden w-[63px] h-[73px] cursor-pointer">
+              <Image
+                src={image.imageUrl}
+                alt="image"
+                fill
+                className="object-cover"
+                sizes="(100vw, 100vh)"
+              />
+            </div>
+          </ModalOpen>
+        ))}
+      </div>
       {/* <div className="flex  gap-4">
         <div className="relative rounded-full w-[63px] h-[73px]">
           <Image
