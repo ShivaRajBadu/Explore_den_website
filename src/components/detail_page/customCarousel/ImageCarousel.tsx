@@ -5,6 +5,7 @@ import { randomNumber } from "@/lib/randomNumber";
 import { Imagetype } from "@/types";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import ModalOpen from "../review/ModalOpen";
 
 const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,10 +40,16 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
           className="object-cover w-auto h-auto md:rounded-2xl"
           alt="carousel image"
         /> */}
-        <MainImageComponent
-          imageUrl={images[currentIndex].imageUrl}
-          defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
-        />
+        <ModalOpen
+          images={images}
+          className="w-full h-full cursor-pointer"
+          currentIndex={currentIndex}
+        >
+          <MainImageComponent
+            imageUrl={images[currentIndex].imageUrl}
+            defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
+          />
+        </ModalOpen>
       </div>
       <div className="flex items-center gap-6 mt-10 justify-center">
         {/* left arrow */}
