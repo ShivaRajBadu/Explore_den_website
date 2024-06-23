@@ -77,17 +77,20 @@ export function detectDevice() {
     return "Mac";
   }
 
-  if (/Win32|Win64|Windows|WinCE/.test(userAgent)) {
-    return "Windows";
-  }
-
-  if (/Mobi|Android/i.test(userAgent)) {
-    return "Mobile Device";
-  }
-
-  if (/Linux|X11/.test(userAgent) || /Macintosh|Windows|Win/.test(userAgent)) {
+  if (
+    /Win32|Win64|Windows|WinCE/.test(userAgent) ||
+    /Linux|X11/.test(userAgent)
+  ) {
     return "Desktop";
   }
+
+  // if (/Mobi|Android/i.test(userAgent) || /iPad|iPhone|iPod/.test(userAgent)) {
+  //   return "Mobile Device";
+  // }
+
+  // if (/Linux|X11/.test(userAgent) || /Macintosh|Windows|Win/.test(userAgent)) {
+  //   return "Desktop";
+  // }
 
   return "Unknown";
 }
