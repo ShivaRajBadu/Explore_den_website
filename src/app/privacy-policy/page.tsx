@@ -1,7 +1,10 @@
 import Headers from "@/components/headers/Headers";
 import Navigation from "@/components/headers/Navigation";
+import { Metadata } from "next";
 import React from "react";
-
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+};
 const page = () => {
   return (
     <>

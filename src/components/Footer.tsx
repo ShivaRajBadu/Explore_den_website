@@ -157,7 +157,14 @@ const Footer = () => {
           >
             Privacy Policy
           </Link>
-          <p className="text-sm font-normal">Terms & Conditions</p>
+          <Link
+            href={"/terms-and-conditions"}
+            prefetch={false}
+            target="_blank"
+            className="text-sm font-normal"
+          >
+            Terms & Conditions
+          </Link>
         </div>
       </Wrapper>
     </div>
