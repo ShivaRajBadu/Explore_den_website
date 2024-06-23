@@ -29,8 +29,6 @@ const PlaceList = ({
     initialData.links.next !== undefined
   );
 
-  // console.log(haveMoreData);
-
   const loadMoreData = async () => {
     setLoading(true);
     try {

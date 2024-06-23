@@ -3,6 +3,7 @@ import Map, { Marker } from "react-map-gl";
 
 import React from "react";
 import "mapbox-gl/src/css/mapbox-gl.css";
+import Image from "next/image";
 const CustomMap = ({ location }: { location: any }) => {
   return (
     <Map
@@ -19,7 +20,7 @@ const CustomMap = ({ location }: { location: any }) => {
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
       <Marker longitude={location.x} latitude={location.y} anchor="bottom">
-        <img src="/icons/pin.svg" />
+        <Image src="/icons/pin.svg" alt="pin" width={24} height={24} />
       </Marker>
     </Map>
   );

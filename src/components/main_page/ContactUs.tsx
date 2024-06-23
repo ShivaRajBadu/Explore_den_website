@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const ContactUs = () => {
   return (
-    <div className="my-14 py-14">
+    <div className="my-14 md:py-14">
       <div className="max-w-[1440px] w-full md:w-[90%] mx-auto">
         <div className="bg-brand text-background px-4  md:rounded-[40px] text-center py-[72px]">
           <h1 className="font-semibold text-[28px] md:text-5xl capitalize py-4">

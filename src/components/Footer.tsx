@@ -101,7 +101,7 @@ const Footer = () => {
                     contact@exploreden.com.au
                   </Link>
                 </li>
-                <li className="text-background  flex items-center gap-4 font-normal text-base">
+                <li className="text-background  flex items-start gap-4 font-normal text-base">
                   <Image
                     src="/icons/location_white.svg"
                     alt="location"

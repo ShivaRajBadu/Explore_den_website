@@ -11,7 +11,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   const place = await getPlace(parseInt(params.id));
 
   return (
-    <div className="max-w-[1440px] mx-auto  w-full md:w-[90%]">
+    <div className="max-w-[1440px] mx-auto  w-full md:w-[90%] my-6">
       <div className="flex flex-col lg:flex-row gap-12">
         <div className="w-full lg:w-[40%]">
           <ImageCarousel images={place.images} />
