@@ -61,3 +61,33 @@ export const getDateTimeString = (
 
   return startDate.toISOString();
 };
+
+export function detectDevice() {
+  const userAgent = navigator.userAgent;
+
+  if (/iPad|iPhone|iPod/.test(userAgent)) {
+    return "iOS Device";
+  }
+
+  if (/android/i.test(userAgent)) {
+    return "Android Device";
+  }
+
+  if (/Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent)) {
+    return "Mac";
+  }
+
+  if (/Win32|Win64|Windows|WinCE/.test(userAgent)) {
+    return "Windows";
+  }
+
+  if (/Mobi|Android/i.test(userAgent)) {
+    return "Mobile Device";
+  }
+
+  if (/Linux|X11/.test(userAgent) || /Macintosh|Windows|Win/.test(userAgent)) {
+    return "Desktop";
+  }
+
+  return "Unknown";
+}

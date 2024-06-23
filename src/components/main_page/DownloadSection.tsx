@@ -31,7 +31,7 @@ const DownloadSection = () => {
             className="object-cover w-[55%] h-full"
           />
           {/* </div> */}
-          <div className="w-[60%] lg:pr-2 xl:pr-0">
+          <div className="w-[60%] pr-2 xl:pr-0">
             <h1 className="font-semibold   text-[15px] sm:text-[28px]  md:text-[30px] lg:text-[38px] xl:text-[44px] text-pretty  text-background">
               Your Next Adventure Awaits – Download Our App!
             </h1>

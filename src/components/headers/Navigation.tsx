@@ -5,10 +5,13 @@ import Link from "next/link";
 import { NavLinks } from "@/constants/data";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
+import QRCodeComponent from "../QRCode";
+import { detectDevice } from "@/utils";
 
 const Navigation = () => {
   const pathName = usePathname();
   const [isOpen, setIsOpen] = React.useState(false);
+  const [showDownloadQr, setShowDownloadQr] = React.useState(false);
   useEffect(() => {
     // Function to handle window resize
     const handleResize = () => {
@@ -34,6 +37,13 @@ const Navigation = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isOpen]);
+
+  const handleDownloadClick = () => {
+    const device = detectDevice();
+    console.log(device);
+    alert(device);
+  };
+
   return (
     <Wrapper>
       <div className="flex items-center justify-between py-6 ">
@@ -110,12 +120,18 @@ const Navigation = () => {
               );
             })}
           </ul>
-          <button className="block mx-auto  w-full mt-auto mb-0   bg-brand  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 ">
+          <button
+            onClick={handleDownloadClick}
+            className="block mx-auto  w-full mt-auto mb-0   bg-brand  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 "
+          >
             Download App
           </button>
         </nav>
 
-        <button className="hidden lg:block  bg-brand  hover:bg-brand/80 duration-300  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins   ">
+        <button
+          onClick={handleDownloadClick}
+          className="hidden lg:block  bg-brand  hover:bg-brand/80 duration-300  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins   "
+        >
           Download App
         </button>
         <button
@@ -139,6 +155,8 @@ const Navigation = () => {
           </svg>
         </button>
       </div>
+
+      {showDownloadQr && <QRCodeComponent />}
     </Wrapper>
   );
 };

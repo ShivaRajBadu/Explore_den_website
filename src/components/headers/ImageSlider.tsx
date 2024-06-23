@@ -2,15 +2,7 @@ import { getPlaceHolderImageUrl } from "@/lib/getPlaceHolderUrl";
 import { placeDataType } from "@/types";
 import Image from "next/image";
 import React, { memo } from "react";
-// type ImageProp = {
-//   id: number;
-//   title: string;
 
-//   image: string;
-//   type: string;
-//   distance: string;
-//   timeInDays: number;
-// };
 type Props = {
   imageProp: placeDataType;
   height?: string;
@@ -47,9 +39,9 @@ const ImageSlider = memo(
         )}
         {isCenterImage && (
           <div className="absolute w-full bottom-3 left-0 px-4 text-background">
-            {/* <p className="text-[8px] bg-brand px-2 py-[2px] font-bold mb-2 rounded-full w-min">
-              {type}
-            </p> */}
+            <p className="text-[8px] bg-brand px-2 py-[2px] font-bold mb-2 rounded-full w-min">
+              {imageProp.category}
+            </p>
             <h3 className="text-base font-medium leading-5 pb-2">
               {imageProp.name}
             </h3>
