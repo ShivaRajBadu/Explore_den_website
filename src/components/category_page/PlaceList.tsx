@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Wrapper from "../Wrapper";
 import Filter from "../Filter";
 
-import { placeDataType, placeType, Slug } from "@/types";
+import { DataWithMetadata, placeDataType, placeType, Slug } from "@/types";
 import { filterOptions } from "@/lib/filterOptionMapping";
 import Card from "../main_page/Card";
 import { getPlaces } from "@/actions/getPlaces";
@@ -13,31 +13,58 @@ import CardSkeleton from "../skeletons/CardSkeleton";
 const PlaceList = ({
   initialData,
   query,
+  isCategory,
 }: {
-  initialData: placeDataType[];
+  initialData: DataWithMetadata;
   query: string;
+  isCategory?: boolean;
 }) => {
-  const [places, setPlaces] = React.useState<placeDataType[]>(initialData);
+  const [places, setPlaces] = React.useState<placeDataType[]>(initialData.data);
 
   const [pageNumber, setPageNumber] = React.useState(1);
+  const [error, setError] = React.useState<null | string>(null);
 
   const [loading, setLoading] = React.useState(false);
+  const [haveMoreData, setHaveMoreData] = React.useState(
+    initialData.links.next !== undefined
+  );
+
+  // console.log(haveMoreData);
 
   const loadMoreData = async () => {
     setLoading(true);
-    const newPlaces = await getPlaces({
-      limit: 16,
-      placeType: initialData[0].placeType as placeType,
-      pageNumber: pageNumber + 1,
-      filter: query,
-    });
-
-    if (newPlaces) {
-      setPlaces((prev) => [...prev, ...newPlaces]);
-      setPageNumber((prev) => prev + 1);
+    try {
+      const newData = await getPlaces({
+        limit: 16,
+        placeType: initialData.data[0].placeType as placeType,
+        pageNumber: pageNumber + 1,
+        filter: query,
+        isCategory: isCategory,
+      });
+      if (newData) {
+        if (newData.links.next === undefined) {
+          setHaveMoreData(false);
+        } else {
+          setHaveMoreData(true);
+        }
+        setPlaces((prev) => [...prev, ...newData.data]);
+        setPageNumber((prev) => prev + 1);
+      }
+    } catch (error) {
+      setError(`Something went wrong. Please try again later.
+        ${error}
+        `);
     }
     setLoading(false);
   };
+
+  const skeletonCards = useMemo(
+    () =>
+      Array.from({ length: 16 }).map((_, index) => (
+        <CardSkeleton key={index} />
+      )),
+    []
+  );
 
   return (
     <>
@@ -48,16 +75,18 @@ const PlaceList = ({
         {places!.map((data) => {
           return <Card {...data} key={data.id} />;
         })}
-        {loading &&
-          Array.from({ length: 16 }).map((_, index) => (
-            <CardSkeleton key={index} />
-          ))}
+        {loading && skeletonCards}
       </div>
+      {error && <div className="text-red-500 text-center py-4">{error}</div>}
       <div className="flex justify-center pb-12 pt-5">
         <button
-          disabled={loading}
+          disabled={loading || !haveMoreData}
           onClick={loadMoreData}
-          className="border disabled:cursor-not-allowed border-brand text-brand font-semibold text-base  px-16 py-3 rounded-lg hover:bg-brand/70 hover:text-background duration-500"
+          className={`border border-brand text-brand font-semibold text-base px-16 py-3 rounded-lg duration-500 ${
+            loading || !haveMoreData
+              ? "cursor-not-allowed opacity-50"
+              : "hover:bg-brand/70 hover:text-background"
+          }`}
         >
           {loading ? "Loading..." : "View More"}
         </button>

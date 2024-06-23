@@ -18,7 +18,11 @@ const Filter = ({
 
   const handleClick = (option: any) => {
     const params = new URLSearchParams(searchParams);
-    params.set("filter.dataTime", option.value);
+    if (pathName === "/category") {
+      params.set("filter.category", option.value);
+    } else {
+      params.set("filter.dataTime", option.value);
+    }
     replace(`${pathName}?${params.toString()}`);
     setShow((prev) => !prev);
   };

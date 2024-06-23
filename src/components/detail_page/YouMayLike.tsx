@@ -16,7 +16,7 @@ const YouMayLike = () => {
   const slug = pathName.split("/")[2];
 
   const {
-    data: suggestion,
+    data: YouMayLike,
     isLoading,
     isError,
     isFetching,
@@ -115,7 +115,7 @@ const YouMayLike = () => {
               ref={scrollContainerRef}
               className="flex gap-5  py-2 hide_scrollbar overflow-x-scroll px-1 min-h-[400px]"
             >
-              {suggestion?.map((place) => (
+              {YouMayLike?.data?.map((place) => (
                 <Card key={place.id} {...place} />
               ))}
             </div>

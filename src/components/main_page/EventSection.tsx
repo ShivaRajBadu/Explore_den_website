@@ -9,7 +9,7 @@ import { getPlaces } from "@/actions/getPlaces";
 import { getRandomNumber } from "@/lib/getRandom";
 
 const EventSection = async () => {
-  const events = await getPlaces({
+  const { data: events } = await getPlaces({
     limit: 4,
     placeType: placeType.DESTINATION,
     pageNumber: 1,

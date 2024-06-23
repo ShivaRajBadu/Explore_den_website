@@ -18,6 +18,17 @@ const Footer = () => {
               priority
               className="w-auto h-auto"
             />
+            {/* <p className="font-normal py-6 text-base md:text-lg text-textSecondary">
+              ExploreDen is a comprehensive platform for all travel enthusiasts.
+              We use an innovative approach to help travelers discover the best
+              local destinations, hidden gems, adventures, and events. Our
+              mobile app works in being able to help travelers find EADs rapidly
+              with left or right swipes on EADs within the app, within seconds,
+              without the headache of going through the old school way. Join
+              ExploreDen today for curated travel guides and itineraries,
+              seamless booking of unique experiences, connecting with fellow
+              adventurers, and much more!
+            </p> */}
             <p className="font-semibold pb-2 pt-8 text-base md:text-lg text-background">
               Download the app by clicking the link below :
             </p>
@@ -70,8 +81,8 @@ const Footer = () => {
                     height={20}
                     sizes="(100vw, 100vh)"
                     className="w-auto h-auto"
-                  />{" "}
-                  (406) 555-0120
+                  />
+                  +61 420633625
                 </li>
                 <li className="text-background flex items-center gap-4 font-normal text-base">
                   <Image
@@ -82,7 +93,13 @@ const Footer = () => {
                     sizes="(100vw, 100vh)"
                     className="w-auto h-auto"
                   />
-                  exloreden@gmail.com
+                  <Link
+                    href={"mailto:contact@exploreden.com.au"}
+                    prefetch={false}
+                    target="_blank"
+                  >
+                    contact@exploreden.com.au
+                  </Link>
                 </li>
                 <li className="text-background  flex items-center gap-4 font-normal text-base">
                   <Image
@@ -93,7 +110,7 @@ const Footer = () => {
                     sizes="(100vw, 100vh)"
                     className="w-auto h-auto"
                   />
-                  2972 Westheimer Rd. Santa Ana, Illinois 85486
+                  21 Framton way Madeley 6065 WA Australia
                 </li>
               </ul>
             </div>
@@ -132,7 +149,14 @@ const Footer = () => {
         </div>
         <div className="mt-20 mb-5 border border-textSecondary" />
         <div className="flex justify-between text-background">
-          <p className="text-sm font-normal">Privacy Policy</p>
+          <Link
+            href={"/privacy-policy"}
+            prefetch={false}
+            target="_blank"
+            className="text-sm font-normal"
+          >
+            Privacy Policy
+          </Link>
           <p className="text-sm font-normal">Terms & Conditions</p>
         </div>
       </Wrapper>

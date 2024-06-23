@@ -10,14 +10,15 @@ const ContactUs = () => {
           <h1 className="font-semibold text-[28px] md:text-5xl capitalize py-4">
             Have any Qureies ? Contact Us
           </h1>
-          <p className="font-normal  text-sm md:text-lg py-2 max-w-[70%] md:max-w-[40%] mb-10 mx-auto">
-            Lorem ipsum dolor sit amet consectetur. Semper at elit gravida quam
-            diam phasellus..
+          <p className="font-normal  text-sm md:text-lg py-2 max-w-[70%] md:max-w-[50%] text-balance mb-10 mx-auto">
+            Our team is here to help you find the best travel experiences. Get
+            in touch for recommendations, support, or any inquiries you may
+            have.
           </p>
           <Link
             prefetch={false}
             href="/contact"
-            className="bg-background text-brand text-center  rounded-lg px-6 py-3 font-semibold text-base"
+            className="bg-background block w-max mx-auto text-brand text-center hover:scale-[1.02] duration-100  rounded-lg px-6 py-3 font-semibold text-base"
           >
             Contact Us
           </Link>

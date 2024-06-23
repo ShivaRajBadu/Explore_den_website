@@ -3,6 +3,7 @@ export enum Slug {
   EVENT = "event",
   ACTIVITY = "activity",
   DESTINATION = "destination",
+  CATEGORY = "category",
 }
 export enum placeType {
   EVENT = "event",
@@ -10,11 +11,29 @@ export enum placeType {
   DESTINATION = "destination",
 }
 
+export type DataWithMetadata = {
+  data: placeDataType[];
+  meta: {
+    currentPage: number;
+    totalItems: number;
+    itemsPerPage: number;
+    totalPages: number;
+  };
+  links: {
+    first?: string | null | undefined;
+    previous?: string | null | undefined;
+    current: string;
+    next?: string | null | undefined;
+    last?: string | null | undefined;
+  };
+};
+
 export type getDataParams = {
   limit: number;
   pageNumber?: number;
-  placeType: placeType;
+  placeType: placeType | null;
   filter?: string | null;
+  isCategory?: boolean;
 };
 
 export type Event = {

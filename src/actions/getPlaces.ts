@@ -1,25 +1,38 @@
 "use server";
 
 import { baseUrl } from "@/constants/data";
-import { getDataParams, placeDataType, placeType } from "@/types";
+import {
+  DataWithMetadata,
+  getDataParams,
+  placeDataType,
+  placeType,
+} from "@/types";
 import { getDateTimeString } from "@/utils";
 
 export async function getPlaces(
   params: getDataParams
-): Promise<placeDataType[]> {
-  const { limit, pageNumber = 1, placeType, filter } = params;
-  const url = new URL(`${baseUrl}/places`);
-  url.searchParams.append("limit", limit.toString());
-  url.searchParams.append("page", pageNumber.toString());
-  url.searchParams.append("filter.placeType", placeType);
+): Promise<DataWithMetadata> {
+  const { limit, pageNumber = 1, placeType, filter, isCategory } = params;
 
-  if (filter) {
-    // @ts-ignore
-    const filterDateTime = getDateTimeString(filter);
-    url.searchParams.append("filter.datetimeAdded", `$gte:${filterDateTime}`);
+  const url = new URL(`${baseUrl}/places`);
+
+  url.searchParams.append("limit", limit.toString());
+
+  url.searchParams.append("page", pageNumber.toString());
+
+  if (placeType !== null) {
+    url.searchParams.append("filter.placeType", placeType!);
   }
 
-  // console.log(url.toString());
+  if (filter) {
+    if (isCategory) {
+      url.searchParams.append("filter.category", filter.toLocaleLowerCase());
+    } else {
+      // @ts-ignore
+      const filterDateTime = getDateTimeString(filter);
+      url.searchParams.append("filter.datetimeAdded", `$gte:${filterDateTime}`);
+    }
+  }
 
   const response = await fetch(url.toString(), { cache: "no-cache" });
 
@@ -29,7 +42,7 @@ export async function getPlaces(
 
   const data = await response.json();
 
-  return data.data;
+  return data;
 }
 
 export async function getPlace(id: number): Promise<placeDataType> {

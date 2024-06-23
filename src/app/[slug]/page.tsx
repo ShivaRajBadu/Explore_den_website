@@ -20,8 +20,9 @@ const page = async ({
   if (!Object.values(Slug).includes(params.slug as Slug)) {
     notFound();
   }
-  const query = searchParams["filter.dataTime"] || null;
-
+  let query;
+  const dateTimeQuery = searchParams["filter.dataTime"] || null;
+  const categoryQuery = searchParams["filter.category"] || null;
   let slug = params.slug;
   if (params.slug === "popular") {
     slug = "event";
@@ -31,10 +32,12 @@ const page = async ({
 
   const datas = await getPlaces({
     limit: 16,
-    placeType: placeType.DESTINATION,
+    placeType: categoryQuery ? null : placeType.DESTINATION,
     pageNumber: 1,
-    filter: query,
+    filter: categoryQuery || dateTimeQuery,
+    isCategory: categoryQuery ? true : false,
   });
+  query = categoryQuery || dateTimeQuery;
 
   return (
     <Wrapper>
@@ -48,8 +51,13 @@ const page = async ({
           contentPadding="px-4 py-3"
         />
       </div>
-      {datas.length > 0 ? (
-        <PlaceList key={query} initialData={datas!} query={query} />
+      {datas.data.length > 0 ? (
+        <PlaceList
+          key={query}
+          isCategory={categoryQuery ? true : false}
+          initialData={datas!}
+          query={query}
+        />
       ) : (
         <div className="flex justify-center text-center flex-col items-center h-screen">
           <p className="text-brand text-4xl font-bold pb-8">Oops !</p>

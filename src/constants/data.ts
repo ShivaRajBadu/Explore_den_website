@@ -36,51 +36,63 @@ export const NavLinks = [
 export const tags = [
   {
     id: 1,
-    name: "🔐 Escape Room",
+    value: "Escape Room",
+    label: "🔐 Escape Room",
   },
   {
     id: 2,
-    name: "🥾 Hiking ",
+    value: "Hiking",
+    label: "🥾 Hiking ",
   },
   {
     id: 3,
-    name: "🔫  Paint Ball",
+    value: "Paint Ball",
+    label: "🔫  Paint Ball",
   },
   {
     id: 4,
-    name: "🏄 Surfing",
+    value: "Surfing",
+    label: "🏄 Surfing",
   },
   {
     id: 5,
-    name: "🎉 Clubs",
+    value: "Clubs",
+    label: "🎉 Clubs",
   },
   {
     id: 6,
-    name: "🎮 Game Parlor",
+    value: "Game Parlor",
+    label: "🎮 Game Parlor",
   },
   {
     id: 7,
-    name: "🎤 Karaoke",
+    value: "Karaoke",
+    label: "🎤 Karaoke",
   },
   {
     id: 8,
-    name: "⛸️ Ice Skating",
+    value: "Ice Skating",
+    label: "⛸️ Ice Skating",
   },
   {
     id: 9,
-    name: "🏂 Snowboarding",
+    value: "Snowboarding",
+    label: "🏂 Snowboarding",
   },
   {
     id: 10,
-    name: "🏔️ Climbing",
+    value: "Climbing",
+    label: "🏔️ Climbing",
   },
   {
     id: 11,
-    name: "🏞️ Nature",
+    value: "Nature",
+    label: "🏞️ Nature",
   },
   {
     id: 12,
-    name: "🎳  Bowling",
+    value: "Bowling",
+    label: "🎳  Bowling",
   },
 ];
 

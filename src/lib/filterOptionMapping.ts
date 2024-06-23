@@ -122,6 +122,28 @@ const filterOptionsMapping: Record<Slug, { value: string; label: string }[]> = {
     //   label: "Recommended",
     // },
   ],
+  [Slug.CATEGORY]: [
+    {
+      value: "all",
+      label: "All",
+    },
+    {
+      value: "escape room",
+      label: "Escape Room",
+    },
+    {
+      value: "hiking",
+      label: "Hiking",
+    },
+    {
+      value: "paint Ball",
+      label: "Paint Ball",
+    },
+    {
+      value: "surfing",
+      label: "Surfing",
+    },
+  ],
 };
 
 // Export filter options for each slug

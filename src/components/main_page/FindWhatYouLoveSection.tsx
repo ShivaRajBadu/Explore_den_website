@@ -18,7 +18,7 @@ const FindWhatYouLoveSection = () => {
             </p>
             <div className="flex flex-wrap gap-4 my-10 w-full ">
               {tags.map((tag) => (
-                <Tag text={tag.name} key={tag.id} />
+                <Tag text={tag} key={tag.id} />
               ))}
             </div>
           </div>
