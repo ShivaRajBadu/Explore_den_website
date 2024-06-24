@@ -13,7 +13,7 @@ const CustomMap = ({ location }: { location: any }) => {
       initialViewState={{
         longitude: location.y,
         latitude: location.x,
-        zoom: 8,
+        zoom: 12,
       }}
       style={{
         width: "100%",
