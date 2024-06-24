@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import QRCode from "react-qr-code";
+
 const QRCodeComponent = ({
   apkLink,
   IosLink,
@@ -12,18 +13,27 @@ const QRCodeComponent = ({
   device: string;
   toggleModal: any;
 }) => {
-  const [url, setUrl] = React.useState(
-    device === "Desktop" ? apkLink : IosLink
-  );
+  const initialUrl = device === "Desktop" ? apkLink : IosLink;
+  const [url, setUrl] = React.useState(initialUrl);
+  const [isInitialDevice, setIsInitialDevice] = React.useState(true);
+
+  const toggleUrl = () => {
+    if (isInitialDevice) {
+      setUrl(device === "Desktop" ? IosLink : apkLink);
+    } else {
+      setUrl(initialUrl);
+    }
+    setIsInitialDevice(!isInitialDevice);
+  };
 
   return (
-    <div className=" fixed w-screen h-screen inset-0 grid  place-content-center z-50 bg-black/70">
+    <div className="fixed w-screen h-screen inset-0 grid place-content-center z-50 bg-black/70">
       <button
         onClick={(e) => {
           e.stopPropagation();
           toggleModal(false);
         }}
-        className="absolute right-4 top-4  border-2 cursor-pointer border-[#A1A1AA] rounded-full p-2 w-min"
+        className="absolute right-4 top-4 border-2 cursor-pointer border-[#A1A1AA] rounded-full p-2 w-min"
       >
         <svg
           width="20"
@@ -48,23 +58,31 @@ const QRCodeComponent = ({
           />
         </svg>
       </button>
-      <div className="w-[400px] h-[450px] rounded-lg bg-white p-12 flex flex-col justify-center items-center  ">
+      <div className="w-[400px] h-[450px] rounded-lg bg-white p-12 flex flex-col justify-center items-center">
         <QRCode
           value={url}
           width={200}
           height={200}
           className="mx-auto"
-          aria-placeholder="Android"
+          aria-placeholder="QR Code"
         />
         <h1 className="text-balance text-base font-semibold mx-auto text-center py-6">
           Point your phone camera at the QR code to download the app
         </h1>
-        <p
-          onClick={() => setUrl(device === "Desktop" ? IosLink : apkLink)}
-          className="text-center text-lg cursor-pointer text-green-600"
+        <button
+          onClick={toggleUrl}
+          className="text-center text-lg hover:scale-[1.03] duration-200 block cursor-pointer text-green-600"
         >
-          My device is {device === "Desktop" ? "iOS" : "Android"} ):
-        </p>
+          My device is{" "}
+          {isInitialDevice
+            ? device === "Desktop"
+              ? "iOS"
+              : "Android"
+            : device === "Desktop"
+            ? "Android"
+            : "iOS"}{" "}
+          ):
+        </button>
       </div>
     </div>
   );
