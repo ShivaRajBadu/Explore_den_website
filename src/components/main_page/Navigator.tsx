@@ -18,7 +18,7 @@ const CardNavigator = ({
   const handleNavigation = (e: any) => {
     if (isFromDetails) {
       e.stopPropagation();
-      router.replace(`/details/${placeType}/${id}`);
+      router.replace(`/details/${placeType}/${id}`, {});
     } else {
       router.push(`/details/${placeType}/${id}`);
     }

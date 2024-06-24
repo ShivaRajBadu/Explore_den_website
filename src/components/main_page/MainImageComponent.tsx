@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { getPlaceHolderImageUrl } from "@/lib/getPlaceHolderUrl";
 
 const MainImageComponent = ({
   imageUrl,
@@ -27,8 +26,6 @@ const MainImageComponent = ({
 
           setSrc(defaultImageUrl);
         }}
-        placeholder="blur"
-        blurDataURL={getPlaceHolderImageUrl(src)}
       />
     </div>
   );
