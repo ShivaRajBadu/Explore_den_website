@@ -11,7 +11,7 @@ const FindWhatYouLoveSection = async () => {
   return (
     <div className="bg-background-purple pt-[72px] mt-24 mb-10">
       <Wrapper>
-        <div className="flex  items-end justify-between">
+        <div className="flex  items-center justify-between">
           <div className="w-full lg:w-[40%]">
             <h2 className="text-4xl font-semibold text-textPrimary py-3">
               We help you find what you love
