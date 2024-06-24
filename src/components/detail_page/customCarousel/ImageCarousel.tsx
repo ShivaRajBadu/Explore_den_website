@@ -33,28 +33,26 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
     <div>
       {/* main image */}
       <div className="relative w-full h-[500px]">
-        {/* <Image
-          src={images[currentIndex].imageUrl}
-          fill
-          sizes="(100vw, 100vh)"
-          className="object-cover w-auto h-auto md:rounded-2xl"
-          alt="carousel image"
-        /> */}
-        {/* <MainImageComponent
-          key={images[currentIndex].imageUrl}
-          imageUrl={images[currentIndex].imageUrl}
-          defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
-        /> */}
         <ModalOpen
           images={images}
           className="w-full h-full cursor-pointer"
           currentIndex={currentIndex}
         >
-          <MainImageComponent
-            key={images[currentIndex].imageUrl}
-            imageUrl={images[currentIndex].imageUrl}
-            defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
-          />
+          {images.length > 0 ? (
+            <MainImageComponent
+              key={images[currentIndex].imageUrl}
+              imageUrl={images[currentIndex].imageUrl}
+              defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
+            />
+          ) : (
+            <Image
+              src={`https://picsum.photos/200/300?random=${randomIndex}`}
+              fill
+              sizes="(100vw, 100vh)"
+              className="object-cover w-auto h-auto md:rounded-2xl"
+              alt="carousel image"
+            />
+          )}
         </ModalOpen>
       </div>
       <div className="flex items-center gap-6 mt-10 justify-center">
@@ -102,10 +100,20 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
                 className="object-cover w-auto h-auto"
                 alt="carousel image"
               /> */}
-              <MainImageComponent
-                imageUrl={image.imageUrl}
-                defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
-              />
+              {images.length > 0 ? (
+                <MainImageComponent
+                  imageUrl={images[0].imageUrl}
+                  defaultImageUrl={`https://picsum.photos/200/300?random=${randomNumber()}`}
+                />
+              ) : (
+                <Image
+                  src={`https://picsum.photos/200/300?random=${randomNumber()}`}
+                  className="object-cover"
+                  fill
+                  alt="explore den logo"
+                  sizes="(100vw, 100vh)"
+                />
+              )}
             </div>
           ))}
         </div>

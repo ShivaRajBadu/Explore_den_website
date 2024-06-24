@@ -5,12 +5,9 @@ import Link from "next/link";
 import { NavLinks } from "@/constants/data";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
+import DownloadBtn from "./DownloadBtn";
 
-const Navigation = ({
-  handleDownloadClick,
-}: {
-  handleDownloadClick?: () => void;
-}) => {
+const Navigation = () => {
   const pathName = usePathname();
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -116,20 +113,22 @@ const Navigation = ({
               );
             })}
           </ul>
-          <button
+          {/* <button
             onClick={handleDownloadClick}
             className="block mx-auto  w-full mt-auto mb-0   bg-brand  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 "
           >
             Download App
-          </button>
+          </button> */}
+          <DownloadBtn className="block mx-auto  w-full mt-auto mb-0   bg-brand  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins hover:bg-brand/90 duration-300 " />
         </nav>
 
-        <button
+        <DownloadBtn className="hidden lg:block  bg-brand  hover:bg-brand/80 duration-300  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins " />
+        {/* <button
           onClick={handleDownloadClick}
           className="hidden lg:block  bg-brand  hover:bg-brand/80 duration-300  text-background px-6 py-3 rounded-lg font-semibold text-sm font-poppins   "
         >
           Download App
-        </button>
+        </button> */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="cursor-pointer block lg:hidden"

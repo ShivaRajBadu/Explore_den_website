@@ -17,7 +17,7 @@ const QRCodeComponent = ({
   );
 
   return (
-    <div className="hidden md:grid fixed w-full h-full inset-0  place-content-center z-50 bg-black/70">
+    <div className=" fixed w-screen h-screen inset-0 grid  place-content-center z-50 bg-black/70">
       <button
         onClick={(e) => {
           e.stopPropagation();

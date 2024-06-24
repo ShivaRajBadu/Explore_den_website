@@ -4,6 +4,7 @@ import { placeDataType } from "@/types";
 import { randomNumber } from "@/lib/randomNumber";
 import MainImageComponent from "./MainImageComponent";
 import CardNavigator from "./Navigator";
+import Image from "next/image";
 
 const Card = (params: placeDataType) => {
   const cardTypeColor =
@@ -26,10 +27,20 @@ const Card = (params: placeDataType) => {
             alt="explore den logo"
             sizes="(100vw, 100vh)"
           /> */}
-          <MainImageComponent
-            imageUrl={params.images[0].imageUrl}
-            defaultImageUrl={`https://picsum.photos/200/300?random=${randomNumber()}`}
-          />
+          {params.images.length > 0 ? (
+            <MainImageComponent
+              imageUrl={params.images[0].imageUrl}
+              defaultImageUrl={`https://picsum.photos/200/300?random=${randomNumber()}`}
+            />
+          ) : (
+            <Image
+              src={`https://picsum.photos/200/300?random=${randomNumber()}`}
+              className="object-cover"
+              fill
+              alt="explore den logo"
+              sizes="(100vw, 100vh)"
+            />
+          )}
           <p
             className={`backdrop-blur-[6px] capitalize bg-white/80 rounded px-2 py-1 absolute top-4 right-4  text-[10px] font-medium ${cardTypeColor}`}
           >

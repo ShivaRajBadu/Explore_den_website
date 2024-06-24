@@ -1,4 +1,5 @@
 import { getPlaceHolderImageUrl } from "@/lib/getPlaceHolderUrl";
+import { randomNumber } from "@/lib/randomNumber";
 import { placeDataType } from "@/types";
 import Image from "next/image";
 import React, { memo } from "react";
@@ -23,15 +24,25 @@ const ImageSlider = memo(
           draggable="false"
           className={`relative ${height} ${width} rounded-[19px] overflow-hidden`}
         >
-          <Image
-            draggable="false"
-            src={imageProp.images[0].imageUrl}
-            alt="image"
-            fill
-            sizes="(100vw, 100vh)"
-            placeholder="blur"
-            blurDataURL={getPlaceHolderImageUrl(imageProp.images[0].imageUrl)}
-          />
+          {imageProp.images.length > 0 ? (
+            <Image
+              draggable="false"
+              src={imageProp.images[0].imageUrl}
+              alt="image"
+              fill
+              sizes="(100vw, 100vh)"
+              placeholder="blur"
+              blurDataURL={getPlaceHolderImageUrl(imageProp.images[0].imageUrl)}
+            />
+          ) : (
+            <Image
+              draggable="false"
+              src={`https://picsum.photos/200/300?random=${randomNumber()}`}
+              alt="image"
+              fill
+              sizes="(100vw, 100vh)"
+            />
+          )}
         </div>
 
         {isCenterImage && (
