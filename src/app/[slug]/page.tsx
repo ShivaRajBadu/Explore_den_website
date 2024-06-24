@@ -24,19 +24,24 @@ const page = async ({
   const dateTimeQuery = searchParams["filter.dataTime"] || null;
   const categoryQuery = searchParams["filter.category"] || null;
   let slug = params.slug;
+
   if (params.slug === "popular") {
     slug = "event";
   }
+
+  const placeTypeGet =
+    slug == "activity" ? placeType.DESTINATION : (slug as placeType);
 
   const filterOption = filterOptions[slug as Slug];
 
   const datas = await getPlaces({
     limit: 16,
-    placeType: categoryQuery ? null : placeType.DESTINATION,
+    placeType: categoryQuery ? null : placeTypeGet,
     pageNumber: 1,
     filter: categoryQuery || dateTimeQuery,
     isCategory: categoryQuery ? true : false,
   });
+
   query = categoryQuery || dateTimeQuery;
 
   return (

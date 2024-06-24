@@ -1,9 +1,7 @@
 import React from "react";
-import Image from "next/image";
 import IconWithText from "./IconWithText";
-import Link from "next/link";
-import { placeDataType, placeType } from "@/types";
-import { getRandomNumber, randomNumber } from "@/lib/randomNumber";
+import { placeDataType } from "@/types";
+import { randomNumber } from "@/lib/randomNumber";
 import MainImageComponent from "./MainImageComponent";
 import CardNavigator from "./Navigator";
 

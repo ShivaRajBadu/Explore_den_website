@@ -19,7 +19,12 @@ const PlaceList = ({
   query: string;
   isCategory?: boolean;
 }) => {
-  const [places, setPlaces] = React.useState<placeDataType[]>(initialData.data);
+  // filter out places without images
+  const placesWithImages = useMemo(() => {
+    return initialData.data.filter((place) => place.images.length > 0);
+  }, [initialData.data]);
+
+  const [places, setPlaces] = React.useState<placeDataType[]>(placesWithImages);
 
   const [pageNumber, setPageNumber] = React.useState(1);
   const [error, setError] = React.useState<null | string>(null);
@@ -45,7 +50,11 @@ const PlaceList = ({
         } else {
           setHaveMoreData(true);
         }
-        setPlaces((prev) => [...prev, ...newData.data]);
+        // filter out places without images
+        const filteredData = newData.data.filter(
+          (place) => place.images.length > 0
+        );
+        setPlaces((prev) => [...prev, ...filteredData]);
         setPageNumber((prev) => prev + 1);
       }
     } catch (error) {
