@@ -55,10 +55,12 @@ const Card = (params: placeDataType) => {
 
           {params.placeType === "event" && (
             <div className="flex gap-8 items-center py-3">
-              <IconWithText
-                iconSrc="/icons/clock.svg"
-                text={params.event?.startDate!}
-              />
+              {params.event?.startDate && (
+                <IconWithText
+                  iconSrc="/icons/clock.svg"
+                  text={params.event?.startDate!}
+                />
+              )}
               <IconWithText
                 iconSrc="/icons/ticket.svg"
                 text={params.event?.eventType!}

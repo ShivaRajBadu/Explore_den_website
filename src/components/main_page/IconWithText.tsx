@@ -7,8 +7,12 @@ type Props = {
 };
 
 const IconWithText = ({ iconSrc, text }: Props) => {
+  let align = "items-center";
+  if (iconSrc.includes("location")) {
+    align = "items-start";
+  }
   return (
-    <div className="flex gap-2 items-start ">
+    <div className={`flex gap-2  ${align}`}>
       <Image
         src={iconSrc}
         alt={text}
@@ -17,7 +21,7 @@ const IconWithText = ({ iconSrc, text }: Props) => {
         sizes="(100vw, 100vh)"
         className="w-auto h-auto"
       />
-      <p className="font-medium text-xs md:text-sm text-textSecondary">
+      <p className="font-medium line-clamp-2 text-xs md:text-sm text-textSecondary">
         {text}
       </p>
     </div>

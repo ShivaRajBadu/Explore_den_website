@@ -1,4 +1,8 @@
 export const baseUrl = "http://api.exploreden.com";
+export const AndroidDownloadLink =
+  "https://play.google.com/store/apps/details?id=com.adobe.scan.android&pcampaignid=web_share";
+export const IOSDownloadLink =
+  "https://play.google.com/store/apps/details?id=com.intsig.camscanner&pcampaignid=web_share";
 
 export const NavLinks = [
   {

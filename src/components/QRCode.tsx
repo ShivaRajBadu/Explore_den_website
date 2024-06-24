@@ -11,7 +11,7 @@ const QRCodeComponent = ({
   apkLink: string;
   IosLink: string;
   device: string;
-  toggleModal: any;
+  toggleModal: Function;
 }) => {
   const initialUrl = device === "Desktop" ? apkLink : IosLink;
   const [url, setUrl] = React.useState(initialUrl);

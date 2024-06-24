@@ -1,3 +1,5 @@
+import { AndroidDownloadLink, IOSDownloadLink } from "@/constants/data";
+
 export function timeAgo(datetime: string): string {
   const now = new Date();
   const past = new Date(datetime);
@@ -94,3 +96,8 @@ export function detectDevice() {
 
   return "Unknown";
 }
+
+export const getAppLinkBaseOnDevice = () => {
+  const device = detectDevice();
+  return device === "Desktop" ? AndroidDownloadLink : IOSDownloadLink;
+};

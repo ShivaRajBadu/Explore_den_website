@@ -38,9 +38,7 @@ const HeroSection = async () => {
       <Wrapper>
         <div className="text-center relative pt-10  md:pt-16 lg:pt-20">
           <HeroText />
-          {/* <button className="bg-brand hover:bg-brand/80 duration-300 text-background cursor-pointer text-center mt-3 rounded-lg px-6 py-3 font-semibold text-base">
-            Download The App
-          </button> */}
+
           {/* icons */}
           <div className="hidden xl:block">
             <div className="absolute icon_animation top-[0px] left-[235px]">
@@ -52,7 +50,7 @@ const HeroSection = async () => {
             <div className="absolute icon_animation bottom-[30px] left-[235px]">
               <ActivityIcon />
             </div>
-            <div className="absolute icon_animation top-[0px] right-[235px]">
+            <div className="absolute icon_animation top-[3px] right-[235px]">
               <CompassIcon />
             </div>
             <div className="absolute icon_animation top-[153px] right-[160px]">
