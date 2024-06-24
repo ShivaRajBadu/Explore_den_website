@@ -11,7 +11,7 @@ import { getRandomNumber } from "@/lib/getRandom";
 const EventSection = async () => {
   const { data: events } = await getPlaces({
     limit: 4,
-    placeType: placeType.DESTINATION,
+    placeType: placeType.EVENT,
     pageNumber: 1,
   });
 

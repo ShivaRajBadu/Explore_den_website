@@ -10,6 +10,8 @@ const Card = (params: placeDataType) => {
   const cardTypeColor =
     params.placeType === "event" ? "text-brand" : "text-blue";
 
+  console.log(params.event);
+
   return (
     <CardNavigator placeType={params.placeType} id={params.id}>
       <div
@@ -52,6 +54,7 @@ const Card = (params: placeDataType) => {
             {params.name}
           </h2>
           <IconWithText iconSrc="/icons/location.svg" text={params.address} />
+
           {params.placeType === "event" && (
             <div className="flex gap-8 items-center py-3">
               <IconWithText
