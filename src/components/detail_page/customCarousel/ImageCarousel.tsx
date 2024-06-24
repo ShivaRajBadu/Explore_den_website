@@ -40,12 +40,18 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
           className="object-cover w-auto h-auto md:rounded-2xl"
           alt="carousel image"
         /> */}
+        {/* <MainImageComponent
+          key={images[currentIndex].imageUrl}
+          imageUrl={images[currentIndex].imageUrl}
+          defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
+        /> */}
         <ModalOpen
           images={images}
           className="w-full h-full cursor-pointer"
           currentIndex={currentIndex}
         >
           <MainImageComponent
+            key={images[currentIndex].imageUrl}
             imageUrl={images[currentIndex].imageUrl}
             defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
           />

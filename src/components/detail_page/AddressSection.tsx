@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import CustomMap from "../Map";
 const AddressSection = ({
@@ -8,7 +7,7 @@ const AddressSection = ({
   website,
 }: {
   address: string;
-  location: string;
+  location: any;
   website: string;
 }) => {
   return (
@@ -21,7 +20,12 @@ const AddressSection = ({
       </div>
       {/* <Image src="/images/google_map.png" alt="map" width={776} height={365} /> */}
       <div className="flex gap-4 w-full my-6">
-        <button className="flex items-center justify-center p-3 rounded-lg gap-2 border border-brand w-full font-semibold text-sm text-brand">
+        <Link
+          prefetch={false}
+          href={`https://www.google.com/maps/dir/?api=1&destination=${location.y},${location.x}`}
+          target="_blank"
+          className="flex items-center justify-center p-3 rounded-lg gap-2 border border-brand w-full font-semibold text-sm text-brand"
+        >
           Get Direction
           <svg
             width="21"
@@ -45,7 +49,7 @@ const AddressSection = ({
               strokeLinejoin="round"
             />
           </svg>
-        </button>
+        </Link>
         <Link
           href={website ? website : "#"}
           prefetch={false}
