@@ -3,8 +3,11 @@ import Wrapper from "../Wrapper";
 import Image from "next/image";
 import Tag from "./Tag";
 import { tags } from "@/constants/data";
+import { getCategories } from "@/actions/getCategory";
 
-const FindWhatYouLoveSection = () => {
+const FindWhatYouLoveSection = async () => {
+  const data = await getCategories();
+
   return (
     <div className="bg-background-purple pt-[72px] mt-24 mb-10">
       <Wrapper>
@@ -17,8 +20,8 @@ const FindWhatYouLoveSection = () => {
               Find event curate events specially for your intrest
             </p>
             <div className="flex flex-wrap gap-4 my-10 w-full ">
-              {tags.map((tag) => (
-                <Tag text={tag} key={tag.id} />
+              {data.map((tag: string) => (
+                <Tag text={tag} key={tag} />
               ))}
             </div>
           </div>

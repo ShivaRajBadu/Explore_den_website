@@ -26,7 +26,7 @@ export async function getPlaces(
 
   if (filter) {
     if (isCategory) {
-      url.searchParams.append("filter.category", filter.toLocaleLowerCase());
+      url.searchParams.append("filter.category", filter);
     } else {
       // @ts-ignore
       const filterDateTime = getDateTimeString(filter);

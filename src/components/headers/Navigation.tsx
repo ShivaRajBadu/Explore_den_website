@@ -3,25 +3,16 @@ import React, { useEffect } from "react";
 import Wrapper from "../Wrapper";
 import Link from "next/link";
 import { NavLinks } from "@/constants/data";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
-import QRCodeComponent from "../QRCode";
-import { detectDevice } from "@/utils";
 
-const Navigation = () => {
-  const AndroidDownloadLink =
-    "https://play.google.com/store/apps/details?id=com.adobe.scan.android&pcampaignid=web_share";
-  const IOSDownloadLink =
-    "https://play.google.com/store/apps/details?id=com.intsig.camscanner&pcampaignid=web_share";
-
-  const router = useRouter();
-
+const Navigation = ({
+  handleDownloadClick,
+}: {
+  handleDownloadClick?: () => void;
+}) => {
   const pathName = usePathname();
   const [isOpen, setIsOpen] = React.useState(false);
-  const [showDownloadQr, setShowDownloadQr] = React.useState(false);
-  const [device, setDevice] = React.useState<
-    "iOS Device" | "Android Device" | "Mac" | "Desktop" | "Unknown"
-  >("Unknown");
 
   useEffect(() => {
     // Function to handle window resize
@@ -48,30 +39,6 @@ const Navigation = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isOpen]);
-
-  useEffect(() => {
-    if (showDownloadQr) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "auto";
-    }
-  }, [showDownloadQr]);
-
-  const handleDownloadClick = () => {
-    const device = detectDevice();
-    setDevice(device);
-    if (device === "Desktop" || device === "Mac") {
-      setShowDownloadQr(true);
-    } else {
-      if (device === "iOS Device") {
-        router.push(IOSDownloadLink, { scroll: false });
-      } else {
-        router.push(AndroidDownloadLink, {
-          scroll: false,
-        });
-      }
-    }
-  };
 
   return (
     <Wrapper>
@@ -184,15 +151,6 @@ const Navigation = () => {
           </svg>
         </button>
       </div>
-
-      {showDownloadQr && (
-        <QRCodeComponent
-          apkLink={AndroidDownloadLink}
-          IosLink={IOSDownloadLink}
-          device={device}
-          toggleModal={setShowDownloadQr}
-        />
-      )}
     </Wrapper>
   );
 };

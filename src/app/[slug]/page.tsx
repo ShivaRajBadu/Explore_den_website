@@ -8,6 +8,7 @@ import { getPlaces } from "@/actions/getPlaces";
 import Wrapper from "@/components/Wrapper";
 import Filter from "@/components/Filter";
 import { filterOptions } from "@/lib/filterOptionMapping";
+import { getCategories } from "@/actions/getCategory";
 
 const page = async ({
   params,
@@ -32,7 +33,17 @@ const page = async ({
   const placeTypeGet =
     slug == "activity" ? placeType.DESTINATION : (slug as placeType);
 
-  const filterOption = filterOptions[slug as Slug];
+  let filterOption;
+
+  if (categoryQuery) {
+    filterOption = await getCategories();
+
+    filterOption = filterOption.map((item: string) => {
+      return { value: item, label: item };
+    });
+  } else {
+    filterOption = filterOptions[slug as Slug];
+  }
 
   const datas = await getPlaces({
     limit: 16,

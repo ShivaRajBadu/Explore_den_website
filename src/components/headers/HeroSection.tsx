@@ -10,13 +10,18 @@ import MainCarousel from "./MainCarousel";
 
 import Image from "next/image";
 import { getPlaces } from "@/actions/getPlaces";
-import { placeType } from "@/types";
+import { placeDataType, placeType } from "@/types";
 
 const HeroSection = async () => {
   const { data } = await getPlaces({
     pageNumber: 1,
     limit: 10,
     placeType: placeType.DESTINATION,
+  });
+  //  filter out places without images
+
+  const filterData = data.filter((place: placeDataType) => {
+    return place.images.length > 0;
   });
 
   return (
@@ -67,7 +72,7 @@ const HeroSection = async () => {
           </div>
         </div>
       </Wrapper>
-      <MainCarousel data={data} />
+      <MainCarousel data={filterData} />
     </>
   );
 };

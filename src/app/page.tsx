@@ -17,7 +17,9 @@ import PopularSectionSkeleton from "@/components/skeletons/PopularSectionSkeleto
 export default function Home() {
   return (
     <main>
-      <Headers background="bg-[#F6F6F6]">
+      {/* <HeaderPart />
+       */}
+      <Headers background="bg-background">
         <Navigation />
         <HeroSection />
       </Headers>

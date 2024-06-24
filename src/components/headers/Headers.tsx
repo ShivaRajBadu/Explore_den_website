@@ -1,3 +1,7 @@
+"use client";
+
+import React from "react";
+
 const Headers = ({
   children,
   background,
@@ -6,9 +10,11 @@ const Headers = ({
   background: string;
 }) => {
   return (
-    <header className={`${background} mx-auto w-full relative z-50  `}>
-      {children}
-    </header>
+    <>
+      <header className={`${background} mx-auto w-full relative z-50  `}>
+        {children}
+      </header>
+    </>
   );
 };
 

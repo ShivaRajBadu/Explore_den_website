@@ -5,12 +5,14 @@ import React from "react";
 import "mapbox-gl/src/css/mapbox-gl.css";
 import Image from "next/image";
 const CustomMap = ({ location }: { location: any }) => {
+  console.log(location);
+
   return (
     <Map
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}
       initialViewState={{
-        longitude: location.x,
-        latitude: location.y,
+        longitude: location.y,
+        latitude: location.x,
         zoom: 8,
       }}
       style={{
@@ -19,7 +21,7 @@ const CustomMap = ({ location }: { location: any }) => {
       }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
-      <Marker longitude={location.x} latitude={location.y} anchor="bottom">
+      <Marker longitude={location.y} latitude={location.x} anchor="bottom">
         <Image src="/icons/pin.svg" alt="pin" width={24} height={24} />
       </Marker>
     </Map>

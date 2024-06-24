@@ -34,7 +34,9 @@ const Filter = ({
         className="flex justify-between items-center gap-4 rounded-md cursor-pointer border border-[#A1A1AA] px-2 py-1"
       >
         <p className="text-sm text-textSecondary capitalize font-normal">
-          {searchParams.get("filter.dataTime") || "All"}
+          {searchParams.get("filter.dataTime") ||
+            searchParams.get("filter.category") ||
+            "All"}
         </p>
         <svg
           width="16"
