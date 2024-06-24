@@ -4,11 +4,16 @@ import Details from "@/components/detail_page/Details";
 
 import ReviewSection from "@/components/detail_page/review/reviewSection";
 import YouMayLike from "@/components/detail_page/YouMayLike";
+import { notFound } from "next/navigation";
 
 import React from "react";
 
 const page = async ({ params }: { params: { id: string } }) => {
   const place = await getPlace(parseInt(params.id));
+
+  if (!place) {
+    return notFound();
+  }
 
   return (
     <div className="max-w-[1440px] mx-auto  w-full md:w-[90%] my-6">

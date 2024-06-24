@@ -10,8 +10,6 @@ const Card = (params: placeDataType) => {
   const cardTypeColor =
     params.placeType === "event" ? "text-brand" : "text-blue";
 
-  console.log(params.event);
-
   return (
     <CardNavigator placeType={params.placeType} id={params.id}>
       <div

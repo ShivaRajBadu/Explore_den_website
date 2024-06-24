@@ -21,9 +21,6 @@ const MainImageComponent = ({
         alt="explore den logo"
         sizes="(100vw, 100vh)"
         onError={() => {
-          console.log("error");
-          console.log(defaultImageUrl);
-
           setSrc(defaultImageUrl);
         }}
       />

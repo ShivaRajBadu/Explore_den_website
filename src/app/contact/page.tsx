@@ -1,12 +1,15 @@
 import Wrapper from "@/components/Wrapper";
 import Image from "next/image";
 import React from "react";
-import CustomForm from "./CustomForm";
+
 import ContactImage from "../../../public/images/contact_image.png";
+import CustomForm from "@/components/contact_page/CustomForm";
+import Navigation from "@/components/headers/Navigation";
 
 const page = () => {
   return (
-    <div>
+    <>
+      <Navigation />
       <Wrapper>
         <div className="flex  gap-10 py-20  ">
           <div className="w-full lg:w-1/2">
@@ -26,7 +29,7 @@ const page = () => {
           </div>
         </div>
       </Wrapper>
-    </div>
+    </>
   );
 };
 

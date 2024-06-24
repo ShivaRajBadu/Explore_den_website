@@ -1,4 +1,3 @@
-import { getPlaceHolderImageUrl } from "@/lib/getPlaceHolderUrl";
 import { randomNumber } from "@/lib/randomNumber";
 import { placeDataType } from "@/types";
 import Image from "next/image";
@@ -31,8 +30,6 @@ const ImageSlider = memo(
               alt="image"
               fill
               sizes="(100vw, 100vh)"
-              placeholder="blur"
-              blurDataURL={getPlaceHolderImageUrl(imageProp.images[0].imageUrl)}
             />
           ) : (
             <Image

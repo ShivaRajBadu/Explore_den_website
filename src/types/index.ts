@@ -47,7 +47,7 @@ export type Event = {
 export type ReviewedBy = {
   id: number;
   name: string;
-  username: string;
+
   profilePic: string;
   email: string;
   loginType: string;

@@ -1,7 +1,10 @@
 import React from "react";
-import Wrapper from "../Wrapper";
 import Link from "next/link";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Contact Us",
+};
 const ContactUs = () => {
   return (
     <div className="my-14 md:py-14">

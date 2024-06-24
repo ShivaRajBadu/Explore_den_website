@@ -45,12 +45,19 @@ export async function getPlaces(
   return data;
 }
 
-export async function getPlace(id: number): Promise<placeDataType> {
-  const response = await fetch(`${baseUrl}/places/${id}`, {
-    cache: "no-store",
-  });
-
-  const data = await response.json();
-
-  return data;
+export async function getPlace(id: number): Promise<placeDataType | null> {
+  try {
+    const response = await fetch(`${baseUrl}/places/${id}`, {
+      cache: "no-store",
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error in getPlace:", error);
+    return null;
+  }
 }
