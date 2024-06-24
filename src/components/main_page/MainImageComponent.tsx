@@ -21,7 +21,12 @@ const MainImageComponent = ({
         fill
         alt="explore den logo"
         sizes="(100vw, 100vh)"
-        onError={() => setSrc(defaultImageUrl)}
+        onError={() => {
+          console.log("error");
+          console.log(defaultImageUrl);
+
+          setSrc(defaultImageUrl);
+        }}
         placeholder="blur"
         blurDataURL={getPlaceHolderImageUrl(src)}
       />

@@ -8,7 +8,7 @@ type Props = {
 
 const IconWithText = ({ iconSrc, text }: Props) => {
   return (
-    <div className="flex gap-2 items-center ">
+    <div className="flex gap-2 items-start ">
       <Image
         src={iconSrc}
         alt={text}

@@ -38,21 +38,11 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
           className="w-full h-full cursor-pointer"
           currentIndex={currentIndex}
         >
-          {images.length > 0 ? (
-            <MainImageComponent
-              key={images[currentIndex].imageUrl}
-              imageUrl={images[currentIndex].imageUrl}
-              defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
-            />
-          ) : (
-            <Image
-              src={`https://picsum.photos/200/300?random=${randomIndex}`}
-              fill
-              sizes="(100vw, 100vh)"
-              className="object-cover w-auto h-auto md:rounded-2xl"
-              alt="carousel image"
-            />
-          )}
+          <MainImageComponent
+            key={images[currentIndex].imageUrl}
+            imageUrl={images[currentIndex].imageUrl}
+            defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
+          />
         </ModalOpen>
       </div>
       <div className="flex items-center gap-6 mt-10 justify-center">
@@ -93,27 +83,13 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
                   : "border-2 border-transparent"
               }`}
             >
-              {/* <Image
+              <Image
                 src={image.imageUrl}
                 fill
                 sizes="(100vw, 100vh)"
                 className="object-cover w-auto h-auto"
                 alt="carousel image"
-              /> */}
-              {images.length > 0 ? (
-                <MainImageComponent
-                  imageUrl={images[0].imageUrl}
-                  defaultImageUrl={`https://picsum.photos/200/300?random=${randomNumber()}`}
-                />
-              ) : (
-                <Image
-                  src={`https://picsum.photos/200/300?random=${randomNumber()}`}
-                  className="object-cover"
-                  fill
-                  alt="explore den logo"
-                  sizes="(100vw, 100vh)"
-                />
-              )}
+              />
             </div>
           ))}
         </div>

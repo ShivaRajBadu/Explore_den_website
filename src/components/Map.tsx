@@ -5,15 +5,13 @@ import React from "react";
 import "mapbox-gl/src/css/mapbox-gl.css";
 import Image from "next/image";
 const CustomMap = ({ location }: { location: any }) => {
-  console.log(location);
-
   return (
     <Map
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}
       initialViewState={{
         longitude: location.y,
         latitude: location.x,
-        zoom: 12,
+        zoom: 15,
       }}
       style={{
         width: "100%",

@@ -2,7 +2,6 @@ import React from "react";
 import Wrapper from "../Wrapper";
 import Image from "next/image";
 import Tag from "./Tag";
-import { tags } from "@/constants/data";
 import { getCategories } from "@/actions/getCategory";
 
 const FindWhatYouLoveSection = async () => {
