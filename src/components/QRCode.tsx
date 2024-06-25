@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import QRCode from "react-qr-code";
 
 const QRCodeComponent = ({
@@ -17,6 +17,8 @@ const QRCodeComponent = ({
   const [url, setUrl] = React.useState(initialUrl);
   const [isInitialDevice, setIsInitialDevice] = React.useState(true);
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
   const toggleUrl = () => {
     if (isInitialDevice) {
       setUrl(device === "Desktop" ? IosLink : apkLink);
@@ -25,6 +27,19 @@ const QRCodeComponent = ({
     }
     setIsInitialDevice(!isInitialDevice);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      toggleModal(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="fixed w-screen h-screen inset-0 grid place-content-center z-50 bg-black/70">
@@ -58,7 +73,10 @@ const QRCodeComponent = ({
           />
         </svg>
       </button>
-      <div className="w-[400px] h-[450px] rounded-lg bg-white p-12 flex flex-col justify-center items-center">
+      <div
+        ref={modalRef}
+        className="w-[400px] h-[450px] rounded-lg bg-white p-12 flex flex-col justify-center items-center"
+      >
         <QRCode
           value={url}
           width={200}
@@ -81,7 +99,7 @@ const QRCodeComponent = ({
             : device === "Desktop"
             ? "Android"
             : "iOS"}{" "}
-          ):
+          )
         </button>
       </div>
     </div>
