@@ -76,7 +76,7 @@ const PlaceList = ({
   return (
     <>
       <div
-        style={{ gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))" }}
+        style={{ gridTemplateColumns: "repeat(auto-fill,minmax(330px,1fr))" }}
         className="grid gap-x-5 gap-y-12 my-6 py-6"
       >
         {places!.map((data) => {

@@ -20,7 +20,7 @@ const PopularSection = async () => {
       <Wrapper>
         <SectionHeaderWithViewAll sectionTitle="Popular" link="/popular" />
         <div
-          style={{ gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))" }}
+          style={{ gridTemplateColumns: "repeat(auto-fit,minmax(315px,1fr))" }}
           className="flex lg:grid gap-x-6 px-1 py-2 gap-y-12 flex-nowrap hide_scrollbar overflow-x-scroll "
         >
           {populars!.map((popular, index) => {

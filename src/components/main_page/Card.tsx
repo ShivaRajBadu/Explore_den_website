@@ -14,7 +14,7 @@ const Card = (params: placeDataType) => {
     <CardNavigator placeType={params.placeType} id={params.id}>
       <div
         draggable={false}
-        className="min-w-[220px] lg:max-w-[350px] relative  md:min-w-[260px] lg:min-w-[290px] w-full cursor-pointer card_shadow  rounded-2xl  duration-300 "
+        className="min-w-[220px] xl:w-[340px]  relative  md:min-w-[260px] lg:min-w-[290px] w-full cursor-pointer card_shadow  rounded-2xl  duration-300 "
       >
         <div
           draggable={false}
