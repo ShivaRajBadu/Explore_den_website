@@ -1,6 +1,6 @@
 import Wrapper from "@/components/Wrapper";
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
 
 import ContactImage from "../../../public/images/contact_image.png";
 import CustomForm from "@/components/contact_page/CustomForm";
@@ -17,7 +17,15 @@ const page = () => {
             <h1 className="text-textPrimary text-4xl font-semibold">
               Get In Touch
             </h1>
-            <CustomForm />
+            <Suspense
+              fallback={
+                <div className="h-[60vh] flex justify-center items-center">
+                  loading....
+                </div>
+              }
+            >
+              <CustomForm />
+            </Suspense>
           </div>
           <div className="hidden lg:block w-1/2 relative h-[677px]">
             <Image
