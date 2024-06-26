@@ -5,6 +5,7 @@ import React from "react";
 import ContactImage from "../../../public/images/contact_image.png";
 import CustomForm from "@/components/contact_page/CustomForm";
 import Navigation from "@/components/headers/Navigation";
+import Script from "next/script";
 
 const page = () => {
   return (

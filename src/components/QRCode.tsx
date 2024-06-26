@@ -39,7 +39,7 @@ const QRCodeComponent = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [handleClickOutside]);
 
   return (
     <div className="fixed w-screen h-screen inset-0 grid place-content-center z-50 bg-black/70">

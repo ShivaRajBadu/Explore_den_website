@@ -6,11 +6,14 @@ import { useFormState } from "react-dom";
 import toast from "react-simple-toasts";
 import Turnstile from "./Turnstile";
 import SendButton from "./SendButton";
+import { useSearchParams } from "next/navigation";
 const initialState = {
   message: null,
   success: null,
 };
 const CustomForm = () => {
+  const params = useSearchParams();
+
   const [state, formAction] = useFormState(postContactInfo, initialState);
   if (state.error) {
     toast(state.error, {
@@ -77,12 +80,18 @@ const CustomForm = () => {
           name="description"
           id="Description"
           rows={7}
+          value={params.get("description") || ""}
           required
           placeholder="Enter a description"
         ></textarea>
       </div>
       <div className="h-[65px]">
         <Turnstile />
+        {/* <div
+          className="cf-turnstile"
+          data-Theme="light"
+          data-sitekey="0x4AAAAAAAcSeHlw_xq5Ab-R"
+        ></div> */}
       </div>
       <SendButton />
     </form>

@@ -46,12 +46,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={poppins.variable}>
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        async
-        defer
-      />
-
       <body>
         <NextTopLoader color="#EB3A66" initialPosition={0.15} height={5} />
         <Provider>
