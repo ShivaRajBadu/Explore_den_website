@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   description:
     " ExploreDen is a comprehensive platform for all travel enthusiasts. We use an innovative approach to help travelers discover the best local destinations, hidden gems, adventures, and events. Our mobile app works in being able to help travelers find EADs rapidly with left or right swipes on EADs within the app, within seconds, without the headache of going through the old school way. Join ExploreDen today for curated travel guides and itineraries, seamless booking of unique experiences, connecting with fellow adventurers, and much more! Contact",
   keywords: ["Travel", "Exploration", "Destination", "Events", "Activities"],
+  metadataBase: new URL("https://exploreden.com.au/"),
   openGraph: {
     title: "ExploreDen",
     description:

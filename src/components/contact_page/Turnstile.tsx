@@ -33,6 +33,7 @@ const Turnstile = () => {
     //@ts-ignore
     const widgetId = window.turnstile.render(turnstileRef.current, {
       theme: "light",
+
       sitekey: "0x4AAAAAAAcSeHlw_xq5Ab-R",
       callback: handleVerify,
     });

@@ -7,7 +7,7 @@ import Image from "next/image";
 const CustomMap = ({ location }: { location: any }) => {
   return (
     <Map
-      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_KEY}
+      mapboxAccessToken="pk.eyJ1Ijoic2F1cmF2bmlyYXVsYSIsImEiOiJja2F5eHd2Y3AwOGMzMnNxYno3M2xmMXdkIn0.QeVxe4rfaHG4KsgQ7FbZqA"
       initialViewState={{
         longitude: location.y,
         latitude: location.x,
