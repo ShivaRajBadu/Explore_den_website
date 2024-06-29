@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import downloadImageFrame from "../../../public/images/download_frame.png";
 
 const DownloadSection = () => {
   return (
@@ -23,7 +24,7 @@ const DownloadSection = () => {
 
           {/* <div className="w-full h-full relative"> */}
           <Image
-            src="/images/download_frame.png"
+            src={downloadImageFrame}
             alt="download frame"
             width={0}
             height={0}

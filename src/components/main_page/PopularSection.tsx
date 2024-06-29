@@ -24,7 +24,7 @@ const PopularSection = async () => {
           className="flex lg:grid gap-x-6 px-1 py-2 gap-y-12 flex-nowrap hide_scrollbar overflow-x-scroll "
         >
           {populars!.map((popular, index) => {
-            return <Card {...popular} key={popular.id} />;
+            return <Card params={popular} key={popular.id} />;
           })}
         </div>
       </Wrapper>

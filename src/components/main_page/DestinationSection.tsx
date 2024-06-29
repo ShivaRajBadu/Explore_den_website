@@ -24,7 +24,7 @@ const DestinationSection = async () => {
         />
         <div className="flex gap-5 flex-nowrap hide_scrollbar overflow-x-scroll  py-2 px-1">
           {Destinations.map((destination) => {
-            return <Card {...destination} key={destination.id} />;
+            return <Card params={destination} key={destination.id} />;
           })}
         </div>
       </Wrapper>

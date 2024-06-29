@@ -1,6 +1,4 @@
-import Footer from "@/components/Footer";
 import ActivitiesSection from "@/components/main_page/ActivitiesSection";
-import BlogSection from "@/components/main_page/BlogSection";
 import ContactUs from "@/components/main_page/ContactUs";
 import DestinationSection from "@/components/main_page/DestinationSection";
 import DownloadSection from "@/components/main_page/DownloadSection";

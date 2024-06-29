@@ -15,7 +15,7 @@ const IconWithText = ({ iconSrc, text }: Props) => {
     <div className={`flex gap-2  ${align}`}>
       <Image
         src={iconSrc}
-        alt={text}
+        alt={`${text}icon`}
         width={-0}
         height={0}
         sizes="(100vw, 100vh)"

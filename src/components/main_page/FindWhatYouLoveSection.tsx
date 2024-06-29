@@ -3,6 +3,7 @@ import Wrapper from "../Wrapper";
 import Image from "next/image";
 import Tag from "./Tag";
 import { getCategories } from "@/actions/getCategory";
+import findSvg from "../../../public/icons/find.svg";
 
 const FindWhatYouLoveSection = async () => {
   const data = await getCategories();
@@ -26,8 +27,8 @@ const FindWhatYouLoveSection = async () => {
           </div>
           <div className="hidden lg:block lg:w-[60%]">
             <Image
-              src="/icons/find.svg"
-              alt="fin"
+              src={findSvg}
+              alt="find"
               width={0}
               height={0}
               className="w-auto h-auto ml-auto mr-0"

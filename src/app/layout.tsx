@@ -32,9 +32,11 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/icons/logo.svg",
+        alt: "openGraph image",
       },
       {
         url: "/icons/logo_white.svg",
+        alt: "openGraph image",
       },
     ],
   },

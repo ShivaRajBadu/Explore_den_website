@@ -1,4 +1,4 @@
-import React from "react";
+import React, { act } from "react";
 
 import Card from "./Card";
 import Wrapper from "../Wrapper";
@@ -11,7 +11,7 @@ import { getRandomNumber } from "@/lib/getRandom";
 const ActivitiesSection = async () => {
   const { data: Activities } = await getPlaces({
     limit: 4,
-    placeType: placeType.DESTINATION,
+    placeType: placeType.ACTIVITY,
     pageNumber: 1,
   });
   return (
@@ -23,7 +23,7 @@ const ActivitiesSection = async () => {
         />
         <div className="flex gap-5 flex-nowrap py-2 hide_scrollbar overflow-x-scroll px-1 ">
           {Activities.map((activity) => {
-            return <Card {...activity} key={activity.id} />;
+            return <Card params={activity} key={activity.id} />;
           })}
         </div>
       </Wrapper>

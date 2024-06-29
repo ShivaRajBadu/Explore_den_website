@@ -80,7 +80,7 @@ const PlaceList = ({
         className="grid gap-x-5 gap-y-12 my-6 py-6"
       >
         {places!.map((data) => {
-          return <Card {...data} key={data.id} />;
+          return <Card params={data} key={data.id} />;
         })}
         {loading && skeletonCards}
       </div>

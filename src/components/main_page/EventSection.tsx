@@ -24,7 +24,7 @@ const EventSection = async () => {
         />
         <div className="flex gap-5 flex-nowrap py-2 hide_scrollbar overflow-x-scroll px-1 ">
           {events!.map((event, index) => {
-            return <Card {...event} key={index} />;
+            return <Card params={event} key={index} />;
           })}
         </div>
       </Wrapper>
