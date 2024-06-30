@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="w-[40%]">
             <Image
               src="/icons/logo_white.svg"
-              alt="explorden log"
+              alt="explorden logo"
               width={0}
               height={0}
               priority
