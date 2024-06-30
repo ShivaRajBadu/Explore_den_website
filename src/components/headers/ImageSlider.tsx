@@ -29,11 +29,13 @@ const ImageSlider = memo(
               src={imageProp.images[0].imageUrl}
               alt="image"
               sizes="(100vw, 100vh)"
+              loading="eager"
               className="w-full h-full"
             />
           ) : (
             <img
               draggable="false"
+              loading="eager"
               src={`https://picsum.photos/200/300?random=${randomNumber()}`}
               alt="image"
               className="w-full h-full"

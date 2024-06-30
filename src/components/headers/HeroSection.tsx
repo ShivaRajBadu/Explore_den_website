@@ -17,7 +17,7 @@ import HeroText from "./HeroText";
 const HeroSection = async () => {
   const { data } = await getPlaces({
     pageNumber: 1,
-    limit: 10,
+    limit: 9,
     placeType: placeType.DESTINATION,
   });
   //  filter out places without images

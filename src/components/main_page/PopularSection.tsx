@@ -1,12 +1,13 @@
 import React from "react";
 import Wrapper from "../Wrapper";
-import Card from "./Card";
+// import Card from "./Card";
 
 import SectionHeaderWithViewAll from "./SectionHeaderWithViewAll";
 
 import { placeType } from "@/types";
 import { getPlaces } from "@/actions/getPlaces";
 import { getRandomNumber } from "@/lib/getRandom";
+import dynamic from "next/dynamic";
 
 const PopularSection = async () => {
   const { data: populars } = await getPlaces({
@@ -14,6 +15,8 @@ const PopularSection = async () => {
     placeType: placeType.DESTINATION,
     pageNumber: getRandomNumber(20),
   });
+
+  const Card = dynamic(() => import("../main_page/Card"));
 
   return (
     <div className="py-4 my-4">

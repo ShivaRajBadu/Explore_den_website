@@ -23,8 +23,8 @@ const DownloadSection = () => {
           />
 
           {/* <div className="w-full h-full relative"> */}
-          <Image
-            src={downloadImageFrame}
+          <img
+            src="images/download_frame.png"
             alt="download frame"
             width={0}
             height={0}

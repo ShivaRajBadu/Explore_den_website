@@ -27,11 +27,11 @@ const Card = ({
       }
       prefetch={false}
       draggable={false}
-      className="min-w-[220px] xl:w-[340px]  relative  md:min-w-[260px] lg:min-w-[290px] w-full cursor-pointer card_shadow  rounded-2xl  duration-300 "
+      className="min-w-[220px]  xl:w-[340px]  relative  md:min-w-[260px] lg:min-w-[290px] w-full cursor-pointer card_shadow  rounded-2xl  duration-300 "
     >
       <div
         draggable={false}
-        className="relative  w-full h-[250px] md:h-[300px] lg:h-[350px] xl:h-[380px] rounded-2xl overflow-hidden "
+        className="relative bg-gray-300  w-full h-[250px] md:h-[300px] lg:h-[350px] xl:h-[380px] rounded-2xl overflow-hidden "
       >
         {/* <Image
             src={params.images[0].imageUrl}
@@ -41,18 +41,18 @@ const Card = ({
             sizes="(100vw, 100vh)"
           /> */}
         {params.images.length > 0 ? (
-          <Image
+          <img
             src={params.images[0].imageUrl}
-            className="object-cover"
-            fill
+            className="object-cover h-full w-full"
+            loading="lazy"
             alt="explore den logo"
             sizes="(100vw, 100vh)"
           />
         ) : (
-          <Image
+          <img
+            loading="lazy"
             src={`https://picsum.photos/200/300?random=${randomNumber()}`}
-            className="object-cover"
-            fill
+            className="object-cover h-full w-full"
             alt="explore den logo"
             sizes="(100vw, 100vh)"
           />
