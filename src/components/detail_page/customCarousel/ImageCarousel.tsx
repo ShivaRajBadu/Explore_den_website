@@ -1,9 +1,7 @@
 "use client";
 
-import MainImageComponent from "@/components/main_page/MainImageComponent";
 import { randomNumber } from "@/lib/randomNumber";
 import { Imagetype } from "@/types";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ModalOpen from "../review/ModalOpen";
 
@@ -32,17 +30,24 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
   return (
     <div>
       {/* main image */}
-      <div className="relative w-full h-[500px]">
+      <div className="relative w-full h-[500px] overflow-hidden">
         <ModalOpen
           images={images}
-          className="w-full h-full cursor-pointer"
+          className="w-full h-full "
           currentIndex={currentIndex}
         >
-          <MainImageComponent
+          <img
+            key={images[currentIndex].imageKey}
+            src={images[currentIndex].imageUrl}
+            className="object-cover h-full w-full cursor-pointer"
+            alt="explore den logo"
+            sizes="(100vw, 100vh)"
+          />
+          {/* <MainImageComponent
             key={images[currentIndex].imageUrl}
             imageUrl={images[currentIndex].imageUrl}
             defaultImageUrl={`https://picsum.photos/200/300?random=${randomIndex}`}
-          />
+          /> */}
         </ModalOpen>
       </div>
       <div className="flex items-center gap-6 mt-10 justify-center">
@@ -83,11 +88,10 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
                   : "border-2 border-transparent"
               }`}
             >
-              <Image
+              <img
                 src={image.imageUrl}
-                fill
                 sizes="(100vw, 100vh)"
-                className="object-cover w-auto h-auto"
+                className="object-cover w-full h-full"
                 alt="carousel image"
               />
             </div>

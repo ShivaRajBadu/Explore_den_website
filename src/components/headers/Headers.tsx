@@ -11,9 +11,7 @@ const Headers = ({
 }) => {
   return (
     <>
-      <header
-        className={`${background} min-h-screen mx-auto w-full relative z-50  `}
-      >
+      <header className={`${background}  mx-auto w-full relative z-50  `}>
         {children}
       </header>
     </>

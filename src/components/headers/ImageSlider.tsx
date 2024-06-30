@@ -13,6 +13,10 @@ const ImageSlider = memo(
   ({ height = "h-[440px]", width = "w-[280px]", imageProp }: Props) => {
     const isCenterImage = height === "h-[341px] lg:h-[440px]";
     const applyAnimation = isCenterImage ? "fade-in" : "";
+    const imageUrl =
+      imageProp.images.length > 0
+        ? imageProp.images[0].imageUrl
+        : `https://picsum.photos/200/300?random=${randomNumber()}`;
 
     return (
       <div
@@ -21,27 +25,15 @@ const ImageSlider = memo(
       >
         <div
           draggable="false"
-          className={`relative ${height} ${width} rounded-[19px] overflow-hidden`}
+          className={`relative ${height} ${width} bg-[#f90062]/40 rounded-[19px] overflow-hidden`}
         >
-          {imageProp.images.length > 0 ? (
-            <img
-              draggable="false"
-              src={imageProp.images[0].imageUrl}
-              alt="image"
-              sizes="(100vw, 100vh)"
-              loading="eager"
-              className="w-full h-full"
-            />
-          ) : (
-            <img
-              draggable="false"
-              loading="eager"
-              src={`https://picsum.photos/200/300?random=${randomNumber()}`}
-              alt="image"
-              className="w-full h-full"
-              sizes="(100vw, 100vh)"
-            />
-          )}
+          <img
+            draggable="false"
+            src={imageUrl}
+            alt="ExploreDen images"
+            loading="eager"
+            className="w-full h-full"
+          />
         </div>
 
         {isCenterImage && (

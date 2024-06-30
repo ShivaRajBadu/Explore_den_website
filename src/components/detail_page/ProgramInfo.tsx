@@ -12,7 +12,7 @@ const ProgramInfo = ({
   return (
     <div className="space-y-6 py-4">
       <div className="flex gap-4 items-start">
-        <div className="bg-iconblue/20  w-[52px] h-[52px] rounded-xl grid place-content-center">
+        <div className="bg-iconblue/20  min-w-[52px] min-h-[52px] rounded-xl grid place-content-center">
           <Image
             src="/icons/location.svg"
             alt="location"
@@ -31,7 +31,7 @@ const ProgramInfo = ({
       {event && (
         <>
           <div className="flex gap-4 items-start">
-            <div className="bg-icongreen/20  w-[52px] h-[52px] rounded-xl grid place-content-center">
+            <div className="bg-icongreen/20  min-w-[52px] min-h-[52px] rounded-xl grid place-content-center">
               <Image
                 src="/icons/clock.svg"
                 alt="location"
@@ -50,7 +50,7 @@ const ProgramInfo = ({
             </div>
           </div>
           <div className="flex gap-4 items-start">
-            <div className="bg-iconpurple/20  w-[52px] h-[52px] rounded-xl grid place-content-center">
+            <div className="bg-iconpurple/20  min-w-[52px] min-h-[52px] rounded-xl grid place-content-center">
               <Image
                 src="/icons/ticket.svg"
                 alt="location"

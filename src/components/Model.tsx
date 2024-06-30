@@ -79,10 +79,9 @@ const Model = ({
       </button>
       <div className="w-[90%] md:w-[80%] aspect-[9/16] md:aspect-video mx-auto shadow-lg">
         <div className="relative z-50 w-full h-full rounded-lg overflow-hidden">
-          <Image
+          <img
             src={images[currentIndex].imageUrl}
             alt="image"
-            fill
             className="w-full h-full object-cover"
           />
         </div>

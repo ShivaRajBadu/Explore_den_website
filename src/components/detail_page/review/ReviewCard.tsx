@@ -12,10 +12,10 @@ const ReviewCard = ({ review }: { review: Review }) => {
     <div className="py-8 border-b">
       <div className="flex   gap-4">
         <div className="relative w-[48px] h-[48px] overflow-hidden rounded-full">
-          <Image
+          <img
             src={review.reviewedBy.profilePic || "/images/author.png"}
             alt="image"
-            fill
+            className="w-full h-full object-cover"
             sizes="(100vw, 100vh)"
           />
         </div>
@@ -36,11 +36,10 @@ const ReviewCard = ({ review }: { review: Review }) => {
         {review.images.map((image, index) => (
           <ModalOpen key={image.id} images={review.images} currentIndex={index}>
             <div className="relative rounded-[4px] overflow-hidden w-[63px] h-[73px] cursor-pointer">
-              <Image
+              <img
                 src={image.imageUrl}
                 alt="image"
-                fill
-                className="object-cover"
+                className="object-cover w-full h-full"
                 sizes="(100vw, 100vh)"
               />
             </div>
