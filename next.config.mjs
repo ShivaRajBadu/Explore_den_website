@@ -17,15 +17,21 @@ const nextConfig = {
       },
     ],
   },
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/",
-  //       destination: "https://exploreden.com.au",
-  //       permanent: false,
-  //     },
-  //   ];
-  // },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "exploreden.com",
+          },
+        ],
+        destination: "https://exploreden.com.au/:path*",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
