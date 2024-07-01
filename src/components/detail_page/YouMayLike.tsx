@@ -3,7 +3,7 @@
 import React, { useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { placeDataType, placeType } from "@/types";
-import { getPlaces } from "@/actions/getPlaces";
+import { getNeighbouringPlaces, getPlaces } from "@/actions/getPlaces";
 import { usePathname } from "next/navigation";
 import CardSkeleton from "../skeletons/CardSkeleton";
 import { useQuery } from "@tanstack/react-query";
@@ -13,16 +13,18 @@ const Card = dynamic(() => import("../main_page/Card"), { ssr: false });
 
 const YouMayLike = () => {
   const pathName = usePathname();
-  const slug = pathName.split("/")[2];
 
+  // const slug = pathName.split("/")[2];
+  const placeId = parseInt(pathName.split("/")[3]);
   const {
     data: YouMayLike,
     isLoading,
     isError,
     isFetching,
   } = useQuery({
-    queryKey: ["YouMayLike", slug],
-    queryFn: () => getPlaces({ limit: 9, placeType: slug as placeType }),
+    queryKey: ["YouMayLike", placeId],
+    queryFn: () => getNeighbouringPlaces(placeId),
+    refetchOnWindowFocus: false,
   });
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -115,7 +117,7 @@ const YouMayLike = () => {
               ref={scrollContainerRef}
               className="flex gap-5  py-2 hide_scrollbar overflow-x-scroll px-1 min-h-[400px]"
             >
-              {YouMayLike?.data?.map((place) => (
+              {YouMayLike?.map((place) => (
                 <Card key={place.id} params={place} isFromDetails={true} />
               ))}
             </div>

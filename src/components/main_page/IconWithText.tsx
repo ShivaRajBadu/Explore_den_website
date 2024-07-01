@@ -7,6 +7,7 @@ type Props = {
 };
 
 const IconWithText = ({ iconSrc, text }: Props) => {
+  if (!text) return null;
   let align = "items-center";
   if (iconSrc.includes("location")) {
     align = "items-start";

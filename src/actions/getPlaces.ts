@@ -61,3 +61,36 @@ export async function getPlace(id: number): Promise<placeDataType | null> {
     return null;
   }
 }
+
+export async function getPopularPlaces(): Promise<placeDataType[] | null> {
+  try {
+    const response = await fetch(`${baseUrl}/places/popular`, {
+      cache: "no-store",
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    }
+    return null;
+  } catch (error) {
+    console.log("Error in getting popular places", error);
+    return null;
+  }
+}
+
+export async function getNeighbouringPlaces(
+  id: number
+): Promise<placeDataType[] | null> {
+  try {
+    const response = await fetch(`${baseUrl}/places/neighbours/${id}`);
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.log("Error in getting neighbours places ", error);
+    return null;
+  }
+}
