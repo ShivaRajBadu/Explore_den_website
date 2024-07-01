@@ -13,6 +13,7 @@ const initialState = {
 };
 const CustomForm = () => {
   const params = useSearchParams();
+  const descriptionParams = params.get("description");
 
   const [state, formAction] = useFormState(postContactInfo, initialState);
   if (state.error) {
@@ -80,7 +81,7 @@ const CustomForm = () => {
           name="description"
           id="Description"
           rows={7}
-          value={params.get("description") || ""}
+          defaultValue={descriptionParams ?? ""}
           required
           placeholder="Enter a description"
         ></textarea>
