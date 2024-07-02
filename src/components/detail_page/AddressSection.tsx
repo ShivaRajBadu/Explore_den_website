@@ -22,7 +22,7 @@ const AddressSection = ({
       <div className="flex gap-4 w-full my-6">
         <Link
           prefetch={false}
-          href={`https://www.google.com/maps/dir/?api=1&destination=${location.y},${location.x}`}
+          href={`https://www.google.com/maps/dir/?api=1&destination=${location.x},${location.y}`}
           target="_blank"
           className="flex items-center justify-center p-3 rounded-lg gap-2 border border-brand w-full font-semibold text-sm text-brand"
         >
