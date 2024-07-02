@@ -6,6 +6,23 @@ import { useEffect, useRef, useState } from "react";
 import ModalOpen from "../review/ModalOpen";
 
 const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
+  const randomIndex = randomNumber();
+  if (images.length === 0) {
+    images = [
+      {
+        id: 3,
+        imageKey: "random images",
+        imageUrl: `https://picsum.photos/200/300?random=${randomIndex}`,
+        datetimeAdded: "Now",
+      },
+      {
+        id: 3,
+        imageKey: "random images",
+        imageUrl: `https://picsum.photos/200/300?random=${randomIndex}`,
+        datetimeAdded: "Now",
+      },
+    ];
+  }
   const [currentIndex, setCurrentIndex] = useState(0);
   const thumbnailsRef = useRef<(HTMLDivElement | null)[]>([]);
   useEffect(() => {
@@ -26,7 +43,7 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
       setCurrentIndex((prev) => prev - 1);
     }
   };
-  const randomIndex = randomNumber();
+
   return (
     <div>
       {/* main image */}
