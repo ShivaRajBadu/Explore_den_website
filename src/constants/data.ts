@@ -25,11 +25,11 @@ export const NavLinks = [
     name: "Activities",
     link: "/activity",
   },
-  // {
-  //   id: 5,
-  //   name: "Blogs",
-  //   link: "/blogs",
-  // },
+  {
+    id: 5,
+    name: "Blogs",
+    link: "/blogs",
+  },
   {
     id: 6,
     name: "Contact Us",
