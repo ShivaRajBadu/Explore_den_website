@@ -132,3 +132,16 @@ export type placeDataType = {
   activity?: Activity;
   reviews: Review[];
 };
+
+export type Blog = {
+  id: number;
+  readingMinute: number;
+  title: string;
+  subTitle: string;
+  mainImageUrl: string;
+  mainImageKey: string;
+  content: string;
+  status: string;
+  createdAt: string;
+  publishedAt?: string | null;
+};

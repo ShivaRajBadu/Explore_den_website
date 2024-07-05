@@ -1,0 +1,75 @@
+/* QuillEditor.css */
+
+/* Increase font size for h1 */
+.quill-content-only .ql-editor h1 {
+  font-size: 24px;
+}
+
+/* Customize h2 */
+.quill-content-only .ql-editor h2 {
+  font-size: 20px;
+  color: #333;
+}
+
+/* Style paragraphs */
+.quill-content-only .ql-editor p {
+  font-size: 18px;
+  padding: 8px 0;
+}
+
+/* Customize links */
+.quill-content-only .ql-editor a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.quill-content-only .ql-editor a:hover {
+  text-decoration: underline;
+}
+
+/* Style list items */
+.quill-content-only .ql-editor ul,
+.quill-content-only .ql-editor ol {
+  padding-left: 1.5em;
+}
+
+.quill-content-only .ql-editor li {
+}
+
+/* Customize blockquotes */
+.quill-content-only .ql-editor blockquote {
+  border-left: 3px solid #b7194c;
+
+  font-size: 20px;
+  color: #2a2728;
+  font-style: italic;
+}
+
+/* Add more custom styles as needed */
+/* Additional custom styles */
+.quill-content-only .ql-editor ul,
+.quill-content-only .ql-editor ol {
+  padding-left: 1.5em;
+}
+
+.quill-content-only .ql-editor li {
+}
+
+.quill-content-only .ql-editor blockquote {
+  border-left: 2px solid #b7194c !important;
+  padding-left: 1em;
+  font-size: 24px;
+  color: #2a2728;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.quill-content-only .ql-editor img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.ql-container.ql-snow {
+  border: none;
+}
