@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import downloadImageFrame from "../../../public/images/download_frame.png";
 
 const DownloadSection = () => {
   return (

@@ -4,7 +4,6 @@ import "./globals.css";
 
 import Footer from "@/components/Footer";
 
-import Script from "next/script";
 import Provider from "@/components/Provider";
 import NextTopLoader from "nextjs-toploader";
 
@@ -31,8 +30,12 @@ export const metadata: Metadata = {
     siteName: "Exploreden.com.au",
     images: [
       {
-        url: "/icons/logo.svg",
+        url: "/icons/og-logo.svg",
         alt: "openGraph image",
+      },
+      {
+        url: "/icons/logo.svg",
+        alt: "Exploreden logo",
       },
       {
         url: "/icons/logo_white.svg",

@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 export default function NotFound() {
+  console.log("not found page");
+
   return (
     <div className="h-screen w-[90wh] justify-center overflow-hidden bg-gray-100 flex items-center">
       <div className="container flex flex-col md:flex-row items-center justify-center px-5 text-gray-700">

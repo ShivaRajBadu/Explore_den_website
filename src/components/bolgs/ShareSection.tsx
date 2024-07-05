@@ -1,14 +1,35 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 const ShareSection = () => {
+  const [copied, setCopied] = React.useState(false);
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
+  const handleShare = (link: string) => {
+    window.open(link, "_blank");
+  };
+
   return (
-    <div className="flex justify-between items-center py-8 border-t">
+    <div className="flex justify-between items-center py-8 border-t relative">
+      {copied && (
+        <p className=" font-semibold duration-300 transition-all -top-3 absolute inset-0 bg-black w-max h-max px-4 py-1 rounded-lg text-white after_arrow ">
+          link copied
+        </p>
+      )}
       <button
+        onClick={copyLink}
         style={{
           boxShadow: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
         }}
-        className="flex gap-2 items-center border rounded-lg px-4 py-2 border-[#D8D4D5] "
+        className="flex gap-2 hover:bg-[#F5F4F4] duration-300 focus:border-[#EB3A66] focus-visible:border-[#EB3A66] items-center border rounded-lg px-4 py-2 border-[#D8D4D5] "
       >
         <svg
           width="20"
@@ -35,7 +56,13 @@ const ShareSection = () => {
         Copy link
       </button>
       <div className="flex gap-4 py-1">
-        <Link href={"facebookPage"} prefetch={false} target="_blank">
+        <button
+          onClick={() =>
+            handleShare(
+              `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`
+            )
+          }
+        >
           <Image
             width={34}
             height={34}
@@ -43,9 +70,15 @@ const ShareSection = () => {
             alt="facebook"
             className="cursor-pointer"
           />
-        </Link>
+        </button>
 
-        <Link href={"twitterPage"} prefetch={false} target="_blank">
+        <button
+          onClick={() =>
+            handleShare(
+              `https://twitter.com/intent/tweet?text=${window.location.href}`
+            )
+          }
+        >
           <Image
             width={34}
             height={34}
@@ -53,9 +86,15 @@ const ShareSection = () => {
             alt="twitter"
             className="cursor-pointer"
           />
-        </Link>
+        </button>
 
-        <Link href={"linkedinPage"} prefetch={false} target="_blank">
+        <button
+          onClick={() =>
+            handleShare(
+              `https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}`
+            )
+          }
+        >
           <Image
             width={34}
             height={34}
@@ -63,8 +102,14 @@ const ShareSection = () => {
             alt="linkedin"
             className="cursor-pointer"
           />
-        </Link>
-        <Link href={"instagramPage"} prefetch={false} target="_blank">
+        </button>
+        <button
+          onClick={() =>
+            handleShare(
+              `https://www.instagram.com/?url=${window.location.href}`
+            )
+          }
+        >
           <Image
             width={34}
             height={34}
@@ -72,7 +117,7 @@ const ShareSection = () => {
             alt="instagram"
             className="cursor-pointer"
           />
-        </Link>
+        </button>
       </div>
     </div>
   );

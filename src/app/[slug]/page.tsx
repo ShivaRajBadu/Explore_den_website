@@ -30,9 +30,6 @@ const page = async ({
     slug = "event";
   }
 
-  const placeTypeGet =
-    slug == "activity" ? placeType.DESTINATION : (slug as placeType);
-
   let filterOption;
 
   if (categoryQuery) {
@@ -47,7 +44,7 @@ const page = async ({
 
   const datas = await getPlaces({
     limit: 16,
-    placeType: categoryQuery ? null : placeTypeGet,
+    placeType: categoryQuery ? null : (slug as placeType),
     pageNumber: 1,
     filter: categoryQuery || dateTimeQuery,
     isCategory: categoryQuery ? true : false,

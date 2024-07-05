@@ -1,8 +1,9 @@
 import Wrapper from "@/components/Wrapper";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import ShareSection from "@/components/bolgs/ShareSection";
+import { Metadata, ResolvingMetadata } from "next";
+import { baseUrl } from "@/constants/data";
 
 const page = ({ params: { id } }: { params: { id: string } }) => {
   return (
@@ -66,3 +67,24 @@ const page = ({ params: { id } }: { params: { id: string } }) => {
 };
 
 export default page;
+
+export async function generateMetadata(
+  {
+    params: { id },
+  }: {
+    params: { id: string };
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const blog = await fetch(`${baseUrl}/blogs/${id}`).then((res) => res.json());
+  const previousImages = (await parent).openGraph?.images || [];
+  return {
+    title: blog.title,
+    description: blog.description,
+    openGraph: {
+      title: blog.title,
+      description: blog.description,
+      images: [blog.mainImageUrl, ...previousImages],
+    },
+  };
+}

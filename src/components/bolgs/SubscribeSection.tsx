@@ -23,7 +23,7 @@ const SubscribeSection = () => {
             Subscribe
           </button>
         </div>
-        <p className="text-xs md:text-sm font-normal text-[#F5F4F4] py-2">
+        <p className="text-xs md:text-sm font-normal text-[#F5F4F4] py-4">
           We care about your data in our{" "}
           <Link
             className="underline"

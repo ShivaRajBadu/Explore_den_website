@@ -18,3 +18,16 @@ export default function CategoryLayout({
     </section>
   );
 }
+
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams?: any;
+}) {
+  const title = params.slug.charAt(0).toUpperCase() + params.slug.slice(1);
+  return {
+    title: title,
+  };
+}
