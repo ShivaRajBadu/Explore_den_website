@@ -4,6 +4,7 @@ import Details from "@/components/detail_page/Details";
 
 import ReviewSection from "@/components/detail_page/review/reviewSection";
 import YouMayLike from "@/components/detail_page/YouMayLike";
+import { baseUrl } from "@/constants/data";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -40,17 +41,30 @@ export async function generateMetadata(
   { params }: { params: { id: string; slug: string } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const place = await getPlace(parseInt(params.id));
+  const response = await fetch(`${baseUrl}/places/${params.id}`);
+  const place = await response.json();
+  // const place = await getPlace(parseInt(params.id));
   const previousImages = (await parent).openGraph?.images || [];
+  if (!place) {
+    return {
+      title: "Exploreden Place",
+      openGraph: {
+        title: "Exploreden Place",
+        description:
+          "ExploreDen is a comprehensive platform for all travel enthusiasts. We use an innovative approach to help travelers discover the best local destinations, hidden gems, adventures, and events. Our mobile app works in being able to help travelers find EADs rapidly with left or right swipes on EADs within the app, within seconds, without the headache of going through the old school way",
+        images: previousImages,
+      },
+    };
+  }
 
   const placeImage = place
     ? place?.images.length > 0
       ? place?.images[0].imageUrl
       : ""
     : "";
-  const title = params.slug.charAt(0).toUpperCase() + params.slug.slice(1);
+
   return {
-    title: title,
+    title: place.name,
     openGraph: {
       title: place ? place.name : "Exploreden Place",
       description: place

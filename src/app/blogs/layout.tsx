@@ -1,4 +1,4 @@
-import SubscribeSection from "@/components/bolgs/SubscribeSection";
+import SubscribeSection from "@/components/blogs/SubscribeSection";
 import Navigation from "@/components/headers/Navigation";
 import { Metadata } from "next";
 import React from "react";

@@ -12,7 +12,7 @@ import { Suspense } from "react";
 import GridShimmer from "@/components/skeletons/GridShimmer";
 import PopularSectionSkeleton from "@/components/skeletons/PopularSectionSkeleton";
 import dynamic from "next/dynamic";
-import BlogSection from "@/components/main_page/BlogSection";
+// import BlogSection from "@/components/main_page/BlogSection";
 
 // Dynamically import components that are below the fold
 const PopularSection = dynamic(
@@ -35,6 +35,12 @@ const ActivitiesSection = dynamic(
 );
 const DestinationSection = dynamic(
   () => import("@/components/main_page/DestinationSection"),
+  {
+    loading: () => <GridShimmer />,
+  }
+);
+const BlogSection = dynamic(
+  () => import("@/components/main_page/BlogSection"),
   {
     loading: () => <GridShimmer />,
   }
@@ -63,8 +69,9 @@ export default function Home() {
         <DestinationSection />
       </Suspense>
       <DownloadSection />
-      <BlogSection />
-
+      <Suspense fallback={<GridShimmer />}>
+        <BlogSection />
+      </Suspense>
       <ContactUs />
     </main>
   );

@@ -1,8 +1,9 @@
 import React from "react";
 import BlogCard from "../main_page/BlogCard";
 import Filter from "../Filter";
+import { Blog } from "@/types";
 
-const AllBlogsSection = () => {
+const AllBlogsSection = ({ allBlogs }: { allBlogs: Blog[] }) => {
   return (
     <div className="py-10">
       <div className="flex justify-between items-center">
@@ -20,8 +21,14 @@ const AllBlogsSection = () => {
         style={{ gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))" }}
         className="grid gap-8  my-6 py-6"
       >
-        {Array.from({ length: 16 }).map((_, index) => {
-          return <BlogCard key={index} isOverflowCard={false} />;
+        {allBlogs.map((_, index) => {
+          return (
+            <BlogCard
+              blog={allBlogs[index]}
+              key={index}
+              isOverflowCard={false}
+            />
+          );
         })}
       </div>
     </div>

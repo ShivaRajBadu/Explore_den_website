@@ -139,9 +139,23 @@ export type Blog = {
   title: string;
   subTitle: string;
   mainImageUrl: string;
+  author: any;
   mainImageKey: string;
   content: string;
   status: string;
+  isFeatured: boolean;
   createdAt: string;
   publishedAt?: string | null;
+};
+
+export type BlogWithMeta = {
+  data: Blog[];
+  meta: {
+    page: number;
+    limit: number;
+    itemCount: number;
+    pageCount: number;
+    hasPreviousPage: boolean;
+    hasNextPage: boolean;
+  };
 };

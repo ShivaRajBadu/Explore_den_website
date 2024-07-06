@@ -1,37 +1,18 @@
 import Wrapper from "@/components/Wrapper";
 import React from "react";
 import Image from "next/image";
-import ShareSection from "@/components/bolgs/ShareSection";
+import ShareSection from "@/components/blogs/ShareSection";
 import { Metadata, ResolvingMetadata } from "next";
-import { getBlog } from "@/actions/getBlog";
+import { getBlog } from "@/actions/getBlogs";
 import { notFound } from "next/navigation";
 
-import QuillEditor from "@/components/bolgs/QuillEditor";
-
-export async function generateMetadata(
-  {
-    params: { id },
-  }: {
-    params: { id: string };
-  },
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const blog = await getBlog(parseInt(id));
-  const previousImages = (await parent).openGraph?.images || [];
-  return {
-    title: blog ? blog.title : "",
-    openGraph: {
-      title: blog ? blog.title : "Exploreden Blog",
-      description: blog
-        ? blog.subTitle
-        : "ExploreDen is a comprehensive platform for all travel enthusiasts. We use an innovative approach to help travelers discover the best local destinations, hidden gems, adventures, and events. Our mobile app works in being able to help travelers find EADs rapidly with left or right swipes on EADs within the app, within seconds, without the headache of going through the old school way.",
-      images: [blog.mainImageUrl, ...previousImages],
-    },
-  };
-}
+import QuillEditor from "@/components/blogs/QuillEditor";
+import { baseUrl } from "@/constants/data";
+import { timeAgo } from "@/utils";
 
 const page = async ({ params: { id } }: { params: { id: string } }) => {
   const blog = await getBlog(parseInt(id));
+
   if (!blog) {
     notFound();
   }
@@ -44,39 +25,45 @@ const page = async ({ params: { id } }: { params: { id: string } }) => {
             {blog.readingMinute} min read
           </p>
           <h1 className="text-textPrimary  text-center py-2 text-[48px] font-semibold capitalize">
-            {blog.title}
+            {blog.title ? blog.title : ""}
           </h1>
           <p className="text-textSecondary text-center text-base py-2 font-normal  mx-auto text-balance">
-            {blog.subTitle}
+            {blog.subTitle ? blog.subTitle : ""}
           </p>
-          <div className="flex justify-center gap-6 items-start py-8 w-max mx-auto cursor-pointer">
-            <Image
-              src="/images/author.png"
+          <div className="flex justify-center gap-6 items-start py-8 w-max mx-auto ">
+            <img
+              src={
+                blog.author.profilePic
+                  ? blog.author.profilePic
+                  : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNsaZl8BAAFkAJhpH4zuwAAAABJRU5ErkJggg=="
+              }
               alt="author"
               width={0}
               height={0}
               sizes="(100vw, 100vh)"
-              className="w-[56px] h-[56px]"
+              className="w-[56px] h-[56px] rounded-full"
             />
             <div>
               <h3 className="font-medium text-lg text-textPrimary">
-                Oiliva Rhye
+                {blog.author.name}
               </h3>
               <p className="text-textSecondary font-normal text-base">
-                20 Jan 2024
+                {timeAgo(blog.publishedAt ? blog.publishedAt : blog.createdAt)}
               </p>
             </div>
           </div>
         </div>
         <div>
-          <Image
-            src={"/images/blog.jpg"}
-            alt="blog"
-            width={0}
-            height={0}
-            sizes="(100vw, 100vh)"
-            className="w-full object-cover h-[600px] rounded-lg"
-          />
+          {blog.mainImageUrl && (
+            <img
+              src={"/images/blog.jpg"}
+              alt="blog"
+              width={0}
+              height={0}
+              sizes="(100vw, 100vh)"
+              className="w-full object-cover h-[600px] rounded-lg"
+            />
+          )}
         </div>
         <div className="lg:w-[80%] xl:w-[70%] mx-auto py-12">
           {/* <div
@@ -92,3 +79,37 @@ const page = async ({ params: { id } }: { params: { id: string } }) => {
 };
 
 export default page;
+
+export async function generateMetadata(
+  {
+    params: { id },
+  }: {
+    params: { id: string };
+  },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const response: any = await fetch(`${baseUrl}/blogs/${id}`);
+  const blog = await response.json();
+
+  const previousImages = (await parent).openGraph?.images || [];
+  if (!blog)
+    return {
+      title: "Exploreden Blog",
+      openGraph: {
+        title: "Exploreden Blog",
+        description:
+          "ExploreDen is a comprehensive platform for all travel enthusiasts. We use an innovative approach to help travelers discover the best local destinations, hidden gems, adventures, and events. Our mobile app works in being able to help travelers find EADs rapidly with left or right swipes on EADs within the app, within seconds, without the headache of going through the old school way.",
+        images: previousImages,
+      },
+    };
+  return {
+    title: blog ? blog.title : "",
+    openGraph: {
+      title: blog ? blog.title : "Exploreden Blog",
+      description: blog
+        ? blog.subTitle
+        : "ExploreDen is a comprehensive platform for all travel enthusiasts. We use an innovative approach to help travelers discover the best local destinations, hidden gems, adventures, and events. Our mobile app works in being able to help travelers find EADs rapidly with left or right swipes on EADs within the app, within seconds, without the headache of going through the old school way.",
+      images: [blog.mainImageUrl, ...previousImages],
+    },
+  };
+}
