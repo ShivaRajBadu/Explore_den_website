@@ -8,9 +8,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => (
-    <div className="rounded  animate-pulse">
-      <div className="bg-gray-200 h-[600px]  w-full"></div>
-    </div>
+    <div className="h-[600px] animate-pulse bg-slate-200 rounded-md"></div>
   ),
 });
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Blog } from "@/types";
 import { timeAgo } from "@/utils";
+import { getFeaturedBlogs } from "@/actions/getBlogs";
 const FeatureSection = ({ featuredBlogs }: { featuredBlogs: Blog[] }) => {
   return (
     <div>
