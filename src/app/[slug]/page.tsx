@@ -27,11 +27,11 @@ const page = async ({
   let slug = params.slug;
 
   if (params.slug === "popular") {
-    slug = "event";
+    slug = "destination";
   }
 
-  const placeTypeGet =
-    slug == "activity" ? placeType.DESTINATION : (slug as placeType);
+  // const placeTypeGet =
+  //   slug == "activity" ? placeType.DESTINATION : (slug as placeType);
 
   let filterOption;
 
@@ -47,7 +47,7 @@ const page = async ({
 
   const datas = await getPlaces({
     limit: 16,
-    placeType: categoryQuery ? null : placeTypeGet,
+    placeType: categoryQuery ? null : (slug as placeType),
     pageNumber: 1,
     filter: categoryQuery || dateTimeQuery,
     isCategory: categoryQuery ? true : false,

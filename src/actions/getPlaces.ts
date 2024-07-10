@@ -41,6 +41,9 @@ export async function getPlaces(
   }
 
   const data = await response.json();
+  data.data.images = data.data.forEach((place: any) =>
+    place.images.sort((a: any, b: any) => a.position - b.position)
+  );
 
   return data;
 }
@@ -52,6 +55,10 @@ export async function getPlace(id: number): Promise<placeDataType | null> {
     });
     if (response.ok) {
       const data = await response.json();
+      data.images = data.images.sort(
+        (a: any, b: any) => a.position - b.position
+      );
+
       return data;
     } else {
       return null;
@@ -69,6 +76,9 @@ export async function getPopularPlaces(): Promise<placeDataType[] | null> {
     });
     if (response.ok) {
       const data = await response.json();
+      data.images = data.forEach((place: any) =>
+        place.images.sort((a: any, b: any) => a.position - b.position)
+      );
       return data;
     }
     return null;
@@ -85,6 +95,10 @@ export async function getNeighbouringPlaces(
     const response = await fetch(`${baseUrl}/places/neighbours/${id}`);
     if (response.ok) {
       const data = await response.json();
+
+      data.images = data.forEach((place: any) =>
+        place.images.sort((a: any, b: any) => a.position - b.position)
+      );
       return data;
     } else {
       return null;
