@@ -56,7 +56,7 @@ const ImageCarousel = ({ images }: { images: Imagetype[] }) => {
           <img
             key={images[currentIndex].imageKey}
             src={images[currentIndex].imageUrl}
-            className="object-cover h-full w-full cursor-pointer"
+            className="object-cover h-full w-full cursor-pointer "
             alt="explore den logo"
             sizes="(100vw, 100vh)"
           />

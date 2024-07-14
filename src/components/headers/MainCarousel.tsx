@@ -85,7 +85,7 @@ const MainCarousel = ({ data }: { data: placeDataType[] }) => {
   };
 
   const rotateCenterImage = () => {
-    setRotation(6);
+    // setRotation(6);
     setTimeout(() => {
       setRotation(0);
       prevImage();
